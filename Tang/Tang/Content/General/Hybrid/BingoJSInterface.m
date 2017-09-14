@@ -49,14 +49,14 @@ static void *kNavigationBarItemDataKey = &kNavigationBarItemDataKey;
         self.bridge = [WKWebViewJavascriptBridge bridgeForWebView:webView];
         [self.bridge setWebViewDelegate:delegate];
         [WKWebViewJavascriptBridge enableLogging];
-        self.viewController = [BingoCurNaviCtrl topViewController];
+        self.viewController = [YGCurNaviCtrl topViewController];
     }
     return self;
 }
 
 - (UINavigationController *)naviCtrl
 {
-    return self.viewController?self.viewController.navigationController:BingoCurNaviCtrl;
+    return self.viewController?self.viewController.navigationController:YGCurNaviCtrl;
 }
 
 - (void)registerAllHander

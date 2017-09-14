@@ -7,6 +7,8 @@
 //
 
 #import "TangDelegate.h"
+#import "YGTabBarCtrl.h"
+#import "SVProgressHUD.h"
 
 @interface TangDelegate ()
 
@@ -16,8 +18,50 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+    [self setupAppearance];
+    
+    YGTabBarCtrl *vc = [YGTabBarCtrl defaultTabBarCtrl];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
+
     return YES;
+}
+
+#pragma mark - Appearance
+- (void)setupAppearance
+{
+    [UIViewController setDefaultNavigationBarBlackStyle:YES];
+    [UIViewController setDefaultNavigationBarLineHidden:YES];
+    [UIViewController setDefaultNavigationBarShadowHidden:YES];
+    [UIViewController setDefaultNavigationBarTextColor:[UIColor whiteColor]];
+    [UIViewController setDefaultStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateHighlighted];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16],NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    
+    // 不显示默认的返回按钮
+    [[UINavigationBar appearance] setBackIndicatorImage:nil];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:nil];
+    
+    if (iOS11){}else{
+        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, -65.f) forBarMetrics:UIBarMetricsDefault];
+    }
+    
+    [[UITextField appearance] setTintColor:kBlueColor];
+    [[UITextField appearance] setTextColor:kTextColor];
+    
+    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"icon_hud_success"]];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:.7]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setMinimumDismissTimeInterval:1.4];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:15]];
 }
 
 @end

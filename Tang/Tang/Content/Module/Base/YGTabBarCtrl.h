@@ -7,43 +7,42 @@
 
 @import UIKit;
 
-typedef NS_ENUM(NSUInteger, BingoTabType) {
+typedef NS_ENUM(NSUInteger, YGTabType) {
     // 对应tab的索引值
-    BingoTabTypeHome = 0,
+    YGTabTypeHome = 0,
+    YGTabTypeDiscover = 1,
+    YGTabTypeDownload = 2,
+    YGTabTypeMine = 3
 };
 
 #ifndef DefaultTabBarCtrl
     #define DefaultTabBarCtrl [YGTabBarCtrl defaultTabBarCtrl]
 #endif
 
-#ifndef BingoCurNaviCtrl
-    #define BingoCurNaviCtrl [DefaultTabBarCtrl navigationOfTab:(BingoTabType)[DefaultTabBarCtrl selectedIndex]]
+#ifndef YGCurNaviCtrl
+    #define YGCurNaviCtrl [DefaultTabBarCtrl navigationOfTab:(YGTabType)[DefaultTabBarCtrl selectedIndex]]
 #endif
 
-#ifndef BingoHomeNaviCtrl
-    #define BingoHomeNaviCtrl [DefaultTabBarCtrl navigationOfTab:BingoTabTypeHome]
+#ifndef YGHomeNaviCtrl
+    #define YGHomeNaviCtrl [DefaultTabBarCtrl navigationOfTab:YGTabTypeHome]
 #endif
 
-#ifndef BingoMallNaviCtrl
-    #define BingoMallNaviCtrl [DefaultTabBarCtrl navigationOfTab:BingoTabTypeMall]
+#ifndef YGDiscoverNaviCtrl
+    #define YGDiscoverNaviCtrl [DefaultTabBarCtrl navigationOfTab:YGTabTypeDiscover]
 #endif
 
-#ifndef BingoPowerNaviCtrl
-    #define BingoPowerNaviCtrl [DefaultTabBarCtrl navigationOfTab:BingoTabTypePower]
+#ifndef YGDownloadNaviCtrl
+    #define YGDownloadNaviCtrl [DefaultTabBarCtrl navigationOfTab:YGTabTypeDownload]
 #endif
 
-#ifndef BingoRentNaviCtrl
-    #define BingoRentNaviCtrl [DefaultTabBarCtrl navigationOfTab:BingoTabTypeRent]
-#endif
-
-#ifndef BingoMineNaviCtrl
-    #define BingoMineNaviCtrl [DefaultTabBarCtrl navigationOfTab:BingoTabTypeMine]
+#ifndef YGMineNaviCtrl
+    #define YGMineNaviCtrl [DefaultTabBarCtrl navigationOfTab:YGTabTypeMine]
 #endif
 
 @interface YGTabBarCtrl : UITabBarController
 
 + (instancetype)defaultTabBarCtrl;
 
-- (UINavigationController *)navigationOfTab:(BingoTabType)type;
+- (UINavigationController *)navigationOfTab:(YGTabType)type;
 
 @end

@@ -103,6 +103,10 @@
 		69BFBE701F6A5992004338EF /* YGTabBarCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFBE101F6A5992004338EF /* YGTabBarCtrl.m */; };
 		69BFBE711F6A5992004338EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBE121F6A5992004338EF /* Assets.xcassets */; };
 		69BFBE721F6A5992004338EF /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69BFBE151F6A5992004338EF /* Bugly.framework */; };
+		69BFBE7D1F6A6030004338EF /* TangHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBE7C1F6A6030004338EF /* TangHome.storyboard */; };
+		69BFBE7F1F6A60BB004338EF /* TangDiscover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBE7E1F6A60BB004338EF /* TangDiscover.storyboard */; };
+		69BFBE811F6A60C4004338EF /* TangDownload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBE801F6A60C4004338EF /* TangDownload.storyboard */; };
+		69BFBE831F6A60CC004338EF /* TangMine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBE821F6A60CC004338EF /* TangMine.storyboard */; };
 		6DCD9D9DE27C5738F104CCCC /* Pods_Tang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699D24A5A16F78E85DC2EBF7 /* Pods_Tang.framework */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +320,10 @@
 		69BFBE121F6A5992004338EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69BFBE151F6A5992004338EF /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		69BFBE751F6A5A42004338EF /* Tang-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tang-Prefix.pch"; sourceTree = "<group>"; };
+		69BFBE7C1F6A6030004338EF /* TangHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangHome.storyboard; sourceTree = "<group>"; };
+		69BFBE7E1F6A60BB004338EF /* TangDiscover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangDiscover.storyboard; sourceTree = "<group>"; };
+		69BFBE801F6A60C4004338EF /* TangDownload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangDownload.storyboard; sourceTree = "<group>"; };
+		69BFBE821F6A60CC004338EF /* TangMine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangMine.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -829,6 +837,11 @@
 		69BFBE031F6A5992004338EF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				69BFBE761F6A5E54004338EF /* Main */,
+				69BFBE7A1F6A5E7C004338EF /* Mine */,
+				69BFBE791F6A5E73004338EF /* Download */,
+				69BFBE781F6A5E6E004338EF /* Discover */,
+				69BFBE771F6A5E69004338EF /* Home */,
 				69BFBE041F6A5992004338EF /* Base */,
 			);
 			path = Module;
@@ -887,6 +900,69 @@
 				69BFBD1F1F6A56D0004338EF /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		69BFBE761F6A5E54004338EF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		69BFBE771F6A5E69004338EF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				69BFBE861F6A62A6004338EF /* Common */,
+				69BFBE851F6A62A1004338EF /* Views */,
+				69BFBE841F6A629C004338EF /* ViewCtrl */,
+				69BFBE7C1F6A6030004338EF /* TangHome.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		69BFBE781F6A5E6E004338EF /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				69BFBE7E1F6A60BB004338EF /* TangDiscover.storyboard */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		69BFBE791F6A5E73004338EF /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				69BFBE801F6A60C4004338EF /* TangDownload.storyboard */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		69BFBE7A1F6A5E7C004338EF /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				69BFBE821F6A60CC004338EF /* TangMine.storyboard */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		69BFBE841F6A629C004338EF /* ViewCtrl */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewCtrl;
+			sourceTree = "<group>";
+		};
+		69BFBE851F6A62A1004338EF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		69BFBE861F6A62A6004338EF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9875F0267A9838007E92D6D2 /* Pods */ = {
@@ -967,11 +1043,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69BFBE811F6A60C4004338EF /* TangDownload.storyboard in Resources */,
+				69BFBE7F1F6A60BB004338EF /* TangDiscover.storyboard in Resources */,
 				69BFBD1D1F6A56D0004338EF /* LaunchScreen.storyboard in Resources */,
 				69BFBD181F6A56D0004338EF /* Main.storyboard in Resources */,
 				69BFBE711F6A5992004338EF /* Assets.xcassets in Resources */,
 				69BFBE511F6A5992004338EF /* BingoBarItemView.xib in Resources */,
+				69BFBE831F6A60CC004338EF /* TangMine.storyboard in Resources */,
 				69BFBE5A1F6A5992004338EF /* CDTAlertCtrl.xib in Resources */,
+				69BFBE7D1F6A6030004338EF /* TangHome.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

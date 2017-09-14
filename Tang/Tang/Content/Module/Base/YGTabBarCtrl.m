@@ -6,7 +6,6 @@
 //
 
 #import "YGTabBarCtrl.h"
-//#import "BingoLoginNaviCtrl.h"
 
 @interface YGTabBarCtrl () <UITabBarControllerDelegate>
 
@@ -32,7 +31,7 @@
     
 }
 
-- (UINavigationController *)navigationOfTab:(BingoTabType)type
+- (UINavigationController *)navigationOfTab:(YGTabType)type
 {
     NSArray *vcs = [self viewControllers];
     if (type < vcs.count) {
