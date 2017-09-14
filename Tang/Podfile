@@ -18,6 +18,7 @@ pod 'WebViewJavascriptBridge', '~> 6.0.2'
 pod 'YYCache'
 pod 'YYCategories'
 pod 'YYModel'
+pod 'TMTumblrSDK'
 
 end
 
