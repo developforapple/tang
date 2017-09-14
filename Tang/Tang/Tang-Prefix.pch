@@ -1,0 +1,22 @@
+//
+//  Tang-Prefix.pch
+//  Tang
+//
+//  Created by Jay on 2017/9/14.
+//  Copyright © 2017年 tiny. All rights reserved.
+//
+
+#ifndef Tang_Prefix_pch
+#define Tang_Prefix_pch
+
+@import Foundation;
+@import ObjectiveC;
+
+    #include "Common.h"
+    #include "Network.h"
+    #import "YGBaseCategories.h"
+    #import "TangDelegate.h"
+    #import "SVProgressHUD.h"
+    #import "CDTUserSession.h"
+
+#endif /* Tang_Prefix_pch */
