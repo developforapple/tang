@@ -63,5 +63,9 @@ YG_EXTERN NSString *const kPingppAppID;
 // 高德地图
 YG_EXTERN NSString *const kGaodeMapKey;
 
+// Tumblr
+YG_EXTERN NSString *const kTumblrConsumerKey;
+YG_EXTERN NSString *const kTumblrConsumerSecret;
+
 
 #endif /* Config_ThirdParty_h */

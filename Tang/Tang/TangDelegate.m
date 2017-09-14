@@ -11,7 +11,6 @@
 #import "SVProgressHUD.h"
 
 @interface TangDelegate ()
-
 @end
 
 @implementation TangDelegate
@@ -21,11 +20,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [self setupAppearance];
+    [self registerThirdParty];
     
     YGTabBarCtrl *vc = [YGTabBarCtrl defaultTabBarCtrl];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
 
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    [API handleURL:url];
     return YES;
 }
 
@@ -62,6 +68,15 @@
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setMinimumDismissTimeInterval:1.4];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:15]];
+}
+
+#pragma mark - ThirdParty
+- (void)registerThirdParty
+{
+    // OAuth
+    API;
+    
+    
 }
 
 @end

@@ -63,3 +63,6 @@ NSString *const kGaodeMapKey = @"ad43500ec50ef5c0d55882806361c273";
 #else
 NSString *const kGaodeMapKey = @"4119abb7eb3fbe01e0c28ab9b5b9c629";
 #endif
+
+NSString *const kTumblrConsumerKey = @"HxYYsUwrI7w844tMYYaII6PCjQ4EwqQo8G4DpJSyF5A8L2cXzq";
+NSString *const kTumblrConsumerSecret = @"pN5tdNYkVN6CZBYxUBCafOsap0yTUHCZa5Fs03J1qLtXskbTdG";

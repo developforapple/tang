@@ -13,10 +13,9 @@
 @import ObjectiveC;
 
     #include "Common.h"
-    #include "Network.h"
+    #include "TangAPI.h"
     #import "YGBaseCategories.h"
     #import "TangDelegate.h"
     #import "SVProgressHUD.h"
-    #import "CDTUserSession.h"
 
 #endif /* Tang_Prefix_pch */

@@ -31,7 +31,7 @@
         <!--Dashboard-->
         <scene sceneID="97N-si-y2z">
             <objects>
-                <viewController id="CbQ-Mx-scB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TangHomeViewCtrl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CbQ-Mx-scB" customClass="TangHomeViewCtrl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7yu-yd-198">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
