@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FCUUID/FCUUID.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JZNavigationExtension/JZNavigationExtension.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
@@ -104,11 +105,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYCategories/YYCategories.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/libwebp/libwebp.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FCUUID/FCUUID.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManager/IQKeyboardManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JZNavigationExtension/JZNavigationExtension.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
@@ -121,6 +124,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYCategories/YYCategories.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/libwebp/libwebp.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

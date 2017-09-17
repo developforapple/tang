@@ -173,7 +173,7 @@ static NSMutableSet<Class> *kIgnoredViewControllerClasses;
                 // 原因是这种情况下，在B界面的手势开始时，导航控制器会将 B 移出栈，将 A 加入到视图层级里面，此时将会调用A界面的 viewWillAppear 方法。在这个方法内[self updateInteractivePop] 会因为A不支持手势返回，而将B界面正在进行中的手势给取消掉。
                 // 通常手势被取消，导航控制器会将 B 重新加入到栈里面来。但是此种条件下，导航控制器没有将B界面重新加入到栈里面来。此时navigationItem是A的，但是view是B的。造成界面错乱
                 
-                //        [self updateInteractivePop];
+                [self updateInteractivePop];
                 
                 [self updateNaviBarTranslucent];
                 [self updateNaviBarLine];
@@ -218,9 +218,7 @@ static NSMutableSet<Class> *kIgnoredViewControllerClasses;
     // 设置TabBar的默认样式
     if ([self isKindOfClass:[UITabBarController class]]) {
         UITabBar *tabbar = [(UITabBarController *)self tabBar];
-        tabbar.lineViewHidden_ = NO;
-        tabbar.lineViewColor_ = kDefaultNaviBarLineColor;
-        //        tabbar.barShadowHidden_ = YES;
+        tabbar.lineViewHidden_ = YES;
     }
     
     [self _updateJz];

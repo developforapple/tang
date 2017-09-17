@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tang Login Guide View Ctrl-->
+        <scene sceneID="rAV-gb-aPY">
+            <objects>
+                <viewController storyboardIdentifier="TangLoginGuideViewCtrl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oRs-ZO-F27" customClass="TangLoginGuideViewCtrl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="scZ-ey-9us"/>
+                        <viewControllerLayoutGuide type="bottom" id="vBo-KI-8ft"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yZa-BV-CW2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB3-Bb-1xR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="pH0-DV-gkR" kind="embed" identifier="TangLoginNaviCtrlSegueID" id="xw8-Uh-0lu"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lB3-Bb-1xR" firstAttribute="leading" secondItem="yZa-BV-CW2" secondAttribute="leading" id="DbL-sG-uqD"/>
+                            <constraint firstItem="lB3-Bb-1xR" firstAttribute="top" secondItem="yZa-BV-CW2" secondAttribute="top" id="i0p-33-jIb"/>
+                            <constraint firstAttribute="bottom" secondItem="lB3-Bb-1xR" secondAttribute="bottom" id="jf9-6Z-lER"/>
+                            <constraint firstAttribute="trailing" secondItem="lB3-Bb-1xR" secondAttribute="trailing" id="zXs-Hh-bgg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mi-Vy-dse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1956" y="163"/>
+        </scene>
+        <!--Tang Login Navi Ctrl-->
+        <scene sceneID="N9i-Si-Vif">
+            <objects>
+                <navigationController storyboardIdentifier="TangLoginNaviCtrl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pH0-DV-gkR" customClass="TangLoginNaviCtrl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wQL-k0-z6V">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uWt-Zs-LCj" kind="relationship" relationship="rootViewController" id="Jg9-Kc-IdA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Bj-yT-f9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1108" y="161"/>
+        </scene>
+        <!--开始Tumblr-->
+        <scene sceneID="zT6-rE-lP6">
+            <objects>
+                <viewController storyboardIdentifier="TangLoginViewCtrl" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uWt-Zs-LCj" customClass="TangLoginViewCtrl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xTT-TB-IXZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="fRf-Ox-yHT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c1t-8v-4kP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8kl-XI-MqF" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mh4-lk-zv6">
+                                <rect key="frame" x="87" y="253.5" width="200" height="161"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_large" translatesAutoresizingMaskIntoConstraints="NO" id="ySX-Kj-SFI" userLabel="Logo">
+                                        <rect key="frame" x="8" y="0.0" width="184" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ySX-Kj-SFI" secondAttribute="height" multiplier="116:25" id="Pxh-4W-hcE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgZ-hg-3a9">
+                                        <rect key="frame" x="0.0" y="72" width="200" height="44"/>
+                                        <color key="backgroundColor" red="0.32156862745098036" green="0.61960784313725492" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="0oo-Kz-bWH"/>
+                                            <constraint firstAttribute="height" constant="44" id="w0T-TJ-m9Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="授权登录"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds_" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius_">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="OAuthStart:" destination="uWt-Zs-LCj" eventType="touchUpInside" id="AvU-LE-7rh"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“%@”需要您使用Tumblr账号授权登录后才可使用。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONL-0M-8VD">
+                                        <rect key="frame" x="8" y="124" width="184" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ONL-0M-8VD" secondAttribute="trailing" constant="8" id="DYv-PQ-OGq"/>
+                                    <constraint firstItem="ySX-Kj-SFI" firstAttribute="top" secondItem="mh4-lk-zv6" secondAttribute="top" id="L04-Gq-MDE"/>
+                                    <constraint firstAttribute="bottom" secondItem="ONL-0M-8VD" secondAttribute="bottom" constant="8" id="Mbh-Rt-Zgs"/>
+                                    <constraint firstItem="ySX-Kj-SFI" firstAttribute="leading" secondItem="mh4-lk-zv6" secondAttribute="leading" constant="8" id="NbM-Zi-UUo"/>
+                                    <constraint firstItem="IgZ-hg-3a9" firstAttribute="top" secondItem="ySX-Kj-SFI" secondAttribute="bottom" constant="32" id="ZNN-zP-4bn"/>
+                                    <constraint firstItem="ONL-0M-8VD" firstAttribute="top" secondItem="IgZ-hg-3a9" secondAttribute="bottom" constant="8" id="jR6-Un-wxi"/>
+                                    <constraint firstItem="IgZ-hg-3a9" firstAttribute="leading" secondItem="mh4-lk-zv6" secondAttribute="leading" id="kLS-ce-fmH"/>
+                                    <constraint firstItem="ONL-0M-8VD" firstAttribute="leading" secondItem="mh4-lk-zv6" secondAttribute="leading" constant="8" id="vCZ-x8-lC8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ySX-Kj-SFI" secondAttribute="trailing" constant="8" id="xSu-vv-G0T"/>
+                                    <constraint firstAttribute="trailing" secondItem="IgZ-hg-3a9" secondAttribute="trailing" id="yQO-zr-TtZ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-WY-1Fs">
+                                <rect key="frame" x="188" y="659" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470588235294" green="0.27450980392156865" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8kl-XI-MqF" secondAttribute="trailing" id="Dfi-Ju-gYl"/>
+                            <constraint firstItem="mh4-lk-zv6" firstAttribute="centerY" secondItem="c1t-8v-4kP" secondAttribute="centerY" id="HFG-Me-SVI"/>
+                            <constraint firstAttribute="bottom" secondItem="8kl-XI-MqF" secondAttribute="bottom" id="Haw-P1-hdH"/>
+                            <constraint firstItem="QmT-WY-1Fs" firstAttribute="centerX" secondItem="c1t-8v-4kP" secondAttribute="centerX" id="RP7-cM-UkR"/>
+                            <constraint firstItem="mh4-lk-zv6" firstAttribute="centerX" secondItem="c1t-8v-4kP" secondAttribute="centerX" id="c4Q-By-fZt"/>
+                            <constraint firstItem="8kl-XI-MqF" firstAttribute="leading" secondItem="c1t-8v-4kP" secondAttribute="leading" id="lmc-JD-BCa"/>
+                            <constraint firstAttribute="bottom" secondItem="QmT-WY-1Fs" secondAttribute="bottom" constant="8" id="ooY-rw-LzU"/>
+                            <constraint firstItem="8kl-XI-MqF" firstAttribute="top" secondItem="c1t-8v-4kP" secondAttribute="top" id="yct-j9-kpU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="开始Tumblr" id="YvT-Cd-dQP">
+                        <barButtonItem key="rightBarButtonItem" title="代理" id="9A2-VV-Blh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="alertInfoLabel" destination="ONL-0M-8VD" id="N7q-dl-cCl"/>
+                        <outlet property="bgImageView" destination="8kl-XI-MqF" id="fUB-fi-LgT"/>
+                        <outlet property="oauthBtn" destination="IgZ-hg-3a9" id="4EC-aA-Otj"/>
+                        <outlet property="postInfoLabel" destination="QmT-WY-1Fs" id="MtN-kf-dUh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gi2-qH-wlw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183.19999999999999" y="160.56971514242881"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo_large" width="232" height="50"/>
+    </resources>
+</document>

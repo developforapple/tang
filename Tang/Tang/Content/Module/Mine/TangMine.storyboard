@@ -14,7 +14,7 @@
         <scene sceneID="Sr8-4F-8A3">
             <objects>
                 <navigationController id="yjN-eu-kRa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mine" image="icon_tabbar_home" id="A8K-gJ-Cl0"/>
+                    <tabBarItem key="tabBarItem" title="Mine" image="icon_tab_me" id="A8K-gJ-Cl0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ffW-5t-zuM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_tabbar_home" width="20" height="22"/>
+        <image name="icon_tab_me" width="32" height="32"/>
     </resources>
 </document>

@@ -17,13 +17,44 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
+  - FLAnimatedImage (1.0.12)
   - IQKeyboardManager (4.0.13)
   - JZNavigationExtension (1.5.0.1)
+  - libwebp (0.6.0):
+    - libwebp/core (= 0.6.0)
+    - libwebp/dec (= 0.6.0)
+    - libwebp/demux (= 0.6.0)
+    - libwebp/dsp (= 0.6.0)
+    - libwebp/enc (= 0.6.0)
+    - libwebp/mux (= 0.6.0)
+    - libwebp/utils (= 0.6.0)
+    - libwebp/webp (= 0.6.0)
+  - libwebp/core (0.6.0):
+    - libwebp/webp
+  - libwebp/dec (0.6.0):
+    - libwebp/core
+  - libwebp/demux (0.6.0):
+    - libwebp/core
+  - libwebp/dsp (0.6.0):
+    - libwebp/core
+  - libwebp/enc (0.6.0):
+    - libwebp/core
+  - libwebp/mux (0.6.0):
+    - libwebp/core
+  - libwebp/utils (0.6.0):
+    - libwebp/core
+  - libwebp/webp (0.6.0)
   - MJRefresh (3.1.12)
   - ReactiveObjC (3.0.0)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
+  - SDWebImage/GIF (4.1.0):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
+  - SDWebImage/WebP (4.1.0):
+    - libwebp
+    - SDWebImage/Core
   - SVProgressHUD (2.2.1)
   - TMTumblrSDK (5.0)
   - UICKeyChainStore (2.1.1)
@@ -43,6 +74,8 @@ DEPENDENCIES:
   - MJRefresh
   - ReactiveObjC (~> 3.0)
   - SDWebImage (~> 4.1.0)
+  - SDWebImage/GIF (~> 4.1.0)
+  - SDWebImage/WebP (~> 4.1.0)
   - SVProgressHUD
   - TMTumblrSDK
   - WebViewJavascriptBridge (~> 6.0.2)
@@ -54,8 +87,10 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   JZNavigationExtension: 7b95d2b1c48846b8bedcb40d767448f14cb9a0b7
+  libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
@@ -67,6 +102,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: '08a1119797bd156a92c721811bd7a1047e350777'
+PODFILE CHECKSUM: 25544d9303e51ef18088fbfdb83f7c35908c71d8
 
 COCOAPODS: 1.2.1

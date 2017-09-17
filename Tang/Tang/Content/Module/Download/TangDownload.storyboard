@@ -14,7 +14,7 @@
         <scene sceneID="Eud-sG-smD">
             <objects>
                 <navigationController id="r33-pv-FzV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Download" image="icon_tabbar_home" id="JrQ-CU-Lh8"/>
+                    <tabBarItem key="tabBarItem" title="Download" image="icon_tab_discovery" id="JrQ-CU-Lh8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="zuw-Ve-55I">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_tabbar_home" width="20" height="22"/>
+        <image name="icon_tab_discovery" width="32" height="32"/>
     </resources>
 </document>

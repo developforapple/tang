@@ -64,5 +64,11 @@ NSString *const kGaodeMapKey = @"ad43500ec50ef5c0d55882806361c273";
 NSString *const kGaodeMapKey = @"4119abb7eb3fbe01e0c28ab9b5b9c629";
 #endif
 
-NSString *const kTumblrConsumerKey = @"HxYYsUwrI7w844tMYYaII6PCjQ4EwqQo8G4DpJSyF5A8L2cXzq";
-NSString *const kTumblrConsumerSecret = @"pN5tdNYkVN6CZBYxUBCafOsap0yTUHCZa5Fs03J1qLtXskbTdG";
+// 359826224
+NSString *const kTumblrConsumerKey0 = @"HxYYsUwrI7w844tMYYaII6PCjQ4EwqQo8G4DpJSyF5A8L2cXzq";
+NSString *const kTumblrConsumerSecret0 = @"pN5tdNYkVN6CZBYxUBCafOsap0yTUHCZa5Fs03J1qLtXskbTdG";
+
+// l0ve_m00n
+NSString *const kTumblrConsumerKey1 = @"MiTPDiMLmEorEWUmMNyct8B9fOSYDuvwC2QMuHCJwrmewJXFFZ";
+NSString *const kTumblrConsumerSecret1 = @"xpcrhwnIRm6AU76K5DpKwmYMYMqWPEc638S3krESayESGivriW";
+

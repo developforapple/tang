@@ -12,7 +12,8 @@
 #import <TMTumblrSDK/TMURLSession.h>
 #import <TMTumblrSDK/TMOAuthAuthenticatorDelegate.h>
 
-#import "TangUser.h"
+#import "TangSession.h"
+#import <SafariServices/SafariServices.h>
 
 NSString *const kTangOAuthScheme = @"tangoauth";
 
@@ -24,6 +25,8 @@ NSString *const kTangOAuthScheme = @"tangoauth";
 @property (strong, nonatomic) TMOAuthAuthenticator *oauthAuthenticator;
 
 @property (strong, nonatomic) TMAPIClient *client;
+
+@property (strong, nonatomic) SFSafariViewController *oauthBrowser;
 
 @end
 
@@ -43,8 +46,8 @@ NSString *const kTangOAuthScheme = @"tangoauth";
 {
     self = [super init];
     if (self) {
-        self.appCredentials = [[TMAPIApplicationCredentials alloc] initWithConsumerKey:kTumblrConsumerKey
-                                                                        consumerSecret:kTumblrConsumerSecret];
+        self.appCredentials = [[TMAPIApplicationCredentials alloc] initWithConsumerKey:kTumblrConsumerKey0
+                                                                        consumerSecret:kTumblrConsumerSecret0];
     }
     return self;
 }
@@ -112,15 +115,24 @@ NSString *const kTangOAuthScheme = @"tangoauth";
             NSLog(@"Request user info failed : %@",error);
         }else{
             NSLog(@"Request user info successed ! : %@",response);
-            
-            TangUser *user = [TangUser yy_modelWithJSON:response];
-            
-            NSLog(@"");
-            //TODO
+            RunOnMainQueue(^{
+                [self dismissOAuthBrowser];
+                
+                TangUser *user = [TangUser yy_modelWithJSON:response];
+                [SESSION logined:user];
+            });
         }
     }];
     
     [task resume];
+}
+
+- (void)dismissOAuthBrowser
+{
+    if (self.oauthBrowser && self.oauthBrowser.presentingViewController) {
+        [self.oauthBrowser dismissViewControllerAnimated:YES completion:nil];
+    }
+    self.oauthBrowser = nil;
 }
 
 #pragma mark - Delegate
@@ -134,8 +146,86 @@ NSString *const kTangOAuthScheme = @"tangoauth";
 - (void)openURLInBrowser:(NSURL *)url
 {
     RunOnMainQueue(^{
-        [[UIApplication sharedApplication] openURL:url];
+        
+        [self dismissOAuthBrowser];
+        
+        self.oauthBrowser = [[SFSafariViewController alloc] initWithURL:url];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self.oauthBrowser animated:YES completion:nil];
+        
     });
+}
+
+#pragma mark - Dashboard
+
+- (TASK)loadDashboard:(NSUInteger)offset
+           completion:(void(^)(BOOL suc,NSArray *result))completion
+{
+    NSMutableDictionary *request = [NSMutableDictionary dictionary];
+    
+    request[@"limit"] = @20;
+    request[@"type"] = @"video";
+    request[@"offset"] = @(offset);
+//    request[@"reblog_info"] = @YES;
+//    request[@"notes_info"] = @YES;
+    
+    NSURLSessionTask *task =
+    [self.client dashboardRequest:request
+                         callback:^(NSDictionary *response, NSError *error) {
+                             if (error) {
+                                 NSLog(@"load dashboard failed: %@",error);
+                                 if (completion) {
+                                     completion(NO,nil);
+                                 }
+                             }else{
+                                 NSLog(@"load dashboard successed");
+                                 
+                                 NSArray *posts = response[@"posts"];
+                                 if (completion) {
+                                     completion(YES,posts);
+                                 }
+                             }
+                         }];
+    [task resume];
+    return task;
+}
+
+- (TASK)fetchAvatar:(NSString *)blogName
+         completion:(void (^)(BOOL suc,NSString *baseUrl))completion
+{
+    TASK task =
+    [self.client avatarWithBlogName:blogName
+                               size:16
+                           callback:^(NSData *data, NSURLResponse *response, NSError *error) {
+                               
+                               if (error) {
+                                   
+                                   RunOnMainQueue(^{
+                                       if (completion) {
+                                           completion(NO,nil);
+                                       }
+                                   });
+                                   
+                               }else{
+                                   
+                                   NSURLComponents *components = [NSURLComponents componentsWithURL:response.URL resolvingAgainstBaseURL:NO];
+                                   components.fragment = nil;
+                                   NSString *url = components.string;
+                                   NSString *ext = url.pathExtension;
+                                   
+                                   NSString *regex = [NSString stringWithFormat:@"_[0-9]+.%@",ext];
+                                   NSString *tmp = [NSString stringWithFormat:@"_%%d.%@",ext];
+       
+                                   url = [url stringByReplacingRegex:regex options:kNilOptions withString:tmp];
+                                   
+                                   RunOnMainQueue(^{
+                                       if (completion) {
+                                           completion(YES,url);
+                                       }
+                                   });
+                               }
+                           }];
+    [task resume];
+    return task;
 }
 
 @end

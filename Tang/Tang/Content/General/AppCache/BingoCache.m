@@ -29,7 +29,7 @@
     NSString *key = uid?:@"universal";
     BingoCache *cache = dict[key];
     if (!cache) {
-        cache = [[BingoCache alloc] initWithName:[NSString stringWithFormat:@"com.jsbingo.app.cacheContainer.%@",key]];
+        cache = [[BingoCache alloc] initWithName:[NSString stringWithFormat:@"%@.cacheContainer.%@",AppBundleID,key]];
         dict[key] = cache;
     }
     dispatch_semaphore_signal(semaphore);

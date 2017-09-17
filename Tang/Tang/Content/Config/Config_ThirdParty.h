@@ -64,8 +64,8 @@ YG_EXTERN NSString *const kPingppAppID;
 YG_EXTERN NSString *const kGaodeMapKey;
 
 // Tumblr
-YG_EXTERN NSString *const kTumblrConsumerKey;
-YG_EXTERN NSString *const kTumblrConsumerSecret;
+YG_EXTERN NSString *const kTumblrConsumerKey0;
+YG_EXTERN NSString *const kTumblrConsumerSecret0;
 
 
 #endif /* Config_ThirdParty_h */

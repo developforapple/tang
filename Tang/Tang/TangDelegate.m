@@ -61,9 +61,8 @@
     [[UITextField appearance] setTintColor:kBlueColor];
     [[UITextField appearance] setTextColor:kTextColor];
     
-    [SVProgressHUD setSuccessImage:[UIImage imageNamed:@"icon_hud_success"]];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:.7]];
     [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     [SVProgressHUD setMinimumDismissTimeInterval:1.4];
