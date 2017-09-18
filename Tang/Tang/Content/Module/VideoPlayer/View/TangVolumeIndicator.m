@@ -13,6 +13,7 @@
 @property (assign, readwrite, nonatomic) float volume;
 @property (weak, nonatomic) IBOutlet UIView *volumeTrackView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *volumeHeightConstraint;
+@property (copy, nonatomic) dispatch_block_t hiddenBlock;
 @end
 
 @implementation TangVolumeIndicator
@@ -54,11 +55,32 @@
 
 - (void)updateVolume:(float)volume
 {
-    self.volume = volume;
+    if (self.volume == volume) return;
     
+    self.volume = volume;
     [self layoutIfNeeded];
     self.volumeHeightConstraint.constant = CGRectGetHeight(self.volumeTrackView.bounds) * volume;
     [self layoutIfNeeded];
+    
+    if (self.hiddenBlock) {
+        dispatch_block_cancel(self.hiddenBlock);
+        self.hiddenBlock = nil;
+    }
+    
+    [self setHidden:NO animated:YES];
+    [self hideAfter:1.f volume:volume];
+}
+
+- (void)hideAfter:(NSTimeInterval)duration volume:(float)volume
+{
+    ygweakify(self);
+    
+    self.hiddenBlock =
+    dispatch_block_create(0, ^{
+        ygstrongify(self);
+        [self setHidden:YES animated:YES];
+    });
+    RunAfter(duration, self.hiddenBlock);
 }
 
 - (IBAction)volumeIncreaseAction:(id)sender

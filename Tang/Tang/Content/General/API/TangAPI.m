@@ -119,6 +119,8 @@ NSString *const kTangOAuthScheme = @"tangoauth";
                 [self dismissOAuthBrowser];
                 
                 TangUser *user = [TangUser yy_modelWithJSON:response];
+                user.token = userCredentials.token;
+                user.tokenSecret = userCredentials.tokenSecret;
                 [SESSION logined:user];
             });
         }

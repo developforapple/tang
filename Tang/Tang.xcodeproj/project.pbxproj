@@ -26,6 +26,11 @@
 		2DC9B6B71F6E7B690092DACB /* TangPlayerViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9B6B61F6E7B690092DACB /* TangPlayerViewCtrl.m */; };
 		2DCBCCDB1F6EB79E0060D732 /* TangPostVideoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCDA1F6EB79E0060D732 /* TangPostVideoParser.m */; };
 		2DCBCCE11F6EDC370060D732 /* TangVolumeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */; };
+		2DCBCCE41F7014B90060D732 /* TangVideoLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE31F7014B90060D732 /* TangVideoLoader.m */; };
+		2DCBCCE71F7015A00060D732 /* TangVideoDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE61F7015A00060D732 /* TangVideoDownloader.m */; };
+		2DCBCCEA1F7016600060D732 /* TangVideoRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE91F7016600060D732 /* TangVideoRequestTask.m */; };
+		2DCBCCED1F701B120060D732 /* TangVideoFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCEC1F701B120060D732 /* TangVideoFragment.m */; };
+		2DCBCCF01F701BBF0060D732 /* TangVideoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCEF1F701BBF0060D732 /* TangVideoData.m */; };
 		69228D891F6A840F00F0F8DC /* TangHomeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 69228D881F6A840F00F0F8DC /* TangHomeViewCtrl.m */; };
 		695BAB6B1F6A899700AED630 /* TangAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 695BAB6A1F6A899700AED630 /* TangAPI.m */; };
 		695BAB6E1F6A906300AED630 /* TangUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 695BAB6D1F6A906300AED630 /* TangUser.m */; };
@@ -162,6 +167,16 @@
 		2DCBCCDA1F6EB79E0060D732 /* TangPostVideoParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangPostVideoParser.m; sourceTree = "<group>"; };
 		2DCBCCDF1F6EDC370060D732 /* TangVolumeIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVolumeIndicator.h; sourceTree = "<group>"; };
 		2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVolumeIndicator.m; sourceTree = "<group>"; };
+		2DCBCCE21F7014B90060D732 /* TangVideoLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVideoLoader.h; sourceTree = "<group>"; };
+		2DCBCCE31F7014B90060D732 /* TangVideoLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVideoLoader.m; sourceTree = "<group>"; };
+		2DCBCCE51F7015A00060D732 /* TangVideoDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVideoDownloader.h; sourceTree = "<group>"; };
+		2DCBCCE61F7015A00060D732 /* TangVideoDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVideoDownloader.m; sourceTree = "<group>"; };
+		2DCBCCE81F7016600060D732 /* TangVideoRequestTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVideoRequestTask.h; sourceTree = "<group>"; };
+		2DCBCCE91F7016600060D732 /* TangVideoRequestTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVideoRequestTask.m; sourceTree = "<group>"; };
+		2DCBCCEB1F701B120060D732 /* TangVideoFragment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVideoFragment.h; sourceTree = "<group>"; };
+		2DCBCCEC1F701B120060D732 /* TangVideoFragment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVideoFragment.m; sourceTree = "<group>"; };
+		2DCBCCEE1F701BBF0060D732 /* TangVideoData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVideoData.h; sourceTree = "<group>"; };
+		2DCBCCEF1F701BBF0060D732 /* TangVideoData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVideoData.m; sourceTree = "<group>"; };
 		58AB2BCB4DB952CCA764BA49 /* Pods-Tang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tang/Pods-Tang.release.xcconfig"; sourceTree = "<group>"; };
 		69228D871F6A840F00F0F8DC /* TangHomeViewCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangHomeViewCtrl.h; sourceTree = "<group>"; };
 		69228D881F6A840F00F0F8DC /* TangHomeViewCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangHomeViewCtrl.m; sourceTree = "<group>"; };
@@ -472,6 +487,16 @@
 				2DC9B6B01F6E79C80092DACB /* TangVideoPlayer.m */,
 				2DCBCCD91F6EB79E0060D732 /* TangPostVideoParser.h */,
 				2DCBCCDA1F6EB79E0060D732 /* TangPostVideoParser.m */,
+				2DCBCCE21F7014B90060D732 /* TangVideoLoader.h */,
+				2DCBCCE31F7014B90060D732 /* TangVideoLoader.m */,
+				2DCBCCE51F7015A00060D732 /* TangVideoDownloader.h */,
+				2DCBCCE61F7015A00060D732 /* TangVideoDownloader.m */,
+				2DCBCCE81F7016600060D732 /* TangVideoRequestTask.h */,
+				2DCBCCE91F7016600060D732 /* TangVideoRequestTask.m */,
+				2DCBCCEB1F701B120060D732 /* TangVideoFragment.h */,
+				2DCBCCEC1F701B120060D732 /* TangVideoFragment.m */,
+				2DCBCCEE1F701BBF0060D732 /* TangVideoData.h */,
+				2DCBCCEF1F701BBF0060D732 /* TangVideoData.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1244,6 +1269,7 @@
 				2DC9B6B11F6E79C80092DACB /* TangVideoPlayer.m in Sources */,
 				69BFBE3C1F6A5992004338EF /* UIView+Animation.m in Sources */,
 				69BFBE4E1F6A5992004338EF /* YGAreaPickerView.m in Sources */,
+				2DCBCCE71F7015A00060D732 /* TangVideoDownloader.m in Sources */,
 				69BFBE3B1F6A5992004338EF /* UINavigationController+Convenience.m in Sources */,
 				69BFBE251F6A5992004338EF /* NSObject+KVCExceptionCatch.m in Sources */,
 				2D7443491F6CFAD600792701 /* TFHppleElement.m in Sources */,
@@ -1263,6 +1289,7 @@
 				69BFBE2F1F6A5992004338EF /* UIScrollView+yg_IBInspectable.m in Sources */,
 				695BAB6B1F6A899700AED630 /* TangAPI.m in Sources */,
 				69BFBE591F6A5992004338EF /* CDTAlertCtrl.m in Sources */,
+				2DCBCCEA1F7016600060D732 /* TangVideoRequestTask.m in Sources */,
 				69BFBE401F6A5992004338EF /* UIViewController+Storyboard.m in Sources */,
 				2D74433B1F6CEDB000792701 /* TangLoginNaviCtrl.m in Sources */,
 				69BFBE411F6A5992004338EF /* BingoJSInterface.m in Sources */,
@@ -1270,6 +1297,7 @@
 				69BFBE351F6A5992004338EF /* UIView+yg_IBInspectable.m in Sources */,
 				69BFBE2E1F6A5992004338EF /* UINavigationBar+yg_IBInspectable.m in Sources */,
 				69BFBE661F6A5992004338EF /* BingoTextView.m in Sources */,
+				2DCBCCE41F7014B90060D732 /* TangVideoLoader.m in Sources */,
 				2DC9B6B41F6E7A640092DACB /* TangPlayerView.m in Sources */,
 				2D7443311F6CEAC900792701 /* TangHomeCell.m in Sources */,
 				69BFBE571F6A5992004338EF /* CDTLogo.m in Sources */,
@@ -1280,6 +1308,7 @@
 				69BFBE4C1F6A5992004338EF /* YGThirdPlatformProcessor.m in Sources */,
 				69BFBE171F6A5992004338EF /* Config_Archive.m in Sources */,
 				2D7443481F6CFAD600792701 /* TFHpple.m in Sources */,
+				2DCBCCF01F701BBF0060D732 /* TangVideoData.m in Sources */,
 				69BFBE3E1F6A5992004338EF /* UIView+Hierarchy.m in Sources */,
 				69BFBE3F1F6A5992004338EF /* UIView+YGGeometry.m in Sources */,
 				69228D891F6A840F00F0F8DC /* TangHomeViewCtrl.m in Sources */,
@@ -1318,6 +1347,7 @@
 				695BAB711F6A90AC00AED630 /* TangBlog.m in Sources */,
 				69BFBE2B1F6A5992004338EF /* UIActivityIndicatorView+yg_IBInspectable.m in Sources */,
 				69BFBE561F6A5992004338EF /* YGLineView.m in Sources */,
+				2DCBCCED1F701B120060D732 /* TangVideoFragment.m in Sources */,
 				69BFBE261F6A5992004338EF /* NSObject+YGPerformBlock.m in Sources */,
 				2DC9B6A31F6D93490092DACB /* TangPlayerInfo.m in Sources */,
 				69BFBE2A1F6A5992004338EF /* CoreLocation+Convert.m in Sources */,

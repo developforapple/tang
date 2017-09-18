@@ -7,9 +7,14 @@
 //
 
 #import "TangVideoPlayer.h"
+#import "TangVideoLoader.h"
 
-@interface TangVideoPlayer ()
+@interface TangVideoPlayer () <TangVideoLoaderDelegate>
 @property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) dispatch_queue_t loaderQueue;
+
+@property (strong, nonatomic) TangVideoLoader *loader;
+
 @end
 
 @implementation TangVideoPlayer
@@ -20,6 +25,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         player = [TangVideoPlayer new];
+        player.loaderQueue = dispatch_queue_create("TangVideoPlayerResourceLoader", DISPATCH_QUEUE_CONCURRENT);
     });
     return player;
 }
@@ -31,8 +37,18 @@
         self.player = nil;
     }
     
-    self.player = [AVPlayer playerWithURL:[NSURL URLWithString:url]];
-    view.player = self.player;
+    self.loader = [[TangVideoLoader alloc] init];
+    self.loader.delegate = self;
+    
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:url] options:nil];
+    [asset.resourceLoader setDelegate:self.loader queue:self.loaderQueue];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset automaticallyLoadedAssetKeys:nil];
+    AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
+    if (iOS10) {
+        player.automaticallyWaitsToMinimizeStalling = NO;
+    }
+    
+    self.player = view.player = player;
     [self.player play];
 }
 

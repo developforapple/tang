@@ -19,4 +19,8 @@
 
 @property (strong, nonatomic) NSArray<TangBlog *> *blogs;
 
+
+@property (copy, nonatomic) NSString *token;
+@property (copy, nonatomic) NSString *tokenSecret;
+
 @end
