@@ -48,6 +48,7 @@ NSString *const kTangOAuthScheme = @"tangoauth";
     if (self) {
         self.appCredentials = [[TMAPIApplicationCredentials alloc] initWithConsumerKey:kTumblrConsumerKey0
                                                                         consumerSecret:kTumblrConsumerSecret0];
+        self.userCredentials = [[TMAPIUserCredentials alloc] initWithToken:ME.token tokenSecret:ME.tokenSecret];
     }
     return self;
 }

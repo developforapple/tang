@@ -10,6 +10,8 @@
 #import "YGTabBarCtrl.h"
 #import "SVProgressHUD.h"
 
+#import "TEST.h"
+
 @interface TangDelegate ()
 @end
 
@@ -26,6 +28,10 @@
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
 
+    
+    [[TEST test] download];
+    [[TEST test] download2];
+    
     return YES;
 }
 

@@ -10,7 +10,7 @@
 #import "TangUser.h"
 
 #define SESSION [TangSession session]
-#define ME [SESSION user];
+#define ME [SESSION user]
 #define LOGINED [SESSION valid]
 
 @interface TangSession : NSObject
