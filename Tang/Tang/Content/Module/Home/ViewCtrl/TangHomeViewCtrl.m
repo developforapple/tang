@@ -12,6 +12,7 @@
 #import "TangPost.h"
 #import "YGRefreshComponent.h"
 #import "TangPlayerViewCtrl.h"
+#import "TangPlayerTransition.h"
 #import <ReactiveObjC/ReactiveObjC.h>
 
 @interface TangHomeViewCtrl () <UITableViewDelegate,UITableViewDataSource,YGRefreshDelegate>
@@ -123,7 +124,11 @@
     
     TangPlayerViewCtrl *vc = [TangPlayerViewCtrl instanceFromStoryboard];
     vc.post = self.data[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    TangPlayerTransition *transition = [TangPlayerTransition transition];
+    TangPlayerTransitionContext *context = [TangPlayerTransitionContext new];
+    context.focusView = [tableView cellForRowAtIndexPath:indexPath];
+    [transition showPlayer:vc fromViewController:self context:context];
 }
 
 @end

@@ -9,8 +9,7 @@
 #import "TangDelegate.h"
 #import "YGTabBarCtrl.h"
 #import "SVProgressHUD.h"
-
-#import "TEST.h"
+#import <IJKMediaFramework/IJKMediaFramework.h>
 
 @interface TangDelegate ()
 @end
@@ -27,10 +26,6 @@
     YGTabBarCtrl *vc = [YGTabBarCtrl defaultTabBarCtrl];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
-
-    
-    [[TEST test] download];
-    [[TEST test] download2];
     
     return YES;
 }

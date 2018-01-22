@@ -59,11 +59,13 @@
     data.source = [sourceNode objectForKey:@"src"];
     data.type = [[sourceNode objectForKey:@"type"] lastPathComponent];
     
-    NSString *fileName = data.source.lastPathComponent;
-    if ([fileName hasPrefix:@"tumblr_"]) {
+    NSString *pattern = @"tumblr_[0-9a-zA-Z]*";
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
+    NSTextCheckingResult *result = [re firstMatchInString:data.source options:kNilOptions range:NSMakeRange(0, data.source.length)];
+    if (result) {
+        NSString *fileName = [data.source substringWithRange:result.range];
         data.video = [NSString stringWithFormat:@"https://vtt.tumblr.com/%@.%@",fileName,data.type];
     }
-    
     return data;
 }
 
@@ -90,27 +92,34 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[JSONInfo dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
         if (dict && [dict isKindOfClass:[NSDictionary class]]) {
             
-            NSString *source = [self safeStringValueForKeyPath:@"entry_data.EmbedPostlude.graphql.shortcode_media.video_url" onObject:dict];
-            NSString *type = source.pathExtension;
-            NSString *video = source;
-            NSTimeInterval duration = kTangFieldUnknown;
-            NSString *filmstrip = nil;
-            NSInteger filmstripWidth = kTangFieldUnknown;
-            NSInteger filmstripHeight = kTangFieldUnknown;
-            NSString *thumbnail = [self safeStringValueForKeyPath:@"entry_data.EmbedPostlude.graphql.shortcode_media.display_url" onObject:dict];
+            NSArray<NSArray<NSString *> *> *mediainfo = [self searchVideoURLAndDisplayURLs:dict];
             
-            TangVideoBaseData *data = [TangVideoBaseData new];
-            data.from = TangVideoSourceInstagram;
-            data.thumbnail = thumbnail;
-            data.filmstrip = filmstrip;
-            data.filmstripWidth = filmstripWidth;
-            data.filmstripHeight = filmstripHeight;
-            data.duration = duration;
-            data.source = source;
-            data.type = type;
-            data.video = video;
-            
-            return data;
+            NSArray *videoinfo = mediainfo.firstObject;
+            if (videoinfo.count) {
+                
+                NSString *source = videoinfo[0];
+                NSString *type = source.pathExtension;
+                NSString *video = source;
+                NSTimeInterval duration = kTangFieldUnknown;
+                NSString *filmstrip = nil;
+                NSInteger filmstripWidth = kTangFieldUnknown;
+                NSInteger filmstripHeight = kTangFieldUnknown;
+                NSString *thumbnail = videoinfo.count>1?videoinfo[1]:@"";
+                
+                TangVideoBaseData *data = [TangVideoBaseData new];
+                data.from = TangVideoSourceInstagram;
+                data.thumbnail = thumbnail;
+                data.filmstrip = filmstrip;
+                data.filmstripWidth = filmstripWidth;
+                data.filmstripHeight = filmstripHeight;
+                data.duration = duration;
+                data.source = source;
+                data.type = type;
+                data.video = video;
+                
+                return data;
+            }
+            return nil;
         }
     }
     
@@ -133,6 +142,51 @@
     }@catch(NSException *ex){
         return nil;
     }
+}
+
++ (NSArray<NSArray<NSString *> *> *)searchVideoURLAndDisplayURLs:(NSDictionary *)jsonObject
+{
+    if (![jsonObject isKindOfClass:[NSDictionary class]]) return nil;
+    
+    NSString *video_url = jsonObject[@"video_url"];
+    NSString *display_url = jsonObject[@"display_url"];
+    
+    if (video_url) {
+        return @[@[video_url,display_url?:@""]];
+    }
+    
+    NSMutableArray *all = [NSMutableArray array];
+    
+    for (NSString *key in jsonObject) {
+        
+        id obj = jsonObject[key];
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            
+            NSArray *a = [self searchVideoURLAndDisplayURLs:obj];
+            if (a.count > 0) {
+                [all addObjectsFromArray:a];
+            }
+            
+        }else if ([obj isKindOfClass:[NSArray class]]){
+            
+            for (id b in obj) {
+                if ([b isKindOfClass:[NSDictionary class]]) {
+                    NSArray *c = [self searchVideoURLAndDisplayURLs:b];
+                    if (c.count > 0) {
+                        
+                        [all addObjectsFromArray:c];
+
+                    }
+                }
+            }
+        }
+    }
+    
+    if (all.count > 0) {
+        return all;
+    }
+    
+    return nil;
 }
 
 @end

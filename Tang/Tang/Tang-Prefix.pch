@@ -9,13 +9,18 @@
 #ifndef Tang_Prefix_pch
 #define Tang_Prefix_pch
 
+#ifdef __OBJC__
+
 @import Foundation;
-@import ObjectiveC;
+#import <objc/runtime.h>
 
     #include "Common.h"
     #include "TangAPI.h"
     #import "YGBaseCategories.h"
     #import "TangDelegate.h"
-    #import "SVProgressHUD.h"
+
+@import SVProgressHUD;
+
+#endif
 
 #endif /* Tang_Prefix_pch */

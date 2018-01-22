@@ -75,7 +75,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
         UIView *lineView = [self lineView];
         
         /*!
-         *  @brief 这里不能直接修改颜色。因为在UINavigationBar内部，lineView的颜色会被系统再次修改。
+         *  这里不能直接修改颜色。因为在UINavigationBar内部，lineView的颜色会被系统再次修改。
          *         所以采用监听的方法，当lineView的颜色不一致时进行调整
          */
         static void *lineColorDisposableKey = &lineColorDisposableKey;
@@ -110,7 +110,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     if (self.barTintColor) {
         
         /*!
-         *  @brief 这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
+         *  这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
          *         所以采用监听的方法，当alpha值和设定的值不一致时进行调整。
          */
         
@@ -160,7 +160,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     objc_setAssociatedObject(self, backgroundAlphaKey, @(yg_background_alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     /*!
-     *  @brief 这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
+     *  这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
      *         所以采用监听的方法，当alpha值和设定的值不一致时进行调整。
      */
     

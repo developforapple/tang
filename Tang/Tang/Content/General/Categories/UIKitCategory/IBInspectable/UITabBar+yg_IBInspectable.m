@@ -58,7 +58,7 @@ static void *barShadowHiddenKey = &barShadowHiddenKey;
         UIView *lineView = [self lineView];
         
         /*!
-         *  @brief 这里不能直接修改颜色。因为在UITabBar内部，lineView的颜色会被系统再次修改。
+         *  这里不能直接修改颜色。因为在UITabBar内部，lineView的颜色会被系统再次修改。
          *         所以采用监听的方法，当lineView的颜色不一致时进行调整
          */
         

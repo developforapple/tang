@@ -14,12 +14,24 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.2)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (3.4.0):
+    - CocoaLumberjack/Default (= 3.4.0)
+    - CocoaLumberjack/Extensions (= 3.4.0)
+  - CocoaLumberjack/Default (3.4.0)
+  - CocoaLumberjack/Extensions (3.4.0):
+    - CocoaLumberjack/Default
   - DZNEmptyDataSet (1.8.1)
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
   - FLAnimatedImage (1.0.12)
   - IQKeyboardManager (4.0.13)
   - JZNavigationExtension (1.5.0.1)
+  - KTVHTTPCache (1.0.2):
+    - CocoaHTTPServer (~> 2.3)
   - libwebp (0.6.0):
     - libwebp/core (= 0.6.0)
     - libwebp/dec (= 0.6.0)
@@ -44,21 +56,21 @@ PODS:
   - libwebp/utils (0.6.0):
     - libwebp/core
   - libwebp/webp (0.6.0)
-  - MJRefresh (3.1.12)
-  - ReactiveObjC (3.0.0)
-  - SDWebImage (4.1.0):
-    - SDWebImage/Core (= 4.1.0)
-  - SDWebImage/Core (4.1.0)
-  - SDWebImage/GIF (4.1.0):
+  - MJRefresh (3.1.15.1)
+  - ReactiveObjC (3.1.0)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
+  - SDWebImage/GIF (4.1.2):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
-  - SDWebImage/WebP (4.1.0):
+  - SDWebImage/WebP (4.1.2):
     - libwebp
     - SDWebImage/Core
-  - SVProgressHUD (2.2.1)
+  - SVProgressHUD (2.2.2)
   - TMTumblrSDK (5.0)
   - UICKeyChainStore (2.1.1)
-  - WebViewJavascriptBridge (6.0.2)
+  - WebViewJavascriptBridge (6.0.3)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -70,7 +82,8 @@ DEPENDENCIES:
   - DZNEmptyDataSet (~> 1.8.1)
   - FCUUID (= 1.3.1)
   - IQKeyboardManager (~> 4.0.10)
-  - JZNavigationExtension
+  - JZNavigationExtension (= 1.5.0.1)
+  - KTVHTTPCache (from `https://github.com/ChangbaDevs/KTVHTTPCache.git`)
   - MJRefresh
   - ReactiveObjC (~> 3.0)
   - SDWebImage (~> 4.1.0)
@@ -83,25 +96,38 @@ DEPENDENCIES:
   - YYCategories
   - YYModel
 
+EXTERNAL SOURCES:
+  KTVHTTPCache:
+    :git: https://github.com/ChangbaDevs/KTVHTTPCache.git
+
+CHECKOUT OPTIONS:
+  KTVHTTPCache:
+    :commit: 9b5e0e303f1c96c55bcdb474715b847b0a594e4c
+    :git: https://github.com/ChangbaDevs/KTVHTTPCache.git
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaAsyncSocket: 3541e024f48c54b251638ef72d51dd42808de932
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: e033a5d8513357af2dd456eb66e202c325c30627
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   JZNavigationExtension: 7b95d2b1c48846b8bedcb40d767448f14cb9a0b7
+  KTVHTTPCache: 5b46cde001869e199fcd079014173083fbf0328c
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
-  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
-  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
+  MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   TMTumblrSDK: 75aca84910dd905a1ca63f5f5826fbeaf28a0c1e
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
-  WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
+  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 25544d9303e51ef18088fbfdb83f7c35908c71d8
+PODFILE CHECKSUM: fb3faba0da265c34f2f137937745876b8fbf7fa7
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

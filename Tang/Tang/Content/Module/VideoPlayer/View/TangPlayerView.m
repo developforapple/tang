@@ -21,10 +21,9 @@
     return (AVPlayerLayer *)[super layer];
 }
 
-- (void)setPlayer:(AVPlayer *)player
+- (AVPlayerLayer *)playerLayer
 {
-    AVPlayerLayer *layer = [self layer];
-    layer.player = player;
+    return (AVPlayerLayer *)self.layer;
 }
 
 @end

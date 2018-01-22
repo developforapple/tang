@@ -13,7 +13,7 @@
 + (instancetype)shared;
 
 /**
- *  @brief 待网页加载完成后向网页注入js代码获取内容
+ *  待网页加载完成后向网页注入js代码获取内容
  *
  *  @param URLString   URL
  *  @param JSCode      注入的js代码

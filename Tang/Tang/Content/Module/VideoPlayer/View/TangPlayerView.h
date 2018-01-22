@@ -11,6 +11,6 @@
 
 @interface TangPlayerView : UIView
 
-@property (weak, nonatomic) AVPlayer *player;
+- (AVPlayerLayer *)playerLayer;
 
 @end
