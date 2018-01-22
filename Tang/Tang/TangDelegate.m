@@ -9,6 +9,7 @@
 #import "TangDelegate.h"
 #import "YGTabBarCtrl.h"
 #import "SVProgressHUD.h"
+@import KTVHTTPCache;
 #import <IJKMediaFramework/IJKMediaFramework.h>
 
 @interface TangDelegate ()
@@ -76,7 +77,11 @@
     // OAuth
     API;
     
-    
+    NSError *error;
+    [KTVHTTPCache proxyStart:&error];
+    if (error) {
+        NSLog(@"Launch KTVHttpCache Proxy failed! %@",error);
+    }
 }
 
 @end

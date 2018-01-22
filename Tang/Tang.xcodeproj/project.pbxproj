@@ -26,12 +26,12 @@
 		2DCBCCDB1F6EB79E0060D732 /* TangPostVideoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCDA1F6EB79E0060D732 /* TangPostVideoParser.m */; };
 		2DCBCCE11F6EDC370060D732 /* TangVolumeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */; };
 		69228D891F6A840F00F0F8DC /* TangHomeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 69228D881F6A840F00F0F8DC /* TangHomeViewCtrl.m */; };
+		6932DEF12015E7A40016D91C /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6932DEF02015E7A40016D91C /* IJKMediaFramework.framework */; };
 		695777C11F7F7192005F46B9 /* TangPlayerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 695777C01F7F7192005F46B9 /* TangPlayerTransition.m */; };
 		695BAB6B1F6A899700AED630 /* TangAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 695BAB6A1F6A899700AED630 /* TangAPI.m */; };
 		695BAB6E1F6A906300AED630 /* TangUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 695BAB6D1F6A906300AED630 /* TangUser.m */; };
 		695BAB711F6A90AC00AED630 /* TangBlog.m in Sources */ = {isa = PBXBuildFile; fileRef = 695BAB701F6A90AC00AED630 /* TangBlog.m */; };
 		696F79B92015D76B003AD983 /* Pods_Tang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699D24A5A16F78E85DC2EBF7 /* Pods_Tang.framework */; };
-		697A56802015A82400CBC7E0 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697A567F2015A82400CBC7E0 /* IJKMediaFramework.framework */; };
 		69BFBD121F6A56D0004338EF /* TangDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFBD111F6A56D0004338EF /* TangDelegate.m */; };
 		69BFBD181F6A56D0004338EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBD161F6A56D0004338EF /* Main.storyboard */; };
 		69BFBD1D1F6A56D0004338EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BFBD1B1F6A56D0004338EF /* LaunchScreen.storyboard */; };
@@ -164,6 +164,7 @@
 		58AB2BCB4DB952CCA764BA49 /* Pods-Tang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tang/Pods-Tang.release.xcconfig"; sourceTree = "<group>"; };
 		69228D871F6A840F00F0F8DC /* TangHomeViewCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangHomeViewCtrl.h; sourceTree = "<group>"; };
 		69228D881F6A840F00F0F8DC /* TangHomeViewCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangHomeViewCtrl.m; sourceTree = "<group>"; };
+		6932DEF02015E7A40016D91C /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		695777BF1F7F7192005F46B9 /* TangPlayerTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangPlayerTransition.h; sourceTree = "<group>"; };
 		695777C01F7F7192005F46B9 /* TangPlayerTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangPlayerTransition.m; sourceTree = "<group>"; };
 		695BAB691F6A899700AED630 /* TangAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangAPI.h; sourceTree = "<group>"; };
@@ -172,7 +173,6 @@
 		695BAB6D1F6A906300AED630 /* TangUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangUser.m; sourceTree = "<group>"; };
 		695BAB6F1F6A90AC00AED630 /* TangBlog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangBlog.h; sourceTree = "<group>"; };
 		695BAB701F6A90AC00AED630 /* TangBlog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangBlog.m; sourceTree = "<group>"; };
-		697A567F2015A82400CBC7E0 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		699D24A5A16F78E85DC2EBF7 /* Pods_Tang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BFBD0D1F6A56D0004338EF /* Tang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BFBD101F6A56D0004338EF /* TangDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangDelegate.h; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 				696F79B92015D76B003AD983 /* Pods_Tang.framework in Frameworks */,
 				2D74434C1F6CFB1300792701 /* libxml2.tbd in Frameworks */,
 				69BFBE721F6A5992004338EF /* Bugly.framework in Frameworks */,
-				697A56802015A82400CBC7E0 /* IJKMediaFramework.framework in Frameworks */,
+				6932DEF12015E7A40016D91C /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +489,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6932DEEF2015E7A40016D91C /* ijkplayer */ = {
+			isa = PBXGroup;
+			children = (
+				6932DEF02015E7A40016D91C /* IJKMediaFramework.framework */,
+			);
+			path = ijkplayer;
+			sourceTree = "<group>";
+		};
 		695BAB681F6A897B00AED630 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,14 +504,6 @@
 				695BAB6A1F6A899700AED630 /* TangAPI.m */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		697A567E2015A82400CBC7E0 /* ijkplayer */ = {
-			isa = PBXGroup;
-			children = (
-				697A567F2015A82400CBC7E0 /* IJKMediaFramework.framework */,
-			);
-			path = ijkplayer;
 			sourceTree = "<group>";
 		};
 		69BFBD041F6A56CF004338EF = {
@@ -1020,7 +1020,7 @@
 		69BFBE131F6A5992004338EF /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
-				697A567E2015A82400CBC7E0 /* ijkplayer */,
+				6932DEEF2015E7A40016D91C /* ijkplayer */,
 				2D74433F1F6CFAD600792701 /* hpple */,
 				69BFBE141F6A5992004338EF /* Bugly_2.4.8 */,
 			);
