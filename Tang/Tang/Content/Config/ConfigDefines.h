@@ -10,7 +10,7 @@
 
 
 //0为测试环境 非0为生产环境
-#define ProductionEnvironment 0
+#define ProductionEnvironment 1
 
 
 //0为AppStore版 1为企业版
@@ -19,7 +19,13 @@
 
 
 //只有打包发布到AppStore时才是非debug模式。
-#define DEBUG_MODE (DEBUG || InHouseVersion)
+#define DEBUG_MODE ((defined(DEBUG) && DEBUG) || InHouseVersion)
+
+#if DEBUG_MODE
+    #define DEBUG_MODE_BOOL YES
+#else
+    #define DEBUG_MODE_BOOL NO
+#endif
 
 
 // 非debug模式下，服务器环境必须切换到生产环境！

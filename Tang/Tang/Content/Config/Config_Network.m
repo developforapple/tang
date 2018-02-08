@@ -9,10 +9,9 @@
 
 const BOOL kProductionEnvironment = ProductionEnvironment;
 
-#define __DOMAIN__ @"imlaidian.com"
-
 #if ProductionEnvironment
     //生产环境
+    #define __DOMAIN__                  @"imlaidian.com"
     #define __HOST__                    @"mobile-api.imlaidian.com"
     #define __ZMB_HOST__                @"zmb-api.imlaidian.com/"
     #define __API_URL__                 @"https://mobile-api.imlaidian.com"
@@ -24,14 +23,15 @@ const BOOL kProductionEnvironment = ProductionEnvironment;
     #define __APP_DESPOIT_GUIDE__       @""
     #define __APP_HELP_CENTER__         @"https://wx.imlaidian.com/share/helpCenter.html"
     #define __APP_WITHDRAW_HELP__       @"https://mp.weixin.qq.com/s?idx=1&sn=4de3a87205f52cce621d0009bf591e07&__biz=MzA4MTI0OTA5NA==&mid=401284710"
-    #define __APP_BUSINESS__            @"https://wx.imlaidian.com/cdt/cooperationApply?code=041msGZT0gBbqU1YXP0U04jxZT0msGZV&state=1"
+    #define __APP_BUSINESS__            @"https://utility.imlaidian.com/BusinessCorporation/"
     #define __APP_ZMB_HELP__            @"https://wx.imlaidian.com/zhuomianbao/help.html"
     #define __APP_COUPON_RULE__         @"https://wx.imlaidian.com/share/helpCenter.html"
 #else
     //测试环境
+    #define __DOMAIN__                  @"imlaidian.com"
     #define __HOST__                    @"mobile-api-test.imlaidian.com"
     #define __ZMB_HOST__                @"zmb-api-test.imlaidian.com"
-    #define __API_URL__                 @"https://mobile-api-test.imlaidian.com/cdt_test"
+    #define __API_URL__                 @"https://mobile-api-test.imlaidian.com"
     #define __ZMB_API_URL__             @"https://zmb-api-test.imlaidian.com"
     #define __APP_WECHAT_HOST__         @"wx.imlaidian.com"
 
@@ -40,7 +40,7 @@ const BOOL kProductionEnvironment = ProductionEnvironment;
     #define __APP_DESPOIT_GUIDE__       @""
     #define __APP_HELP_CENTER__         @"https://wx.imlaidian.com/share/helpCenter.html"
     #define __APP_WITHDRAW_HELP__       @"https://mp.weixin.qq.com/s?idx=1&sn=4de3a87205f52cce621d0009bf591e07&__biz=MzA4MTI0OTA5NA==&mid=401284710"
-    #define __APP_BUSINESS__            @"https://wx.imlaidian.com/cdt/cooperationApply?code=041msGZT0gBbqU1YXP0U04jxZT0msGZV&state=1"
+    #define __APP_BUSINESS__            @"https://utility.imlaidian.com/BusinessCorporation/"
     #define __APP_ZMB_HELP__            @"https://wx.imlaidian.com/zhuomianbao/help.html"
     #define __APP_COUPON_RULE__         @"https://wx.imlaidian.com/share/helpCenter.html"
 #endif

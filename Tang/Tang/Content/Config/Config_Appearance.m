@@ -42,5 +42,5 @@ UIColor *_kSubTextColor()   { return colorWithHexString(@"999999"); }
 UIColor *_kLightTextColor() { return colorWithHexString(@"C9C9C9"); }
 UIColor *_kLineColor()      { return colorWithHexString(@"F5F5F5"); }
 UIColor *_kDisableColor()   { return colorWithHexString(@"dadada"); }
-NSString *_kNaviTitleImageName(){ return kNaviTitleImageName_;};
+NSString *_kNaviTitleImageName(){ return kNaviTitleImageName_;}
 

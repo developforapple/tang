@@ -11,6 +11,6 @@
 NSString *const kAppChannel = @"InHouse";
 NSString *const kAppChannelID = @"0";
 #else
-NSString *const kAppChannel = @"AppStore";
+NSString *const kAppChannel = @"App Store";
 NSString *const kAppChannelID = @"1";
 #endif
