@@ -10,7 +10,7 @@
 #import "TangPost.h"
 #import <FLAnimatedImage/FLAnimatedImage.h>
 
-YG_EXTERN NSString *const kTangHomeCell;
+FOUNDATION_EXTERN NSString *const kTangHomeCell;
 
 @interface TangHomeCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet FLAnimatedImageView *tumblrImageView;

@@ -14,10 +14,9 @@
 @import Foundation;
 #import <objc/runtime.h>
 
-    #include "Common.h"
-    #include "TangAPI.h"
-    #import "YGBaseCategories.h"
+    #import "Utils-ObjC-Header.h"
     #import "TangDelegate.h"
+    #import "Tang-Swift.h"
     #import "StatisticUtil.h"
 
 @import SVProgressHUD;

@@ -8,6 +8,7 @@
 
 #import "TangPostVideoParser.h"
 #import "TFHpple.h"
+#import <YYModel/YYModel.h>
 
 @implementation TangPostVideoParser
 
@@ -194,5 +195,5 @@
 NSInteger const kTangFieldUnknown = -1;
 
 @implementation TangVideoBaseData
-YYModelDefaultCode
+-(void)encodeWithCoder:(NSCoder*)aCoder{[self yy_modelEncodeWithCoder:aCoder];}-(id)initWithCoder:(NSCoder*)aDecoder{self=[super init];return [self yy_modelInitWithCoder:aDecoder];}-(id)copyWithZone:(NSZone *)zone{return[self yy_modelCopy]?:nil;}-(NSUInteger)hash{return[self yy_modelHash];}-(BOOL)isEqual:(id)object{return [self yy_modelIsEqual:object];}
 @end

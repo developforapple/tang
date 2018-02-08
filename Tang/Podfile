@@ -3,6 +3,10 @@ platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
+def bugly
+    pod 'Bugly'
+end
+
 target 'Tang' do
     
 pod 'AFNetworking'
@@ -22,6 +26,8 @@ pod 'YYCategories'
 pod 'YYModel'
 pod 'TMTumblrSDK' #https://github.com/tumblr/TMTumblrSDK
 pod 'KTVHTTPCache', :git => 'https://github.com/ChangbaDevs/KTVHTTPCache.git'
+
+bugly
 
 end
 

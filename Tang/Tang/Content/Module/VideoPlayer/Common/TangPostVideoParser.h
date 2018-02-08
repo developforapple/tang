@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, TangVideoSource) {
     TangVideoSourceOther
 };
 
-YG_EXTERN NSInteger const kTangFieldUnknown;
+FOUNDATION_EXTERN NSInteger const kTangFieldUnknown;
 
 @interface TangVideoBaseData : NSObject <NSCopying,NSCoding>
 @property (assign, nonatomic) TangVideoSource from;     //视频来源

@@ -7,6 +7,7 @@
 //
 
 #import "YGRefreshComponent.h"
+#import "ObjC-Macro.h"
 
 @interface YGRefreshHeader ()
 @end

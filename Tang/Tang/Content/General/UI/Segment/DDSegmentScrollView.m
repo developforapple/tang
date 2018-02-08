@@ -7,6 +7,7 @@
 //
 
 #import "DDSegmentScrollView.h"
+#import "ObjC-Macro.h"
 
 @interface DDSegmentScrollView () <UIScrollViewDelegate>
 {
@@ -72,10 +73,10 @@ static UIColor *kDefaultHighlightColor;
 - (void)setup
 {
     if (!kDefaultNormalColor) {
-        kDefaultNormalColor = kTextColor;
+        kDefaultNormalColor = self.tintColor;
     }
     if (!kDefaultHighlightColor) {
-        kDefaultHighlightColor = kBlueColor;
+        kDefaultHighlightColor = self.tintColor;
     }
     
     self.normalColor = kDefaultNormalColor;
