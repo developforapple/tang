@@ -38,7 +38,7 @@ extension TangDashboardViewCtrl : UITableViewDelegate {
         let width = post.thumbnail_width ?? Device_Width
         let height = post.thumbnail_height ?? 100.0
         let cellHeight = height / width * Device_Width
-        return ceilCGF(cellHeight)
+        return ceil(cellHeight)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
