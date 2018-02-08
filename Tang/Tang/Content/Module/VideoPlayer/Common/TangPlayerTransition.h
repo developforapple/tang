@@ -29,10 +29,6 @@ typedef NS_ENUM(NSUInteger, TangTransitionType) {
 
 @end
 
-@interface TangPlayerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
-
-@end
-
 
 @interface TangPlayerTransition : NSObject
 + (instancetype)transition;

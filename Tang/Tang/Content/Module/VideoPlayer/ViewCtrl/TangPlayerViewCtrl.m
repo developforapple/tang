@@ -36,7 +36,7 @@
     
     [self initUI];
     
-//    [self play];
+    [self play];
 }
 
 - (void)initUI

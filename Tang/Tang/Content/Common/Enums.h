@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, CDTNearbyItemType) {
     CDTNearbyItemTypeZMB = 2,   //桌面宝
 };
 
-typedef NS_OPTIONS(NSInteger, CDBType) {
+typedef NS_OPTIONS(NSUInteger, CDBType) {
     CDBTypeNone = 0,           //未选择
     
     CDBTypeClassic = 1 << 0,   //旧充电宝

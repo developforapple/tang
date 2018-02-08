@@ -13,6 +13,7 @@
 
 #define YG_AVAILABLE(v,text)  NS_AVAILABLE_IOS(8_0)
 #define YG_DEPRECATED(version,text) __deprecated_msg( _YG_DEPRECATED(version,text) )
+#define YG_CLASS_DEPRECATED(version,text) NS_CLASS_DEPRECATED_IOS(8.0,8.0,text)
 #define YG_UNAVAILABLE(text) NS_UNAVAILABLE
 #define YG_ENUM_AVAILABLE(v) NS_ENUM_AVAILABLE_IOS(8_0)
 

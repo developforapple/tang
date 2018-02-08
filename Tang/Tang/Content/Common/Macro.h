@@ -40,6 +40,9 @@
     #define Device_Width            (CGRectGetWidth([UIScreen mainScreen].nativeBounds)/Device_Scale)    //设备屏幕宽
     #define Device_Height           (CGRectGetHeight([UIScreen mainScreen].nativeBounds)/Device_Scale)    //设备屏幕高
 
+    //状态栏高度，一般为20，在iPhoneX上是44，隐藏状态栏时为0
+    #define StatusBar_Height        (CGRectGetHeight([UIApplication sharedApplication].statusBarFrame))
+
     #define IS_Phone_UI             (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     #define IS_Pad_UI               (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
 
@@ -56,7 +59,7 @@
     #define APP_DEVICE_MACRO
 
     #define Device_SysVersionStr    ([UIDevice currentDevice].systemVersion)
-    #define Device_SysVersion       ([UIDevice currentDevice].systemVersion.floatValue)
+    #define Device_SysVersion       ([UIDevice currentDevice].systemVersion.doubleValue)
     #define Device_SysName          ([UIDevice currentDevice].systemName)
     #define Device_Model            ([UIDevice currentDevice].model)
 
@@ -83,33 +86,20 @@
     #define IS_iPad                 (NSNotFound != [Device_Model rangeOfString:@"iPad"].location)
     #define IS_iPod                 (NSNotFound != [Device_Model rangeOfString:@"iPod"].location)
 
-    #if iOS11_SDK_ENABLED
-        #define iOSLater(v)             @available(iOS v, *)
-        #define iOS7                    @available(iOS 7.0, *)
-        #define iOS8                    @available(iOS 8.0, *)
-        #define iOS9                    @available(iOS 9.0, *)
-        #define iOS10                   @available(iOS 10.0, *)
-        #define iOS11                   @available(iOS 11.0, *)
+    #define iOSLater(v)             @available(iOS v, *)
+    #define iOS7                    @available(iOS 7.0, *)
+    #define iOS8                    @available(iOS 8.0, *)
+    #define iOS9                    @available(iOS 9.0, *)
+    #define iOS10                   @available(iOS 10.0, *)
+    #define iOS11                   @available(iOS 11.0, *)
+    #define iOS12                   @available(iOS 12.0, *)
 
-        #define IS_iOS7                 (Device_SysVersion >= 7.f && (Device_SysVersion < 8.f))
-        #define IS_iOS8                 (Device_SysVersion >= 8.f && (Device_SysVersion < 9.f))
-        #define IS_iOS9                 (Device_SysVersion >= 9.f && (Device_SysVersion < 10.f))
-        #define IS_iOS10                (Device_SysVersion >= 10.f && (Device_SysVersion < 11.f))
-        #define IS_iOS11                (Device_SysVersion >= 11.f && (Device_SysVersion < 12.f))
-    #else
-        #define iOSLater(v)             (Device_SysVersion >= (float)(v))
-        #define iOS7                    (Device_SysVersion >= 7.f)
-        #define iOS8                    (Device_SysVersion >= 8.f)
-        #define iOS9                    (Device_SysVersion >= 9.f)
-        #define iOS10                   (Device_SysVersion >= 10.f)
-        #define iOS11                   (Device_SysVersion >= 11.f)
-
-        #define IS_iOS7                 (iOS7 && !iOS8)
-        #define IS_iOS8                 (iOS8 && !iOS9)
-        #define IS_iOS9                 (iOS9 && !iOS10)
-        #define IS_iOS10                (iOS10 && !iOS11)
-        #define IS_iOS11                (iOS11)
-    #endif
+    #define IS_iOS7                 (Device_SysVersion >= 7.0 && (Device_SysVersion < 8.0))
+    #define IS_iOS8                 (Device_SysVersion >= 8.0 && (Device_SysVersion < 9.0))
+    #define IS_iOS9                 (Device_SysVersion >= 9.0 && (Device_SysVersion < 10.0))
+    #define IS_iOS10                (Device_SysVersion >= 10.0 && (Device_SysVersion < 11.0))
+    #define IS_iOS11                (Device_SysVersion >= 11.0 && (Device_SysVersion < 12.0))
+    #define IS_iOS12                (Device_SysVersion >= 12.0 && (Device_SysVersion < 13.0))
 
 #endif  //APP_DEVICE_MACRO
 
@@ -144,24 +134,49 @@
     #define AppTmpPath          (NSTemporaryDirectory())
 #endif  //APP_SANDBOX_MACRO
 
-#pragma mark - Convenient
+#pragma mark - DEBUG
 
-#if !DEBUG_MODE
-    #define NSLog(...)
-#endif
+#if !defined(APP_DEBUG_MACRO)
+    #define APP_DEBUG_MACRO
+
+    #if BuglySDK_Enabled
+        #import <Bugly/BuglyLog.h>
+        #define NSLog(format, ...) BLYLogInfo( format, ##__VA_ARGS__)
+    #elif DEBUG_MODE
+
+    #else
+        #define NSLog(...)
+    #endif
+
+#endif //APP_DEBUG_MACRO
+
+#pragma mark - Convenient
 
 // 其他便利的宏
 #if !defined(APP_CONVENIENT_MACRO)
     #define APP_CONVENIENT_MACRO
 
+    // 连接两个 token
+    #define YG_CAT( A, B )              A B
+    // （内部宏）
+    #define _YG_C_STR( token )          #token
+    // 将 token 转为 C 字符串
+    #define YG_C_STR( token )           _YG_C_STR( token )
+    // 将 token 转为 Objective-C 字符串
+    #define YG_OBJC_STR( token )        @YG_C_STR( token )
+    // 将 token 转为 Objective-C 小写字符串
+    #define YG_OBJC_LOWER_STR( token )  [YG_OBJC_STR( token ) lowercaseString]
+    // 将 token 转为 Objective-C 大写字符串
+    #define YG_OBJC_UPPER_STR( token )  [YG_OBJC_STR( token ) uppercaseString]
+
     // 确保在max和min确定的范围内取值
     #define Confine(value,maxV,minV) (MAX((minV),MIN((maxV),(value))))
 
-    #define RGBColor(R,G,B,A) [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]
+    #define RGBColor(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
     #define RandomColor RGBColor(arc4random_uniform(256),arc4random_uniform(256),arc4random_uniform(256),1)
 
     #if yg_has_include(UIColor+YYAdd.h)
-        #define HEXColor(hex) [UIColor colorWithHexString:hex];
+        #define HEXColor(hex) [UIColor colorWithHexString:hex]
     #endif
 
     #define IndexPathMake(section,row) [NSIndexPath indexPathForRow:(row) inSection:(section)]
@@ -170,13 +185,21 @@
 
     #define TIMESTAMP ([[NSDate date] timeIntervalSince1970])
 
+    // 使用 VFL 添加约束的宏。减少代码长度。
+    #define VFL( _format , _metrics, _views) [NSLayoutConstraint constraintsWithVisualFormat: (_format) options:kNilOptions metrics: (_metrics) views: (_views) ]
+
+    #define CONSTRAINT( _superView, _vertical, _horizontal , _metrics, _subviews ) {                \
+        (_superView).translatesAutoresizingMaskIntoConstraints = NO;                \
+        [(_superView) addConstraints: VFL( (_format), (_metrics), (_subviews) )];   \
+    }
+
 #endif //APP_CONVENIENT_MACRO
 
 
 #if !defined(YYModelDefaultCode) && yg_has_include(YYModel.h)
     // YYModel 实现 NSCoding NSCopying hash euqal的方法
     #define YYModelDefaultCode \
-        -(void)encodeWithCoder:(NSCoder*)aCoder{[self yy_modelEncodeWithCoder:aCoder];}-(id)initWithCoder:(NSCoder*)aDecoder{self=[super init];return [self yy_modelInitWithCoder:aDecoder];}-(id)copyWithZone:(NSZone *)zone{return[self yy_modelCopy];}-(NSUInteger)hash{return[self yy_modelHash];}-(BOOL)isEqual:(id)object{return [self yy_modelIsEqual:object];}
+        -(void)encodeWithCoder:(NSCoder*)aCoder{[self yy_modelEncodeWithCoder:aCoder];}-(id)initWithCoder:(NSCoder*)aDecoder{self=[super init];return [self yy_modelInitWithCoder:aDecoder];}-(id)copyWithZone:(NSZone *)zone{return[self yy_modelCopy]?:nil;}-(NSUInteger)hash{return[self yy_modelHash];}-(BOOL)isEqual:(id)object{return [self yy_modelIsEqual:object];}
 #endif
 
 #if !defined(YGSwizzleMethod)

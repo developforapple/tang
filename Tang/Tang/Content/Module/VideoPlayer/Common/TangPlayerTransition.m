@@ -85,8 +85,8 @@ fromViewController:(UIViewController *)fromViewCtrl
 
 @implementation TangPlayerAnimationController
 
-static NSTimeInterval kTangPresentAnimationStep1 = 4.f;
-static NSTimeInterval kTangPresentAnimationStep2 = 4.f;
+static NSTimeInterval kTangPresentAnimationStep1 = 0.5f;
+static NSTimeInterval kTangPresentAnimationStep2 = 0.5f;
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
@@ -172,9 +172,5 @@ static NSTimeInterval kTangPresentAnimationStep2 = 4.f;
 {
     return UIViewAnimationCurveEaseInOut;//todo
 }
-
-@end
-
-@implementation TangPlayerTransitionCoordinator
 
 @end

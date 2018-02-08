@@ -10,6 +10,8 @@
 
 #define ALWAYS_INLINE YG_INLINE
 
+NS_ASSUME_NONNULL_BEGIN
+
 // 在主线程执行block
 ALWAYS_INLINE
 void
@@ -30,9 +32,9 @@ RunAfter(NSTimeInterval time,dispatch_block_t x){
 }
 
 ALWAYS_INLINE
-dispatch_source_t
+__nullable dispatch_source_t
 RunPeriodic(NSTimeInterval period,NSTimeInterval delay,dispatch_block_t x){
-    if (period <= 0.f || delay < 0.f || !x) return nil;
+    if (period <= 0 || delay < 0 || !x) return nil;
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
     dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), period * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(timer, x);
@@ -40,5 +42,6 @@ RunPeriodic(NSTimeInterval period,NSTimeInterval delay,dispatch_block_t x){
     return timer;
 }
 
+NS_ASSUME_NONNULL_END
 
 #endif /* Inline_h */

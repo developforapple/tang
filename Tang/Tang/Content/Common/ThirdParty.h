@@ -59,4 +59,7 @@
 // 高德
 #define GaodeSDK_Enabled    YG_SDK_ENABLED     (AMapFoundationKit/AMapFoundationKit.h)
 
+// 谷歌地图
+#define GoogleMap_Enabled   YG_SDK_ENABLED     (GoogleMaps/GoogleMaps.h)
+
 #endif /* ThirdParty_h */
