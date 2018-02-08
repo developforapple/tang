@@ -66,7 +66,7 @@
     return self.itemView.badgeStyle;
 }
 
-- (void)btnAction:(__unused UIButton *)btnß
+- (void)btnAction:( UIButton *)btnß
 {
     if (self.hideBadgeAuto) {
         self.badge = 0;

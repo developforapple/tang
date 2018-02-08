@@ -18,6 +18,7 @@
     #include "TangAPI.h"
     #import "YGBaseCategories.h"
     #import "TangDelegate.h"
+    #import "StatisticUtil.h"
 
 @import SVProgressHUD;
 

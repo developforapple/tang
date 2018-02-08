@@ -8,7 +8,7 @@
 
 #import "YGThirdPlatformProcessor.h"
 #import "YGPayThirdPlatformProcessor.h"
-//#import "CDTUserSession.h"
+
 
 #if PingppSDK_Enabled
     #import "Pingpp.h"

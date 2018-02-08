@@ -8,9 +8,9 @@
 
 #import "GaodeMapUtility.h"
 
-#if GaodeSDK_Enabled
-
 @implementation GaodeMapUtility
+
+#if GaodeSDK_Enabled
 
 + (MACoordinateRegion)mapRegionForPolineStrings:(NSArray *)polineStrings
 {
@@ -23,7 +23,7 @@
         CLLocationCoordinate2D *coordinates = [self coordinatesForString:aPolineString
                                                          coordinateCount:&count
                                                               parseToken:@";"];
-        for (NSInteger i=0; i<count; i++) {
+        for (NSUInteger i=0; i<count; i++) {
             CLLocationCoordinate2D coor = coordinates[i];
             minLatitude = MIN(coor.latitude, minLatitude);
             maxLatitude = MAX(coor.latitude, maxLatitude);
@@ -64,7 +64,7 @@
     }
     CLLocationCoordinate2D *coordinates = (CLLocationCoordinate2D*)malloc(count * sizeof(CLLocationCoordinate2D));
     
-    for (int i = 0; i < count; i++) {
+    for (NSUInteger i = 0; i < count; i++) {
         coordinates[i].longitude = [[components objectAtIndex:2 * i]     doubleValue];
         coordinates[i].latitude  = [[components objectAtIndex:2 * i + 1] doubleValue];
     }
@@ -72,26 +72,30 @@
     return coordinates;
 }
 
-+ (MAPolyline *)polylineFromPoint:(MAMapPoint)from toCoordinate:(CLLocationCoordinate2D)to
++ (MAPolyline *)polylineFromPoint:(MAMapPoint)from
+                     toCoordinate:(CLLocationCoordinate2D)to
 {
     CLLocationCoordinate2D fromCoordinate = MACoordinateForMapPoint(from);
     return [self polylineFromCoordinate:fromCoordinate toCoordinate:to];
 }
 
-+ (MAPolyline *)polylineFromCoordinate:(CLLocationCoordinate2D)from toPoint:(MAMapPoint)to
++ (MAPolyline *)polylineFromCoordinate:(CLLocationCoordinate2D)from
+                               toPoint:(MAMapPoint)to
 {
     CLLocationCoordinate2D toCoordinate = MACoordinateForMapPoint(to);
     return [self polylineFromCoordinate:from toCoordinate:toCoordinate];
 }
 
-+ (MAPolyline *)polylineFromPoint:(MAMapPoint)from toPoint:(MAMapPoint)to
++ (MAPolyline *)polylineFromPoint:(MAMapPoint)from
+                          toPoint:(MAMapPoint)to
 {
     CLLocationCoordinate2D fromCoordinate = MACoordinateForMapPoint(from);
     CLLocationCoordinate2D toCoordinate = MACoordinateForMapPoint(to);
     return [self polylineFromCoordinate:fromCoordinate toCoordinate:toCoordinate];
 }
 
-+ (MAPolyline *)polylineFromCoordinate:(CLLocationCoordinate2D)from toCoordinate:(CLLocationCoordinate2D)to
++ (MAPolyline *)polylineFromCoordinate:(CLLocationCoordinate2D)from
+                          toCoordinate:(CLLocationCoordinate2D)to
 {
     CLLocationCoordinate2D *coordinates = (CLLocationCoordinate2D*)malloc(2*sizeof(CLLocationCoordinate2D));
     coordinates[0] = from;
@@ -100,6 +104,30 @@
     free(coordinates);
     coordinates = NULL;
     return line;
+}
+
++ (NSArray<MAPolyline *> *)polylinesFromCoordinate:(CLLocationCoordinate2D)from
+                                      toCoordinate:(CLLocationCoordinate2D)to
+                                              path:(AMapPath *)path
+{
+    NSMutableArray<MAPolyline *> *lines = [NSMutableArray array];
+    for (AMapStep *aStep in path.steps) {
+        MAPolyline *aLine = [GaodeMapUtility polylineForCoordinateString:aStep.polyline];
+        if (aLine && aLine.pointCount) {
+            [lines addObject:aLine];
+        }
+    }
+    
+    // 路径的首尾设置为起点和终点
+    MAMapPoint firstPoint = lines.firstObject.points[0];
+    MAMapPoint lastPoint = lines.lastObject.points[lines.lastObject.pointCount-1];
+    
+    MAPolyline *startLine = [GaodeMapUtility polylineFromCoordinate:from toPoint:firstPoint];
+    MAPolyline *endLine = [GaodeMapUtility polylineFromPoint:lastPoint toCoordinate:to];
+    
+    [lines insertObject:startLine atIndex:0];
+    [lines addObject:endLine];
+    return lines;
 }
 
 + (MAPolyline *)polylineForCoordinateString:(NSString *)coordinateString
@@ -133,7 +161,8 @@
     return [self polylineForCoordinateString:busLine.polyline];
 }
 
-+ (MAMapRect)unionMapRect1:(MAMapRect)mapRect1 mapRect2:(MAMapRect)mapRect2
++ (MAMapRect)unionMapRect1:(MAMapRect)mapRect1
+                  mapRect2:(MAMapRect)mapRect2
 {
     CGRect rect1 = CGRectMake(mapRect1.origin.x, mapRect1.origin.y, mapRect1.size.width, mapRect1.size.height);
     CGRect rect2 = CGRectMake(mapRect2.origin.x, mapRect2.origin.y, mapRect2.size.width, mapRect2.size.height);
@@ -143,17 +172,17 @@
     return MAMapRectMake(unionRect.origin.x, unionRect.origin.y, unionRect.size.width, unionRect.size.height);
 }
 
-+ (MAMapRect)mapRectUnion:(MAMapRect *)mapRects count:(NSUInteger)count
++ (MAMapRect)mapRectUnion:(MAMapRect *)mapRects
+                    count:(NSUInteger)count
 {
     if (mapRects == NULL || count == 0)
     {
-        NSLog(@"%s: 无效的参数.", __func__);
         return MAMapRectZero;
     }
     
     MAMapRect unionMapRect = mapRects[0];
     
-    for (int i = 1; i < count; i++)
+    for (NSUInteger i = 1; i < count; i++)
     {
         unionMapRect = [self unionMapRect1:unionMapRect mapRect2:mapRects[i]];
     }
@@ -165,7 +194,6 @@
 {
     if (overlays.count == 0)
     {
-        NSLog(@"%s: 无效的参数.", __func__);
         return MAMapRectZero;
     }
     
@@ -185,11 +213,11 @@
     return mapRect;
 }
 
-+ (MAMapRect)minMapRectForMapPoints:(MAMapPoint *)mapPoints count:(NSUInteger)count
++ (MAMapRect)minMapRectForMapPoints:(MAMapPoint *)mapPoints
+                              count:(NSUInteger)count
 {
     if (mapPoints == NULL || count <= 1)
     {
-        NSLog(@"%s: 无效的参数.", __func__);
         return MAMapRectZero;
     }
     
@@ -197,7 +225,7 @@
     CGFloat maxX = minX, maxY = minY;
     
     /* Traverse and find the min, max. */
-    for (int i = 1; i < count; i++)
+    for (NSUInteger i = 1; i < count; i++)
     {
         MAMapPoint point = mapPoints[i];
         
@@ -230,7 +258,6 @@
 {
     if (annotations.count <= 1)
     {
-        NSLog(@"%s: 无效的参数.", __func__);
         return MAMapRectZero;
     }
     
@@ -274,7 +301,9 @@
     return scheme;
 }
 
-+ (double)distanceToPoint:(MAMapPoint)p fromLineSegmentBetween:(MAMapPoint)l1 and:(MAMapPoint)l2
++ (double)distanceToPoint:(MAMapPoint)p
+   fromLineSegmentBetween:(MAMapPoint)l1
+                      and:(MAMapPoint)l2
 {
     double A = p.x - l1.x;
     double B = p.y - l1.y;
@@ -302,6 +331,7 @@
     
     return MAMetersBetweenMapPoints(p, MAMapPointMake(xx, yy));
 }
-@end
 
 #endif
+
+@end

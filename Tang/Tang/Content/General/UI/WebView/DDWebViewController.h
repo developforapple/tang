@@ -35,9 +35,9 @@ typedef NS_ENUM(NSInteger, DDWebViewActionType) {
 - (DDWebViewActionPolcy)webViewController:(DDWebViewController *)vc decidePolictForActionURL:(NSURL *)url actionType:(DDWebViewActionType)actionType;
 
 /*!
- *  收到了js传过来的消息
+ *   收到了js传过来的消息
  *
- *  @param vc
+ *  @param vc vc
  *  @param name   消息名
  *  @param object 消息体。在iOS8以上消息体为发消息的参数。在iOS7中消息体为发消息的参数的数组。
  */
@@ -95,7 +95,7 @@ typedef void(^DDEvaluateJSCompletion)(id obj,NSError *err);
 
 #pragma mark - js
 /*!
- *  运行一段js代码
+ *   运行一段js代码
  *
  *  @param js         js代码
  *  @param completion 回调
@@ -103,13 +103,13 @@ typedef void(^DDEvaluateJSCompletion)(id obj,NSError *err);
 - (void)runJSCode:(NSString *)js completion:(DDEvaluateJSCompletion)completion;
 
 /*!
- *  注册一个js消息名。代理将会收到js中的该函数调用。成对调用 否则会出现内存泄露
+ *   注册一个js消息名。代理将会收到js中的该函数调用。成对调用 否则会出现内存泄露
  *
  *  @param name 函数名
  */
 - (void)addJSMessageName:(NSString *)name;
 /*!
- *  移除所有注册消息
+ *   移除所有注册消息
  */
 - (void)removeAllJSMessage;
 

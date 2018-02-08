@@ -2,7 +2,7 @@
 //  YGIPAddressHelper.h
 //  CDT
 //
-//  Created by Jay on 2017/9/7.
+//  Created by WangBo (developforapple@163.com) on 2017/9/7.
 //  Copyright © 2017年 来电科技. All rights reserved.
 //
 
@@ -41,6 +41,7 @@
 @property (copy, nonatomic) NSString *isp;
 @property (copy, nonatomic) NSString *isp_id;
 @property (copy, nonatomic) NSString *ip;
+- (NSString *)addressString;
 @end
 
 @interface YGIPAddressHelper : NSObject

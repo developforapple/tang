@@ -27,7 +27,7 @@
      }];
 }
 
-- (BOOL)canPerformAction:(SEL)action withSender:(__unused id)sender
+- (BOOL)canPerformAction:(SEL)action withSender:( id)sender
 {
     if (!self.longPressEnabled) {
         return self.longPressEnabled;
@@ -38,7 +38,13 @@
 - (void)updatePlaceholder
 {
     if (self.placeholderColor) {
-        NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:self.placeholder attributes:@{NSForegroundColorAttributeName:self.placeholderColor,NSFontAttributeName:self.font}];
+        NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:self.placeholder?:@""];
+        if (self.placeholderColor) {
+            [placeholder addAttribute:NSForegroundColorAttributeName value:self.placeholderColor range:NSMakeRange(0, placeholder.length)];
+        }
+        if (self.font) {
+            [placeholder addAttribute:NSFontAttributeName value:self.font?:[UIFont systemFontOfSize:14] range:NSMakeRange(0, placeholder.length)];
+        }
         self.attributedPlaceholder = placeholder;
     }else{
         self.attributedPlaceholder = nil;
@@ -95,7 +101,8 @@
                           takeUntil:self.rac_willDeallocSignal];
     
     if (self.delegate != self.rac_delegateProxy) {
-        self.rac_delegateProxy.rac_proxiedDelegate = self.delegate;
+        id <UITextFieldDelegate> delegate = self.delegate;
+        self.rac_delegateProxy.rac_proxiedDelegate = delegate;
         self.delegate = (id)self.rac_delegateProxy;
     }
     

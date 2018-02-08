@@ -106,11 +106,9 @@
         if (error.code == PingppErrCancelled ||
             error.code == PingppErrUnknownCancel) {
             instance.status = YGPayStatusCanceled;
-        }else if (error.code == PingppErrChannelReturnFail ||
-                  error.code == PingppErrUnknownError ||
-                  error.code == PingppErrConnectionError ||
-                  error.code == PingppErrRequestTimeOut){
+        }else{
             instance.status = YGPayStatusFailed;
+            instance.errMsg = error.getMsg;
         }
     }
     return instance;
@@ -122,11 +120,11 @@
 #if AlipaySDK_Enabled
 NSString * AliPayResultMessage(AlipayStatus status){
     switch (status) {
-        case AlipayStatusSuccess:   return @"订单支付成功";   break;
-        case AlipayStatusPaying:    return @"正在处理中";    break;
-        case AlipayStatusFailed:    return @"订单支付失败";   break;
-        case AlipayStatusCanceled:  return @"用户中途取消";   break;
-        case AlipayStatusNetworkErr: return @"网络连接出错";  break;
+        case AlipayStatusSuccess:   return @"订单支付成功";
+        case AlipayStatusPaying:    return @"正在处理中";
+        case AlipayStatusFailed:    return @"订单支付失败";
+        case AlipayStatusCanceled:  return @"用户中途取消";
+        case AlipayStatusNetworkErr: return @"网络连接出错";
     }
     return nil;
 }

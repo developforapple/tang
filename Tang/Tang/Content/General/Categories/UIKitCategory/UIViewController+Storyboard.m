@@ -38,7 +38,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSMutableDictionary *tmp = [NSMutableDictionary dictionary];
-        NSArray *list = [NSBundle pathsForResourcesOfType:@"storyboardc" inDirectory:[NSBundle mainBundle].resourcePath];
+        NSString *resourcePath = [NSBundle mainBundle].resourcePath;
+        NSArray *list = [NSBundle pathsForResourcesOfType:@"storyboardc" inDirectory:resourcePath];
         for (NSString *path in list) {
             NSString *name = [[path lastPathComponent] stringByDeletingPathExtension];
             NSString *realName = [[name componentsSeparatedByString:@"~"] firstObject];
@@ -58,7 +59,7 @@ FOUNDATION_EXTERN NSString *const kAppBundleID;
     static _YGCache *cache;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *bundleid = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
+        NSString *bundleid = [[NSBundle mainBundle] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleIdentifierKey];
         NSString *cacheName = [bundleid stringByAppendingString:@".UIViewController+Storyboard"];
         cache = [[_YGCache alloc] initWithName:cacheName];
     });
@@ -100,6 +101,7 @@ FOUNDATION_EXTERN NSString *const kAppBundleID;
         return nil;
     }
     @catch (NSException *exception) {
+        NSLog(@"%@",exception);
         return nil;
     }
 }

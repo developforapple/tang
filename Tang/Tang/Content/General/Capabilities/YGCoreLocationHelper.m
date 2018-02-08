@@ -86,7 +86,7 @@ static NSString *const kDefaultCoordinateBaiduKey = @"kDefaultCoordinateBaiduKey
         helper.coordinateBaidu = [helper defaultCoordinate:_YGCoordinateTypeBaidu];
 
         helper.valid = CLLocationCoordinate2DIsValid(helper.coordinateWGS);
-        helper.minimumInterval = 6 * 60 * 60.f;
+        helper.minimumInterval = 6 * 60 * 60;
         helper.lastUpdateTime = [[NSDate distantPast] timeIntervalSince1970];
     });
     return helper;
@@ -123,9 +123,9 @@ static NSString *const kDefaultCoordinateBaiduKey = @"kDefaultCoordinateBaiduKey
 - (NSString *)keyForType:(_YGCoordinateType)type
 {
     switch (type) {
-        case _YGCoordinateTypeGCJ:return kDefaultCoordinateGCJKey;break;
-        case _YGCoordinateTypeWGS:return kDefaultCoordinateWGSKey;break;
-        case _YGCoordinateTypeBaidu:return kDefaultCoordinateBaiduKey;break;
+        case _YGCoordinateTypeGCJ:return kDefaultCoordinateGCJKey;
+        case _YGCoordinateTypeWGS:return kDefaultCoordinateWGSKey;
+        case _YGCoordinateTypeBaidu:return kDefaultCoordinateBaiduKey;
     }
     return nil;
 }

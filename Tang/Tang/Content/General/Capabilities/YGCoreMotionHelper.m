@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         self.orientation = UIDeviceOrientationUnknown;
-        self->_sensitivity = 1.f;
+        self->_sensitivity = 1;
     }
     return self;
 }
@@ -54,7 +54,7 @@
             NSLog(@"x:%.2f y:%.2f",x,y);
         }
         
-        if (fabs(x) < .2f && fabs(y) < .2f) {
+        if (fabs(x) < .2 && fabs(y) < .2) {
             return;
         }
         

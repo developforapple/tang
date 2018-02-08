@@ -28,7 +28,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:bgClass]) {
             for (UIView *bgSubView in view.subviews) {
-                if (CGRectGetHeight(bgSubView.bounds) <= 1.1f) {
+                if (CGRectGetHeight(bgSubView.bounds) <= 1.1) {
                     return bgSubView;
                 }
             }
@@ -43,6 +43,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
         UIView *view = [self valueForKey:@"_backgroundView"];
         return view;
     } @catch (NSException *exception) {
+        NSLog(@"%@",exception);
         return nil;
     }
 }
@@ -75,7 +76,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
         UIView *lineView = [self lineView];
         
         /*!
-         *  这里不能直接修改颜色。因为在UINavigationBar内部，lineView的颜色会被系统再次修改。
+         *   这里不能直接修改颜色。因为在UINavigationBar内部，lineView的颜色会被系统再次修改。
          *         所以采用监听的方法，当lineView的颜色不一致时进行调整
          */
         static void *lineColorDisposableKey = &lineColorDisposableKey;
@@ -110,7 +111,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     if (self.barTintColor) {
         
         /*!
-         *  这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
+         *   这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
          *         所以采用监听的方法，当alpha值和设定的值不一致时进行调整。
          */
         
@@ -118,7 +119,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
         bingoWeakify(self);
         [RACObserve(view, alpha)
          subscribeNext:^(NSNumber *x) {
-             if (x.floatValue != barTintColorAlpha_) {
+             if ((CGFloat)x.floatValue != barTintColorAlpha_) {
                  bingoStrongify(self);
                  [[self barTintColorEffectView] setAlpha:barTintColorAlpha_];
              }
@@ -130,9 +131,9 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
 {
     NSNumber *alpha = objc_getAssociatedObject(self, barTintColorAlphaKey);
     if (!alpha) {
-        return 0.85f;   //系统默认透明度。
+        return 0.85;   //系统默认透明度。
     }
-    return alpha.floatValue;
+    return (CGFloat)alpha.floatValue;
 }
 
 - (BOOL)barShadowHidden_
@@ -149,9 +150,9 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     if (self.barShadowHidden_ != barShadowHidden_) {
         objc_setAssociatedObject(self, barShadowHiddenKey, @(barShadowHidden_), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         self.layer.shadowColor = kBlueColor.CGColor;
-        self.layer.shadowOffset = CGSizeMake(2.f, 2.f);
-        self.layer.shadowOpacity = barShadowHidden_?0.f:.2f;
-        self.layer.shadowRadius = 4.f;
+        self.layer.shadowOffset = CGSizeMake(2, 2);
+        self.layer.shadowOpacity = barShadowHidden_?0.:0.2;
+        self.layer.shadowRadius = 4.;
     }
 }
 
@@ -160,7 +161,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     objc_setAssociatedObject(self, backgroundAlphaKey, @(yg_background_alpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     /*!
-     *  这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
+     *   这里不能直接修改alpha。因为在UINavigationBar内部，alpha值和backgroundColor会被系统再次修改。
      *         所以采用监听的方法，当alpha值和设定的值不一致时进行调整。
      */
     
@@ -182,7 +183,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
     if (!alpha) {
         return [self backgroundView_].alpha;
     }
-    return alpha.floatValue;
+    return alpha.doubleValue;
 }
 
 @end

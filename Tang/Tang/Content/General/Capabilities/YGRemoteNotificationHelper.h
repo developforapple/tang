@@ -31,17 +31,17 @@ typedef NS_ENUM(NSUInteger, YGNotificaitonForegroundStyle) {
 @protocol YGRemoteNotificationHelperDelegate <NSObject>
 @required
 // 收到deviceToken时的回调
-- (void)notificationHelper:(YGRemoteNotificationHelper *)helper didReceivedDeviceToken:(NSString *)str;
+- (void)notificationHelper:(YGRemoteNotificationHelper *)helper didReceivedDeviceToken:(nullable NSString *)str;
 // 收到远程通知时的回调
-- (void)notificationHelper:(YGRemoteNotificationHelper *)helper didReceivedRemoteNotification:(NSDictionary *)userInfo;
+- (void)notificationHelper:(YGRemoteNotificationHelper *)helper didReceivedRemoteNotification:(nullable NSDictionary *)userInfo;
 @optional
 // 收到本地通知时的回调
 - (void)notificationHelper:(YGRemoteNotificationHelper *)helper didReceivedLocalNotification:(UILocalNotification *)notification;
 
 // 当应用处在前台时，收到远程通知回调之前先确定是否提示用户。如果选择提示用户，并且用户响应了提示内容。才算真正收到了远程通知
-- (YGNotificaitonForegroundStyle)notificationHelper:(YGRemoteNotificationHelper *)helper styleInForeground:(NSDictionary *)userInfo;
+- (YGNotificaitonForegroundStyle)notificationHelper:(YGRemoteNotificationHelper *)helper styleInForeground:(nullable NSDictionary *)userInfo;
 // 当应用处在前台时，收到远程通知前提示用户。用户对提示的响应。
-- (void)notificationHelper:(YGRemoteNotificationHelper *)helper willAlertUseCustomStyle:(NSDictionary *)userInfo;
+- (void)notificationHelper:(YGRemoteNotificationHelper *)helper willAlertUseCustomStyle:(nullable NSDictionary *)userInfo;
 
 @end
 

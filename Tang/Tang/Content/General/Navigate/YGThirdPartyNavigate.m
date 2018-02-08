@@ -10,18 +10,25 @@
 
 #import "YGThirdPartyNavigate.h"
 
+#if GaodeSDK_Enabled
+    #import <AMapFoundationKit/AMapURLSearch.h>
+#endif
+
 @implementation YGThirdPartyNavigate
 
 + (void)navigateTo:(CLLocationCoordinate2D)coordinate name:(NSString *)name view:(UIView *)view
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"开始导航" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"高德地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        YG_EVENT_B(ID_ITEM_NAVI, LABEL_ITEM_NAVI_GAODE_MAP);
         [self navigateTo:coordinate name:name use:YGNavigateKindGaode];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"百度地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        YG_EVENT_B(ID_ITEM_NAVI, LABEL_ITEM_NAVI_BAIDU_MAP);
         [self navigateTo:coordinate name:name use:YGNavigateKindBaidu];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"苹果地图" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        YG_EVENT_B(ID_ITEM_NAVI, LABEL_ITEM_NAVI_APPLE_MAP);
         [self navigateTo:coordinate name:name use:YGNavigateKindApple];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
@@ -52,18 +59,20 @@
 
 + (BOOL)canOpenMap:(YGNavigateKind)kind
 {
+    NSURL *URL;
     switch (kind) {
         case YGNavigateKindGaode:{
-            return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"iosamap://xxxxx"]];
+            URL = [NSURL URLWithString:@"iosamap://xxxxx"];
         }   break;
         case YGNavigateKindBaidu:{
-            return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"baidumap://xxxxx"]];
+            URL = [NSURL URLWithString:@"baidumap://xxxxx"];
         }   break;
         case YGNavigateKindApple:{
-            return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"map://"]];
+            URL = [NSURL URLWithString:@"map://"];
         }   break;
     }
-    return NO;
+    
+    return URL ? [[UIApplication sharedApplication] canOpenURL:URL] : NO ;
 }
 
 + (void)navigateUseGaode:(CLLocationCoordinate2D)coordinate name:(NSString *)name
@@ -71,7 +80,13 @@
     if (![self canOpenMap:YGNavigateKindGaode]) {
         [UIAlertController confirm:@"设备未安装高德地图" message:@"" cancel:nil redDone:@"App Store" callback:^(BOOL done) {
             if (done) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/id461703208"]];
+                
+#if GaodeSDK_Enabled
+                [AMapURLSearch getLatestAMapApp];
+#else
+                NSURL *URL = [NSURL URLWithString:@"https://itunes.apple.com/app/id461703208"];
+                [[UIApplication sharedApplication] openURL:URL];
+#endif
             }
         }];
         return;
@@ -89,7 +104,7 @@
     [items addObject:[NSURLQueryItem queryItemWithName:@"dlat" value:[@(coordinate.latitude) stringValue]]];
     [items addObject:[NSURLQueryItem queryItemWithName:@"dlon" value:[@(coordinate.longitude) stringValue]]];
     [items addObject:[NSURLQueryItem queryItemWithName:@"dev" value:@"0"]];
-    [items addObject:[NSURLQueryItem queryItemWithName:@"t" value:@"1"]];   //0驾车1公交2步行3骑行
+    [items addObject:[NSURLQueryItem queryItemWithName:@"t" value:@"3"]];   //0驾车1公交2步行3骑行
     
     components.queryItems = items;
     
@@ -102,7 +117,8 @@
     if (![self canOpenMap:YGNavigateKindBaidu]) {
         [UIAlertController confirm:@"设备未安装百度地图" message:@"" cancel:nil redDone:@"App Store" callback:^(BOOL done) {
             if (done) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/id452186370"]];
+                NSURL *URL = [NSURL URLWithString:@"https://itunes.apple.com/app/id452186370"];
+                [[UIApplication sharedApplication] openURL:URL];
             }
         }];
         return;

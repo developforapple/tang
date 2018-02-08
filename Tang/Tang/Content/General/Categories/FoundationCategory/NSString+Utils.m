@@ -62,7 +62,7 @@
     
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] init];
     
-    for (NSInteger index = 0; index < stringBlocks.count; index++) {
+    for (NSUInteger index = 0; index < stringBlocks.count; index++) {
         NSString *string2 = stringBlocks[index];
         
         if (index%2 != 0) {

@@ -74,19 +74,19 @@ static NSString *const kYGPayPingppPlatformInfoKey = @"PingppPlatformInfoKey";
     return _viewCtrl;
 }
 
-- (void)_alipayCallback:(__unused NSNotification *)noti
+- (void)_alipayCallback:( NSNotification *)noti
 {
     NSDictionary *result = noti.object;
     [self handlePayResult:result platform:YGPayThirdPlatformAlipay];
 }
 
-- (void)_wechatCallback:(__unused NSNotification *)noti
+- (void)_wechatCallback:( NSNotification *)noti
 {
     PayResp *resp = noti.object;
     [self handlePayResult:resp platform:YGPayThirdPlatformWechat];
 }
 
-- (void)_uppayCallback:(__unused NSNotification *)noti
+- (void)_uppayCallback:( NSNotification *)noti
 {
 #if UPPaySDK_Enabled
     NSString *code = noti.object;
@@ -94,7 +94,7 @@ static NSString *const kYGPayPingppPlatformInfoKey = @"PingppPlatformInfoKey";
 #endif
 }
 
-- (void)_applePayCallback:(__unused NSNotification *)noti
+- (void)_applePayCallback:( NSNotification *)noti
 {
 #if UPPaySDK_Enabled
     UPPayResult *result = noti.object;
@@ -102,7 +102,7 @@ static NSString *const kYGPayPingppPlatformInfoKey = @"PingppPlatformInfoKey";
 #endif
 }
 
-- (void)_pingppCallback:(__unused NSNotification *)noti
+- (void)_pingppCallback:( NSNotification *)noti
 {
 #if PingppSDK_Enabled
     YGPaymentResult *theResult = noti.object;

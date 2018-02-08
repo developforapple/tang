@@ -24,7 +24,7 @@
         self.bubbleRadius = 4;
         self.bubbleColor = [UIColor whiteColor];
         self.bubbleStrokeColor = nil;
-        self.bubbleStrokeLineWidth = 0.f;
+        self.bubbleStrokeLineWidth = 0;
     }
     return self;
 }

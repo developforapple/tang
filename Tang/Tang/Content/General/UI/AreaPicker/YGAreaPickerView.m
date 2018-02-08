@@ -22,7 +22,6 @@ _YGIndex IndexMake(NSUInteger c0,NSUInteger c1,NSUInteger c2){
 #pragma mark - Picker
 @interface YGAreaPickerView () <UIPickerViewDelegate,UIPickerViewDataSource>
 @property (strong, nonatomic) UIPickerView *pickerView;
-@property (strong, nonatomic) YGAreaManager *areaManager;
 @property (strong, readwrite, nonatomic) YGArea *area;
 @end
 
@@ -45,7 +44,7 @@ _YGIndex IndexMake(NSUInteger c0,NSUInteger c1,NSUInteger c2){
 
 + (instancetype)pickerView
 {
-    return [[self alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 216.f)];
+    return [[self alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 216)];
 }
 
 - (void)layoutSubviews
@@ -177,14 +176,14 @@ _YGIndex IndexMake(NSUInteger c0,NSUInteger c1,NSUInteger c2){
     return 0;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UILabel *)view
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(__kindof UIView *)view
 {
     UILabel *label;
     if (view && [view isKindOfClass:[UILabel class]]) {
-        label = view;
+        label = (UILabel *)view;
     }else{
-        CGSize rowSize = CGSizeMake(Screen_Width/[pickerView numberOfComponents], 32.f);
-        label = [[UILabel alloc] initWithFrame:CGRectMake(2, 0, rowSize.width-4.f, rowSize.height)];
+        CGSize rowSize = CGSizeMake(Screen_Width/[pickerView numberOfComponents], 32);
+        label = [[UILabel alloc] initWithFrame:CGRectMake(2, 0, rowSize.width-4, rowSize.height)];
         label.numberOfLines = 2;
         label.font = [UIFont systemFontOfSize:14];
         label.textColor = [UIColor blackColor];

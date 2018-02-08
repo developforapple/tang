@@ -45,9 +45,9 @@ typedef NS_ENUM(NSUInteger, BingoBadgeStyle) {
         text:NSString类型标题，
         Internal:NSNumber of BingoBarItemInternalType，
         Image: NSString图片链接，UIImage图片内容。
- @param target
- @param action
- @return
+ @param target target
+ @param action action
+ @return instance
  */
 - (instancetype)initWithType:(BingoBarItemType)type
                      content:(id)content

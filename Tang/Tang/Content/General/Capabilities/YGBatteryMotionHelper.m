@@ -8,12 +8,13 @@
 
 #import "YGBatteryMotionHelper.h"
 
+NSNotificationName kYGBatteryMotionHelperNotification = @"YGBatteryMotionHelperNotification";
+
 @interface YGBatteryMotionHelper ()
-@property (assign, readwrite, nonatomic) BOOL monitoring;
 @property (assign, readwrite, nonatomic) float level;
 @property (assign, readwrite, nonatomic) UIDeviceBatteryState state;
 @property (assign, readwrite, nonatomic) BOOL lowPowerMode;
-@property (copy, nonatomic) YGBatteryInfoChangedHandler handler;
+@property (assign, readwrite, nonatomic) NSUInteger counting;
 @end
 
 @implementation YGBatteryMotionHelper
@@ -26,6 +27,7 @@
         helper = [YGBatteryMotionHelper new];
         helper.state = UIDeviceBatteryStateUnknown;
         helper.level = -1;
+        helper.counting = 0;
     });
     return helper;
 }
@@ -44,45 +46,63 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)markBegining
+{
+    @synchronized (self){
+        _counting++;
+        if (_counting == 1) {
+            [self startMonitor];
+        }
+        [self updateInfo];
+    }
+}
+
+- (void)markEnded
+{
+    @synchronized (self) {
+        if (_counting > 0) {
+            _counting--;
+            if (_counting == 0) {
+                [self endMonitor];
+            }
+        }
+        [self updateInfo];
+    }
+}
+
 - (void)startMonitor
 {
-    if (!self.monitoring) {
-        self.monitoring = YES;
-        [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-        [self registerNotifications];
-    }
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    [self registerNotifications];
 }
 
 - (void)endMonitor
 {
-    if (self.monitoring) {
-        self.monitoring = NO;
-        [UIDevice currentDevice].batteryMonitoringEnabled = NO;
-        [self removeNotifications];
-    }
+    [UIDevice currentDevice].batteryMonitoringEnabled = NO;
+    [self removeNotifications];
 }
 
-- (void)batteryLevelDidChanged:(__unused NSNotification *)noti
+- (BOOL)monitoring
+{
+    return self.counting > 0;
+}
+
+- (void)batteryLevelDidChanged:( NSNotification *)noti
 {
     if (!self.monitoring) return;
     [self updateInfo];
 }
 
-- (void)batteryStateDidChanged:(__unused NSNotification *)noti
+- (void)batteryStateDidChanged:( NSNotification *)noti
 {
     if (!self.monitoring) return;
     [self updateInfo];
 }
 
-- (void)lowPowerModeDidChanged:(__unused NSNotification *)noti
+- (void)lowPowerModeDidChanged:( NSNotification *)noti
 {
     if (!self.monitoring) return;
     [self updateInfo];
-}
-
-- (void)setObserveHandler:(YGBatteryInfoChangedHandler)handler
-{
-    self.handler = handler;
 }
 
 - (void)updateInfo
@@ -92,14 +112,8 @@
     if (iOS9) {
         self.lowPowerMode = [[NSProcessInfo processInfo] isLowPowerModeEnabled];
     }
-    [self callHandler];
-}
-
-- (void)callHandler
-{
-    if (self.handler) {
-        self.handler(self.level, self.state, self.lowPowerMode);
-    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kYGBatteryMotionHelperNotification object:self];
 }
 
 @end

@@ -13,7 +13,7 @@
 
 + (void)call:(NSString *)phoneNumber
 {
-    return [self call:phoneNumber needConfirm:NO];
+    [self call:phoneNumber needConfirm:NO];
 }
 
 + (void)call:(NSString *)phoneNumber needConfirm:(BOOL)needConfirm
@@ -31,7 +31,7 @@
         if (!needConfirm) {
             [[UIApplication sharedApplication] openURL:URL];
         }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"呼叫 %@",phoneNumber] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"呼叫", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"拨打 %@",phoneNumber] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"拨打", nil];
             NSInteger cancelIndex = [alert cancelButtonIndex];
             [[alert rac_buttonClickedSignal]
              subscribeNext:^(NSNumber *x) {

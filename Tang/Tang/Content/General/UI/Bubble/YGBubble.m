@@ -9,7 +9,7 @@
 #import "YGBubble.h"
 
 
-YGArrowOffset YGArrowOffsetMid = CGFLOAT_MAX;
+YGArrowOffset YGArrowOffsetMid = HUGE_VAL;
 
 @implementation YGBubble
 

@@ -25,7 +25,6 @@ NSString *const kInterfaceHUDDismiss = @"BingoHUDDismiss";
 
 NSString *const kInterfaceCacheSetter = @"BingoCacheSet";
 NSString *const kInterfaceCacheGetter = @"BingoCacheGet";
-NSString *const kInterfacePay = @"BingoPay";
 
 NSString *const kInterfaceUserInfo = @"BingoUserInfo";
 
@@ -89,7 +88,7 @@ static void *kNavigationBarItemDataKey = &kNavigationBarItemDataKey;
             self.viewController.jz_wantsNavigationBarVisible = !hiddenN.boolValue;
         }
         if (alphaN) {
-            self.viewController.jz_navigationBarBackgroundAlpha = alphaN.floatValue;
+            self.viewController.jz_navigationBarBackgroundAlpha = alphaN.doubleValue;
         }
         if (barTintColorN) {
             self.viewController.jz_navigationBarTintColor = [UIColor colorWithHexString:barTintColorN];
@@ -164,7 +163,9 @@ static void *kNavigationBarItemDataKey = &kNavigationBarItemDataKey;
         NSInteger type = typeN?typeN.intValue:0;
         switch (type) {
             case 0:{
+                NWB_Wnonnull
                 [SVProgressHUD showImage:nil status:text];
+                NWEND
             }   break;
             case 1:{
                 [SVProgressHUD showWithStatus:text];
@@ -189,7 +190,7 @@ static void *kNavigationBarItemDataKey = &kNavigationBarItemDataKey;
     [self.bridge registerHandler:kInterfaceHUDDismiss handler:^(id data, WVJBResponseCallback responseCallback) {
         if (data && ![data isKindOfClass:[NSDictionary class]]) return;
         NSNumber *delayN = data[@"delay"];
-        NSTimeInterval delay = delayN?delayN.doubleValue:0.f;
+        NSTimeInterval delay = delayN?delayN.doubleValue:0;
         [SVProgressHUD dismissWithDelay:delay];
     }];
 }

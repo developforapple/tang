@@ -2,7 +2,7 @@
 //  YGIPAddressHelper.m
 //  CDT
 //
-//  Created by Jay on 2017/9/7.
+//  Created by WangBo (developforapple@163.com) on 2017/9/7.
 //  Copyright © 2017年 来电科技. All rights reserved.
 //
 
@@ -10,6 +10,22 @@
 
 @implementation YGIPAddress
 YYModelDefaultCode
+
+- (NSString *)addressString
+{
+    if (self.city.length > 0) {
+        return self.city;
+    }
+    NSMutableString *string = [NSMutableString string];
+    if (self.country.length > 0) {
+        [string appendString:self.area];
+    }
+    if (self.region.length > 0) {
+        [string appendString:self.region];
+    }
+    return string;
+}
+
 @end
 
 static NSString *kIPAddressSaveKey = @"cdt_ip_address_key";
@@ -25,10 +41,13 @@ static NSString *kIPAddressSaveKey = @"cdt_ip_address_key";
 {
     RunOnGlobalQueue(^{
         YGIPAddress *ipaddress;
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ip.taobao.com/service/getIpInfo.php?ip=myip"]];
+        NSURL *URL = [NSURL URLWithString:@"http://ip.taobao.com/service/getIpInfo.php?ip=myip"];
+        NSData *data = [NSData dataWithContentsOfURL:URL];
         NSDictionary *dic = data ? [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil] : nil;
+        NSLog(@"ip地址信息：%@",dic);
         if ([dic isKindOfClass:NSDictionary.class]) {
-            ipaddress = [YGIPAddress yy_modelWithJSON:dic[@"data"]];
+            id respData = dic[@"data"];
+            ipaddress = [YGIPAddress yy_modelWithJSON:respData];
         }
         if (ipaddress) {
             [self save:ipaddress];

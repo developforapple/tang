@@ -53,7 +53,8 @@
     
     NSLog(@"预备获取网页资源内容，原始链接：%@",URLString);
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+    NSURL *URL = [NSURL URLWithString:URLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     if (request) {
         if (self.wkWebView) {
             [self.wkWebView stopLoading];
@@ -69,7 +70,7 @@
 
 - (void)initWebView
 {
-    if (Device_SysVersion >= 8.f) {
+    if (iOS8) {
         self.wkWebView = [[WKWebView alloc] initWithFrame:self.container.bounds];
         self.wkWebView.navigationDelegate = self;
         [self.container addSubview:self.wkWebView];

@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, YGPayStatus) {
 @property (copy, nonatomic) NSString *sessionId;
 @property (assign, nonatomic) NSInteger tranId;
 @property (assign, nonatomic) YGPayStatus status; //0成功 1失败 2取消
+@property (copy, nonatomic) NSString *errMsg;
 
 
 + (instancetype)wechatResult:(BaseResp *)resp;

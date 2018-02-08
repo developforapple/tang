@@ -18,11 +18,11 @@
 @property (assign, nonatomic) IBInspectable BOOL barShadowHidden_;
 
 /*!
- *  让barTintColor支持透明度
- *  默认情况下设置barTintColor的alpha值是无效的，系统会忽略这个alpha值，会使用0.85f作为barTintColor附着的view的alpha。当barTintColor设置为亮色的时候，磨砂效果不明显。
- *  使用 barTintColorAlpha_ 属性可以修改barTintColor附着的view的alpha值。使磨砂效果可以更加清晰的显示。
- *  这个属性需要配合 translucent 和 barTintColor 使用。
- *  这个属性可以使用 UIAppearance 进行全局设置
+ *   让barTintColor支持透明度
+ *   默认情况下设置barTintColor的alpha值是无效的，系统会忽略这个alpha值，会使用0.85f作为barTintColor附着的view的alpha。当barTintColor设置为亮色的时候，磨砂效果不明显。
+ *   使用 barTintColorAlpha_ 属性可以修改barTintColor附着的view的alpha值。使磨砂效果可以更加清晰的显示。
+ *   这个属性需要配合 translucent 和 barTintColor 使用。
+ *   这个属性可以使用 UIAppearance 进行全局设置
  */
 @property (assign, nonatomic) CGFloat barTintColorAlpha_ UI_APPEARANCE_SELECTOR;
 

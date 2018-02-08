@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, YGLineDirection) {
 #define kYGLineDirectionVerticalRight @"right"
 
 /*!
- *  显示单线的view。xib中UIView设置为此类即可显示横线。默认为白色.5f宽度的横向线。
+ *   显示单线的view。xib中UIView设置为此类即可显示横线。默认为白色.5f宽度的横向线。
  */
 
 @interface YGLineView : UIView

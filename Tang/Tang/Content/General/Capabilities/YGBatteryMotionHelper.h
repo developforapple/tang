@@ -8,22 +8,20 @@
 
 @import Foundation;
 
-typedef void(^YGBatteryInfoChangedHandler)(float level, UIDeviceBatteryState state, BOOL lowPowerMode);
+FOUNDATION_EXTERN NSNotificationName kYGBatteryMotionHelperNotification;
 
 @interface YGBatteryMotionHelper : NSObject
 
 + (instancetype)helper;
 
-@property (assign, readonly, nonatomic) BOOL monitoring;
 @property (assign, readonly, nonatomic) float level;
 @property (assign, readonly, nonatomic) UIDeviceBatteryState state;
-
 // 9.0开始支持低电量模式
 @property (assign, readonly, nonatomic) BOOL lowPowerMode;
+@property (assign, readonly, nonatomic) NSUInteger counting;
+- (BOOL)monitoring;
 
-- (void)startMonitor;
-- (void)endMonitor;
-
-- (void)setObserveHandler:(YGBatteryInfoChangedHandler)handler;
+- (void)markBegining;
+- (void)markEnded;
 
 @end

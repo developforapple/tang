@@ -9,6 +9,8 @@
 #import "TQLocationConverter.h"
 #include <math.h>
 
+NO_WARNING_BEGIN(-Wdouble-promotion)
+
 static const double a = 6378245.0;
 static const double ee = 0.00669342162296594323;
 static const double pi = 3.14159265358979324;
@@ -177,3 +179,5 @@ double get_distance(double lat1, double lng1, double lat2, double lng2)
 }
 
 @end
+
+NO_WARNING_END

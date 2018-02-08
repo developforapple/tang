@@ -10,6 +10,8 @@
 
 #import "DDWebViewController.h"
 
+NO_WARNING_BEGIN(-Wcstring-format-directive)
+
 static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 
 @interface DDWebViewController () <WKScriptMessageHandler>
@@ -52,7 +54,8 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 - (instancetype)initWithJSPath:(NSString *)jsPath
 {
     if ([WKWebView class]) {
-        WKUserScript *script = [[WKUserScript alloc] initWithSource:[NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+        NSString *jsContent = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];
+        WKUserScript *script = [[WKUserScript alloc] initWithSource:jsContent injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
         WKWebViewConfiguration *configure = [[WKWebViewConfiguration alloc] init];
         [configure.userContentController addUserScript:script];
         return [self initWithConfigure:configure];
@@ -142,7 +145,7 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 {
     if (!_progressView) {
         _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        [_progressView setTrackTintColor:[UIColor colorWithWhite:1 alpha:0.f]];
+        [_progressView setTrackTintColor:[UIColor colorWithWhite:1 alpha:0]];
         [_progressView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
     }
     return _progressView;
@@ -313,8 +316,8 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
     [self.jsMessageNames addObject:name];
     
     if (self.wkWebView) {
-        __weak typeof(self) weakSelf = self;
-        [self.wkWebView.configuration.userContentController addScriptMessageHandler:weakSelf name:name];
+        __weak __typeof__(self) weak_self = self;
+        [self.wkWebView.configuration.userContentController addScriptMessageHandler:weak_self name:name];
     }else{
         ygweakify(self);
         JSContext *ctx = [self.uiWebView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
@@ -534,7 +537,8 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler
 {
     NSLog(@"%s",__FUNCTION__);
-    NSURLCredential *cre = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+    SecTrustRef st = challenge.protectionSpace.serverTrust;
+    NSURLCredential *cre = [NSURLCredential credentialForTrust:st];
     completionHandler(NSURLSessionAuthChallengeUseCredential,cre);
 }
 
@@ -652,11 +656,11 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 
 - (void)fakeProgressViewStartLoading
 {
-    [self.progressView setProgress:0.0f animated:NO];
-    [self.progressView setAlpha:1.0f];
+    [self.progressView setProgress:0.0 animated:NO];
+    [self.progressView setAlpha:1.0];
     
     if(!self.fakeProgressTimer) {
-        self.fakeProgressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f/60.0f target:self selector:@selector(fakeProgressTimerDidFire:) userInfo:nil repeats:YES];
+        self.fakeProgressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(fakeProgressTimerDidFire:) userInfo:nil repeats:YES];
     }
 }
 
@@ -666,20 +670,20 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
     }
     
     if(self.progressView) {
-        [self.progressView setProgress:1.0f animated:YES];
-        [UIView animateWithDuration:0.3f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [self.progressView setAlpha:0.0f];
+        [self.progressView setProgress:1 animated:YES];
+        [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self.progressView setAlpha:0];
         } completion:^(BOOL finished) {
-            [self.progressView setProgress:0.0f animated:NO];
+            [self.progressView setProgress:0 animated:NO];
         }];
     }
 }
 
-- (void)fakeProgressTimerDidFire:(__unused id)sender {
-    CGFloat increment = 0.005/(self.progressView.progress + 0.2);
+- (void)fakeProgressTimerDidFire:( id)sender {
+    float increment = 0.005f/(self.progressView.progress + 0.2f);
     if([_uiWebView isLoading]) {
-        CGFloat progress = (self.progressView.progress < 0.75f) ? self.progressView.progress + increment : self.progressView.progress + 0.0005;
-        if(self.progressView.progress < 0.95) {
+        float progress = (self.progressView.progress < 0.75f) ? (self.progressView.progress + increment) : (self.progressView.progress + 0.0005f);
+        if(self.progressView.progress < 0.95f) {
             [self.progressView setProgress:progress animated:YES];
         }
     }
@@ -693,14 +697,14 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 {
     if ([keyPath isEqualToString:kWKWebViewProgressKeyPath] && object == _wkWebView) {
         
-        CGFloat progress = _wkWebView.estimatedProgress;
+        float progress = _wkWebView.estimatedProgress;
         
         self.progressView.hidden = self.progressViewHidden;
         BOOL animated = progress > self.progressView.progress;
         [self.progressView setProgress:progress animated:animated];
         
         if (progress >= 1.f) {
-            [UIView animateWithDuration:.3f delay:.3f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:.3 delay:.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 self.progressView.hidden = YES;
             } completion:^(BOOL finished) {
                 self.progressView.progress = 0;
@@ -710,3 +714,5 @@ static NSString *kWKWebViewProgressKeyPath = @"estimatedProgress";
 }
 
 @end
+
+NO_WARNING_END

@@ -114,7 +114,7 @@ NO_WARNING_END
     
         const char *dataBytes = [data bytes];
         NSMutableString *string = [NSMutableString string];
-        for (int i=0; i<data.length; i++) {
+        for (NSUInteger i=0; i<data.length; i++) {
             [string appendFormat:@"%02.2hhx",dataBytes[i]];
         }
         self.deviceTokenStr = string;
@@ -264,10 +264,11 @@ NO_WARNING_END
     }
 }
 
-- (void)alertView:(_YGAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.tag == YGNotificationAlertViewTag) {
-        [[YGRemoteNotificationHelper shared] responseRemoteNotification:alertView.userInfo isCanceled:buttonIndex == [alertView cancelButtonIndex]];
+        _YGAlertView *view = (_YGAlertView *)alertView;
+        [[YGRemoteNotificationHelper shared] responseRemoteNotification:view.userInfo isCanceled:buttonIndex == [alertView cancelButtonIndex]];
     }
 }
 

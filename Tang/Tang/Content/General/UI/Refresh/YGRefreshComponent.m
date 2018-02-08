@@ -30,7 +30,7 @@
     [super prepare];
     
     self.refreshingTitleHidden = YES;
-    self.triggerAutomaticallyRefreshPercent = -4.f;
+    self.triggerAutomaticallyRefreshPercent = -4;
     
     self.stateLabel.hidden = YES;
     [self setTitle:self.noMoreDataNotice?:@"数据已加载完毕" forState:MJRefreshStateNoMoreData];

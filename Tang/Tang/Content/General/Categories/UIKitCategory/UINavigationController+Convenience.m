@@ -33,7 +33,7 @@
     return [[self previousAll:viewCtrl] lastObject];
 }
 
-- (nullable UIViewController *)nextOne:(UIViewController *)viewCtrl;
+- (nullable UIViewController *)nextOne:(UIViewController *)viewCtrl
 {
     return [[self nextAll:viewCtrl] firstObject];
 }
@@ -82,7 +82,8 @@
     if ([self.viewControllers containsObject:viewCtrl]) {
         [self popToViewController:viewCtrl animated:animated];
     }else{
-        [self yg_push:viewCtrl afterPopOutViewCtrl:self.topViewController];
+        UIViewController *top = self.topViewController;
+        [self yg_push:viewCtrl afterPopOutViewCtrl:top];
     }
 }
 
@@ -140,7 +141,13 @@
 - (void)yg_push:(UIViewController *)viewCtrl afterPopOutViewCtrl:(UIViewController *)popOutViewCtrl animated:(BOOL)animated
 {
     UIViewController *previousViewCtrl = [self previousOne:popOutViewCtrl];
-    [self yg_push:viewCtrl afterPopToViewCtrl:previousViewCtrl animated:animated];
+    if (previousViewCtrl) {
+        [self yg_push:viewCtrl afterPopToViewCtrl:previousViewCtrl animated:animated];
+    }else if (self.viewControllers.firstObject == popOutViewCtrl){
+        [self setViewControllers:@[viewCtrl] animated:animated];
+    }else{
+        [self pushViewController:viewCtrl animated:animated];
+    }
 }
 
 

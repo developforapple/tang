@@ -59,14 +59,17 @@
     }
 }
 
-- (IBAction)btnAction:(__unused UIButton *)btn
+- (IBAction)btnAction:( UIButton *)btn
 {
+    void (^handler)(void);
+ 
     if (btn == self.leftBtn && self.leftAction.actionHandler) {
-        self.leftAction.actionHandler();
+        handler = self.leftAction.actionHandler;
     }else if (btn == self.rightBtn && self.rightAction.actionHandler){
-        self.rightAction.actionHandler();
+        handler = self.rightAction.actionHandler;
     }
-    [self dismiss];
+    
+    [self dismiss:handler];
 }
 
 

@@ -48,12 +48,12 @@ NS_INLINE BOOL _YGLocationUsable(void){
 @property (assign, readonly, nonatomic) NSTimeInterval lastUpdateTime;
 
 /*!
- *  最大定位精度。大于这个精度的值忽略不计。默认为 kCLLocationAccuracyKilometer
+ *   最大定位精度。大于这个精度的值忽略不计。默认为 kCLLocationAccuracyKilometer
  */
 @property (assign, nonatomic) CLLocationAccuracy maximumAccuracy;
 
 /*!
- *  定位manager
+ *   定位manager
  */
 @property (strong, readonly, nonatomic) CLLocationManager *manager;
 

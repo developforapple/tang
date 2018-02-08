@@ -19,7 +19,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self->_lineColor = [UIColor whiteColor];
-        self->_lineWidth = .5f;
+        self->_lineWidth = .5;
         self->_direction = YGLineDirectionHorizontal;
         self->_insets = UIEdgeInsetsZero;
     }
@@ -31,7 +31,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self->_lineColor = [UIColor whiteColor];
-        self->_lineWidth = .5f;
+        self->_lineWidth = 0.5;
         self->_direction = YGLineDirectionHorizontal;
         self->_insets = UIEdgeInsetsZero;
     }

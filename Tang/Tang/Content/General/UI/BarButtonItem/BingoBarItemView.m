@@ -105,7 +105,7 @@
             }   break;
             case BingoBadgeStyleMax99:{
                 self.redDotView.hidden = YES;
-                self.badgeLabel.text = self.badge>99?@"99+":[@(self.badge) stringValue];
+                self.badgeLabel.text = self.badge>99? @"99":[@(self.badge) stringValue];
                 self.badgeView.hidden = NO;
             }   break;
         }
