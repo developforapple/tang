@@ -15,7 +15,7 @@ class TangDashboardViewCtrl: YGBaseViewCtrl {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+//        asdf
     }
 }
 
