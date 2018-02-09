@@ -209,7 +209,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="5UF-wp-Rqi"/>
                     <connections>
-                        <outlet property="tableView" destination="O9w-68-mVe" id="Ewd-YP-Ln6"/>
+                        <outlet property="tableview" destination="O9w-68-mVe" id="CN7-c7-0u0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvv-pC-LmY" userLabel="First Responder" sceneMemberID="firstResponder"/>

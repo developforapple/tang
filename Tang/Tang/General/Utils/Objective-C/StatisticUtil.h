@@ -3,7 +3,7 @@
 //  CDT
 //
 //  Created by WangBo (developforapple@163.com) on 2018/2/5.
-//  Copyright © 2018年 来电科技. All rights reserved.
+//  Copyright © tiny. All rights reserved.
 //
 
 @import Foundation;

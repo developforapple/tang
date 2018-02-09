@@ -2,8 +2,8 @@
 //  UIView+Ext.swift
 //  Laidian
 //
-//  Created by Jay on 2018/2/1.
-//  Copyright © 2018年 来电科技. All rights reserved.
+//  Created by Tiny on 2018/2/1.
+//  Copyright © tiny. All rights reserved.
 //
 
 import Foundation

@@ -842,8 +842,9 @@
 		69BFBD051F6A56CF004338EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Tang;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = tiny;
+				ORGANIZATIONNAME = Tiny;
 				TargetAttributes = {
 					69BFBD0C1F6A56D0004338EF = {
 						CreatedOnToolsVersion = 9.0;

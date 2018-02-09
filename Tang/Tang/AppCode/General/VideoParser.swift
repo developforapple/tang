@@ -2,7 +2,7 @@
 //  VideoParser.swift
 //  Tang
 //
-//  Created by Jay on 2018/2/9.
+//  Created by Tiny on 2018/2/9.
 //  Copyright © 2018年 tiny. All rights reserved.
 //
 

@@ -2,8 +2,8 @@
 //  Network.swift
 //  Laidian
 //
-//  Created by Jay on 2018/1/31.
-//  Copyright © 2018年 来电科技. All rights reserved.
+//  Created by Tiny on 2018/1/31.
+//  Copyright © tiny. All rights reserved.
 //
 
 import Foundation

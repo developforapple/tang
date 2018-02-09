@@ -2,7 +2,7 @@
 //  TangPlayerTransition.h
 //  Tang
 //
-//  Created by Jay on 2017/9/30.
+//  Created by Tiny on 2017/9/30.
 //  Copyright © 2017年 tiny. All rights reserved.
 //
 
