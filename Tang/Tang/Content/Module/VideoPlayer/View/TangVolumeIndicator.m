@@ -67,7 +67,7 @@
         self.hiddenBlock = nil;
     }
     
-    [self setHidden:NO animated:YES];
+//    [self setHidden:NO animated:YES];
     [self hideAfter:1.f volume:volume];
 }
 
@@ -78,9 +78,9 @@
     self.hiddenBlock =
     dispatch_block_create(0, ^{
         ygstrongify(self);
-        [self setHidden:YES animated:YES];
+//        [self setHidden:YES animated:YES];
     });
-    RunAfter(duration, self.hiddenBlock);
+//    RunAfter(duration, self.hiddenBlock);
 }
 
 - (IBAction)volumeIncreaseAction:(id)sender

@@ -41,7 +41,7 @@ typedef NS_ENUM(NSUInteger, YGTabType) {
 
 @interface YGTabBarCtrl : UITabBarController
 
-+ (instancetype)defaultTabBarCtrl;
+@property (class, readonly, atomic) YGTabBarCtrl *instance;
 
 - (UINavigationController *)navigationOfTab:(YGTabType)type;
 

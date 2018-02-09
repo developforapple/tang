@@ -7,15 +7,65 @@
 //
 
 import UIKit
+import ReactiveObjC
 
 class TangDashboardViewCtrl: YGBaseViewCtrl {
 
+    @IBOutlet var tableview : UITableView!
+    
+    private var task : API.TASK?
     private var data : [TangPost] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        asdf
+        tableview.automaticallyAdjustsScrollViewInsets = automaticallyAdjustsScrollViewInsets
+        setRefreshComponent();
+        
+        if !UserSession.session.valid {
+            let signal = NotificationCenter.default.rac_addObserver(forName: kTangSessionUserDidLoginedNotification.rawValue, object: nil)
+            signal.subscribeNext({ (x) in
+                self.loadDashboard(false)
+            })
+        }else{
+            loadDashboard(false)
+        }
+    }
+    
+    private func loadDashboard(_ more : Bool) {
+        task?.cancel()
+        tableview.resetRefreshing()
+        
+        let aTask = API.instance.dashboard(more ? data.count : 0) { [unowned self](suc, resp) in
+            guard suc else {return}
+            guard let result = resp, JSONSerialization.isValidJSONObject(result) else {return}
+            guard let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {return}
+            guard let posts = [TangPost].fromJson(data) else {return}
+            
+            if !more {
+                self.data = posts
+            }else{
+                self.data.append(contentsOf: posts)
+            }
+            
+            self.tableview.reloadData()
+            self.tableview.resetRefreshing()
+        }
+        self.task = aTask
+    }
+}
+
+extension TangDashboardViewCtrl : YGRefreshDelegate {
+    private func setRefreshComponent(){
+        tableview.refreshHeader(true, footer: true, delegate: self)
+    }
+    
+    func refreshHeaderBeginRefreshing(_ scrollView: UIScrollView!) {
+        loadDashboard(false)
+    }
+    
+    func refreshFooterBeginRefreshing(_ scrollView: UIScrollView!) {
+        loadDashboard(true)
     }
 }
 
@@ -26,9 +76,10 @@ extension TangDashboardViewCtrl : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell.init()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TangPostVideoCell.kTangPostVideoCell, for: indexPath) as! TangPostVideoCell
+        cell.configure(data[indexPath.row])
+        return cell;
     }
-    
 }
 
 // MARK: - Delegate
@@ -42,6 +93,14 @@ extension TangDashboardViewCtrl : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
+//        TangPlayerViewCtrl *vc = [TangPlayerViewCtrl instanceFromStoryboard];
+//        vc.post = self.data[indexPath.row];
+//
+//        TangPlayerTransition *transition = [TangPlayerTransition transition];
+//        TangPlayerTransitionContext *context = [TangPlayerTransitionContext new];
+//        context.focusView = [tableView cellForRowAtIndexPath:indexPath];
+//        [transition showPlayer:vc fromViewController:self context:context];
     }
 }

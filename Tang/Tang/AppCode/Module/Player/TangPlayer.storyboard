@@ -12,7 +12,7 @@
         <!--Tang Player View Ctrl-->
         <scene sceneID="fe8-re-uAs">
             <objects>
-                <viewController storyboardIdentifier="TangPlayerViewCtrl" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bn9-C1-04J" customClass="TangPlayerViewCtrl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TangPlayerViewCtrl" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bn9-C1-04J" customClass="TangPlayerViewCtrl" customModule="Tang" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gui-gQ-7z5"/>
                         <viewControllerLayoutGuide type="bottom" id="865-vR-w7D"/>
@@ -83,6 +83,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMz-bv-fAZ">
                                         <rect key="frame" x="0.0" y="20" width="44" height="44"/>
                                         <state key="normal" image="Action_backward_white"/>
+                                        <connections>
+                                            <action selector="exit:" destination="bn9-C1-04J" eventType="touchUpInside" id="OMc-GA-Cxu"/>
+                                        </connections>
                                     </button>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDX-FQ-Jul" customClass="TangVolumeIndicator">
                                         <rect key="frame" x="0.0" y="243.5" width="44" height="180"/>

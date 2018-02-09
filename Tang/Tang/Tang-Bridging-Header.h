@@ -18,5 +18,6 @@
 #import "YGTabBarCtrl.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "TFHpple.h"
+#import "YGRefreshComponent.h"
 
 #endif /* Tang_Bridging_Header_h */

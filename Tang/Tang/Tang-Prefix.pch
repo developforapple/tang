@@ -15,7 +15,6 @@
 #import <objc/runtime.h>
 
     #import "Utils-ObjC-Header.h"
-    #import "TangDelegate.h"
     #import "Tang-Swift.h"
     #import "StatisticUtil.h"
 

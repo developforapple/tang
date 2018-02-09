@@ -26,12 +26,13 @@ enum Avatar : Int {
         return "avatar_" + blogName
     }
     
-    static func make(_ blogName : String, size : Avatar = .size40) -> String? {
+    static func make(_ blogName : String?, size : Avatar = .size40) -> String? {
+        guard let name = blogName else { return nil }
         let cache = Cache.appCache()
-        if let avatar = cache.object(forKey: Avatar.avatarKey(blogName)) as? String {
+        if let avatar = cache.object(forKey: Avatar.avatarKey(name)) as? String {
             return String.init(format: avatar, size.rawValue)
         }
-        requestAvatar(blogName)
+        requestAvatar(name)
         return nil
     }
     

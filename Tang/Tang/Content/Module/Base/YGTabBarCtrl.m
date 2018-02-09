@@ -7,20 +7,16 @@
 
 #import "YGTabBarCtrl.h"
 
+static YGTabBarCtrl *instance;
+
 @interface YGTabBarCtrl () <UITabBarControllerDelegate>
 
 @end
 
 @implementation YGTabBarCtrl
 
-+ (instancetype)defaultTabBarCtrl
++ (YGTabBarCtrl *)instance
 {
-    static YGTabBarCtrl *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [YGTabBarCtrl instanceFromStoryboard];
-        instance.delegate = instance;
-    });
     return instance;
 }
 
@@ -28,7 +24,8 @@
 {
     [super viewDidLoad];
     
-    
+    instance = self;
+    instance.delegate = instance;
 }
 
 - (UINavigationController *)navigationOfTab:(YGTabType)type

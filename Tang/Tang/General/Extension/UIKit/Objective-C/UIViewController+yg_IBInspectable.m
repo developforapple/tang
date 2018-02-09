@@ -10,7 +10,7 @@
 #import "UIViewController+yg_StatusBar.h"
 #import "JZNavigationExtension.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
-#import "UIScrollView+yg_IBInspectable.h"
+//#import "UIScrollView+yg_IBInspectable.h"
 
 #pragma mark - UINavigationController
 static const void *nextAppearIsPushKey = &nextAppearIsPushKey;
@@ -114,7 +114,7 @@ static NSMutableSet<Class> *kIgnoredViewControllerClasses;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         kDefaultNaviBarLineColor = RGBColor(229, 229, 229, 0.8);
-        kDefaultNaviBarTextColor = kTextColor;
+        kDefaultNaviBarTextColor = RGBColor(68, 68, 68, 1);
         
         SEL oldViewWillAppearSel = @selector(viewWillAppear:);
         SEL newViewWillAppearSel = @selector(yg_viewWillAppear:);

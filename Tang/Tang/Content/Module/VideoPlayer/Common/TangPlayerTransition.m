@@ -18,7 +18,7 @@
 - (void)setFocusView:(UIView *)focusView
 {
     _focusView = focusView;
-    self.focusImage = [focusView snapshotImage];
+    self.focusImage = [focusView snapshotViewAfterScreenUpdates:NO];
 }
 
 @end

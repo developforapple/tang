@@ -6,8 +6,8 @@
 //
 
 #import "YGBaseWebViewCtrl.h"
-#import "BingoJSInterface.h"
 #import "YGRefreshComponent.h"
+//#import "BingoJSInterface.h"
 
 static void *kEstimatedProgressCtx = &kEstimatedProgressCtx;
 static NSString *const kEstimatedProgressKey = @"estimatedProgress";
@@ -19,7 +19,7 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
 @property (strong, readwrite, nonatomic) WKWebView *webView;
 @property (strong, nonatomic) UIView *progressView;
 @property (strong, nonatomic) CAShapeLayer *progressLayer;
-@property (strong, nonatomic) BingoJSInterface *jsInterface;
+//@property (strong, nonatomic) BingoJSInterface *jsInterface;
 @end
 
 @implementation YGBaseWebViewCtrl
@@ -30,8 +30,8 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         hosts = [NSMutableArray array];
-        [hosts addObject:kAppHost];
-        [hosts addObject:kAppWechatHost];
+//        [hosts addObject:kAppHost];
+//        [hosts addObject:kAppWechatHost];
     });
     return hosts;
 }
@@ -97,9 +97,9 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|" options:kNilOptions metrics:nil views:dict]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:kNilOptions metrics:nil views:dict]];
     
-    self.jsInterface = [[BingoJSInterface alloc] initWithWebView:self.webView delegate:self];
-    self.jsInterface.viewController = self;
-    [self.jsInterface registerAllHander];
+//    self.jsInterface = [[BingoJSInterface alloc] initWithWebView:self.webView delegate:self];
+//    self.jsInterface.viewController = self;
+//    [self.jsInterface registerAllHander];
     
     [self.webView addObserver:self forKeyPath:kEstimatedProgressKey options:NSKeyValueObservingOptionNew context:kEstimatedProgressCtx];
 }
@@ -125,7 +125,7 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
     self.progressLayer.frame = self.progressView.bounds;
     self.progressLayer.path = path.CGPath;
     self.progressLayer.lineWidth =  CGRectGetHeight(self.progressView.bounds);
-    self.progressLayer.strokeColor = kBlueColor.CGColor;
+    self.progressLayer.strokeColor = [UIColor blueColor].CGColor;
     self.progressLayer.strokeStart = 0;
     self.progressLayer.strokeEnd = 0;
     [self.progressView.layer addSublayer:self.progressLayer];
@@ -222,7 +222,7 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
 - (void)updateProgress:(double)progress
 {
     if (progress == 1) {
-        [self.progressView setHidden:YES animated:YES];
+        self.progressView.hidden = YES;
     }else{
         self.progressView.hidden = NO;
     }
@@ -289,12 +289,12 @@ static NSString *const kEstimatedProgressKey = @"estimatedProgress";
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
-    [UIAlertController alert:message message:nil callback:completionHandler];
+//    [UIAlertController alert:message message:nil callback:completionHandler];
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler
 {
-    [UIAlertController confirm:message callback:completionHandler];
+//    [UIAlertController confirm:message callback:completionHandler];
 }
 
 @end

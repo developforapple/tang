@@ -149,7 +149,7 @@ static void *backgroundAlphaKey = &backgroundAlphaKey;
 {
     if (self.barShadowHidden_ != barShadowHidden_) {
         objc_setAssociatedObject(self, barShadowHiddenKey, @(barShadowHidden_), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        self.layer.shadowColor = kBlueColor.CGColor;
+        self.layer.shadowColor = [UIColor blueColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(2, 2);
         self.layer.shadowOpacity = barShadowHidden_?0.:0.2;
         self.layer.shadowRadius = 4.;
