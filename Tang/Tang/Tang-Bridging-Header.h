@@ -15,8 +15,6 @@
 #import "YGBasePopViewCtrl.h"
 #import "YGBaseViewCtrl.h"
 #import "YGBaseWebViewCtrl.h"
-#import "YGTabBarCtrl.h"
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "TFHpple.h"
 #import "YGRefreshComponent.h"
 

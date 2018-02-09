@@ -33,14 +33,17 @@ extension UIViewController {
         if let e = error {
             print(e)
         }
+        
         return map
     }()
     
-    final class func instance() -> UIViewController? {
-        return instance(NSStringFromClass(self))
-    }
-    
-    final class func instance(_ identifier : String) -> UIViewController? {
+    /// 从任意storyboard中获取实例。没有找到时使用默认构造方法生成实例。
+    ///
+    /// - Parameter sbid: 实例的id，为nil时取类名
+    /// - Returns: 生成的实例
+    final class func instanceFromStoryboard(_ sbid: String? = nil) -> Self {
+        
+        let identifier = sbid ?? NSStringFromClass(self)
         
         if let cachedName = _cache.object(forKey: identifier as NSString) {
             if let vc = tryTakeOutInstance(storyboard: cachedName as String, identifier: identifier) {
@@ -63,20 +66,27 @@ extension UIViewController {
         return self.init()
     }
     
-     class func tryTakeOutInstance(storyboard named : String, identifier : String) -> UIViewController? {
-        var vc : UIViewController?
+    private class func tryTakeOutInstance(storyboard named : String, identifier : String) -> Self? {
+        return tryTakeOutInstance(self, storyboard: named, identifier: identifier)
+    }
+    
+    private class func tryTakeOutInstance<T>(_ : T.Type, storyboard named : String, identifier : String) -> T? {
+
         let selStr = "identifier" + "To" + "Nib" + "Name" + "Map"
         let sel = NSSelectorFromString(selStr)
-        let error = safeCode {
-            let sb = UIStoryboard.init(name: named, bundle: Bundle.main)
-            let obj = sb.perform(sel).takeUnretainedValue() as? Dictionary<String,String>
-            if obj != nil && obj!.values.contains(identifier) {
-                vc = sb.instantiateViewController(withIdentifier: identifier)
+
+        var vc : T?
+        do {
+            try SafeCode.try {
+                let sb = UIStoryboard.init(name: named, bundle: Bundle.main)
+                let obj = sb.perform(sel).takeUnretainedValue() as? Dictionary<String,String>
+                if obj != nil && obj!.values.contains(identifier) {
+                    vc = sb.instantiateViewController(withIdentifier: identifier) as? T
+                }
             }
+        } catch {
+            print(error)
         }
-        if let e = error {
-            print(e)
-        }
-        return vc;
+        return vc
     }
 }

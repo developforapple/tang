@@ -27,6 +27,7 @@ class TangDashboardViewCtrl: YGBaseViewCtrl {
             signal.subscribeNext({ (x) in
                 self.loadDashboard(false)
             })
+            UserSession.session.beginLoginProcess()
         }else{
             loadDashboard(false)
         }

@@ -57,7 +57,11 @@ class UserSession: NSObject {
     }
     
     func beginLoginProcess() {
+        let vc = TangLoginGuideViewCtrl.instanceFromStoryboard()
+        
+        
         // TODO
+        
 //        TangLoginGuideViewCtrl *vc = [TangLoginGuideViewCtrl instanceFromStoryboard];
 //        [vc show];
     }
