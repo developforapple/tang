@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+@objc enum TangPlaybackState : Int {
+    case idle       //未加载视频
+    case loading    //读取中
+    case playing    //播放中
+    case pause      //已暂停
+    case end        //播放结束
+}

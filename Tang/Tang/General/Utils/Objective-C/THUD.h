@@ -11,3 +11,9 @@
 @interface THUD : SVProgressHUD
 
 @end
+
+@interface SVProgressHUD (Ext)
+
++ (void)show:(NSString *)text;
+
+@end

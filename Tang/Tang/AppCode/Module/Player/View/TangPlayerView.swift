@@ -10,6 +10,15 @@ import UIKit
 import AVFoundation
 
 class TangPlayerView: UIView {
+    
+    var player : AVPlayer? {
+        set {
+            self.playerLayer.player = newValue
+        }
+        get {
+            return self.playerLayer.player
+        }
+    }
 
     override class var layerClass : AnyClass {
         get {
@@ -17,9 +26,14 @@ class TangPlayerView: UIView {
         }
     }
     
-    var playerLayer: AVPlayerLayer {
+    var playerLayer : AVPlayerLayer {
         get {
             return self.layer as! AVPlayerLayer
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
     }
 }

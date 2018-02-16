@@ -20,7 +20,6 @@
         return [self parseInstagramVideo:post];
     }
     
-    
     return [self parseTumblrVideo:post];
 }
 

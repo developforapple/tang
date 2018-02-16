@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import KTVHTTPCache
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
@@ -48,12 +49,15 @@ class AppDelegate: UIResponder {
     
     func setupThirdParty() {
         
+        var error : NSError?
+        KTVHTTPCache.proxyStart(&error)
+        if error != nil {
+            print("Launch KTVHttpCache Proxy Failed!",error!)
+        }
+//        KTVHTTPCache.logSetConsoleLogEnable(DEBUG_MODE)
+//        KTVHTTPCache.logSetRecordLogEnable(DEBUG_MODE)
         
-//        SError *error;
-//        [KTVHTTPCache proxyStart:&error];
-//        if (error) {
-//            NSLog(@"Launch KTVHttpCache Proxy failed! %@",error);
-//        }
+        TangVideoStorager.storager
     }
 }
 

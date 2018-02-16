@@ -16,5 +16,9 @@ let ProductionEnvironment = false
 let InHouseVersion = false
 
 /// DEBUG模式
-let DEBUG_MODE = (ProductionEnvironment || InHouseVersion)
 
+#if DEBUG
+    let DEBUG_MODE = true
+#else
+    let DEBUG_MODE = false
+#endif

@@ -17,5 +17,6 @@
 #import "YGBaseWebViewCtrl.h"
 #import "TFHpple.h"
 #import "YGRefreshComponent.h"
+#import "THUD.h"
 
 #endif /* Tang_Bridging_Header_h */

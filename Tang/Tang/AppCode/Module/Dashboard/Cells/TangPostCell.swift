@@ -8,16 +8,16 @@
 
 import UIKit
 
-class TangPostCell: UITableViewCell {
+class TangPostCell <T : TangPost> : UITableViewCell {
 
-    fileprivate(set) var post : TangPost!
+    fileprivate(set) var post : T!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     
-    func configure(_ post : TangPost) {
+    func configure(_ post : T) {
         self.post = post
     }
 }

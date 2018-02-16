@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+@objc enum TangPlayerControlSlidingState : Int {
+    case begin
+    case update
+    case end
+    case cancel
+}

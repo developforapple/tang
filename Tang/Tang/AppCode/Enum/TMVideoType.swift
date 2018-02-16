@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum TMVideoType : String, Codable {
+    case tumblr
+    case instagram
+}

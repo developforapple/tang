@@ -38,10 +38,9 @@ class TangDashboardViewCtrl: YGBaseViewCtrl {
         tableview.resetRefreshing()
         
         let aTask = API.instance.dashboard(more ? data.count : 0) { [unowned self](suc, resp) in
-            guard suc else {return}
-            guard let result = resp, JSONSerialization.isValidJSONObject(result) else {return}
-            guard let data = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {return}
-            guard let posts = [TangPost].fromJson(data) else {return}
+            guard let response = resp, suc else {return}
+            
+            let posts = TangPost.adapter(from: response)
             
             if !more {
                 self.data = posts
@@ -77,9 +76,16 @@ extension TangDashboardViewCtrl : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TangPostVideoCell.kTangPostVideoCell, for: indexPath) as! TangPostVideoCell
-        cell.configure(data[indexPath.row])
-        return cell;
+        let post = data[indexPath.row]
+        let cell : UITableViewCell!
+        switch post.type {
+        case .video:
+            let aCell = tableView.dequeueReusableCell(withIdentifier: TangPostVideoCell.kTangPostVideoCell, for: indexPath) as! TangPostVideoCell
+            aCell.configure(post as! TangVideoPost)
+            cell = aCell
+        default: cell = UITableViewCell.init()
+        }
+        return cell
     }
 }
 
@@ -87,21 +93,31 @@ extension TangDashboardViewCtrl : UITableViewDataSource {
 extension TangDashboardViewCtrl : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let post = data[indexPath.row]
-        let width = post.thumbnail_width ?? Device_Width
-        let height = post.thumbnail_height ?? 100.0
-        let cellHeight = height / width * Device_Width
-        return ceil(cellHeight)
+        var height : CGFloat = 100.0
+        switch post.type {
+        case .video:
+            let videoPost = post as! TangVideoPost
+            let cellHeight = CGFloat(videoPost.thumbnail_height) / CGFloat(videoPost.thumbnail_width) * Device_Width
+            height = ceil(cellHeight)
+        default:break
+        }
+        return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        TangPlayerViewCtrl *vc = [TangPlayerViewCtrl instanceFromStoryboard];
-//        vc.post = self.data[indexPath.row];
-//
-//        TangPlayerTransition *transition = [TangPlayerTransition transition];
-//        TangPlayerTransitionContext *context = [TangPlayerTransitionContext new];
-//        context.focusView = [tableView cellForRowAtIndexPath:indexPath];
-//        [transition showPlayer:vc fromViewController:self context:context];
+        let post = data[indexPath.row]
+        
+        switch post.type {
+        case .video:
+            let context = TangTransitionContext()
+            context.focusView = tableView.cellForRow(at: indexPath)
+            let vc = TangPlayerViewCtrl.instanceFromStoryboard()
+            vc.data = TangPlayerSharedData.init(post as! TangVideoPost, image: context.focusImage)
+            TangPlayerTransition.instance.show(vc, from: self, context: context)
+        default:
+            break
+        }
     }
 }

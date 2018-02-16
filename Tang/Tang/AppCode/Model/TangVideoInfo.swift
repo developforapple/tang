@@ -8,23 +8,26 @@
 
 import UIKit
 
-enum TangVideoSource : Int {
-    case `default`
-    case instagram
-    case other
-}
 
+/// 视频信息和Post无关，如果视频资源地址相同，就任务两个Post的视频相同
 class TangVideoInfo: NSObject {
 
-    var from = TangVideoSource.default  //视频来源
-    var id : String?
-    var thumbnail : String?         //缩略图,为首帧截图
-    var filmstrip : String?         //预览图，为一个横向长图
-    var filmstripWidth : Int?       //预览图中一幅图的宽度
-    var filmstripHeight : Int?      //预览图中一幅图的高度
-    var duration : TimeInterval?    //视频长度，秒
-    var source : String!    //视频资源地址：@"ttps://bellygangstaboo.tumblr.com/video_file/t:BMrTvf3wo5X5ez59rRyYGQ/165430770545/tumblr_owdoq5dCt31r85l5t"
-    var type : String!  //视频类型  mp4 等
-    var video : String? //视频原始地址。可通过资源地址提取出来。也可以通过请求资源地址，服务器重定向到原始地址。后者是保险的做法。
+    var type = TMVideoType.tumblr   // 视频的类型
     
+    var duration : Int?             // 视频长度，秒
+    var source : String?            // 视频最初发布的页面
+    var video : String?             // 视频资源地址
+    var video_page : String?        // 一个中间页，将会重定向到资源地址
+    var format : String?            // 视频格式
+    
+    // 缩略图，一般为5张图片
+    var frames : [String] = []
+    var width : Int = 0
+    var height : Int = 0
+    
+    // 封面
+    var poster : String?
+    
+    // 幻灯片,为一个横向长图
+    var filmstrip : String?
 }

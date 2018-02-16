@@ -10,7 +10,7 @@ import UIKit
 import FLAnimatedImage
 import SDWebImage
 
-class TangPostVideoCell: TangPostCell {
+class TangPostVideoCell: TangPostCell <TangVideoPost> {
 
     public static let kTangPostVideoCell = "TangPostVideoCell"
     
@@ -25,8 +25,8 @@ class TangPostVideoCell: TangPostCell {
         super.awakeFromNib()
         
     }
-
-    override func configure(_ post: TangPost) {
+    
+    override func configure(_ post: TangVideoPost) {
         super.configure(post)
         
         guard let url = post.thumbnail_url else { return}
@@ -39,7 +39,7 @@ class TangPostVideoCell: TangPostCell {
                                     placeholderImage: nil,
                                     options: options) { [unowned self] (_img, _error, _cachedType, _imageURL) in
                                         let hash2 = hash
-                                        if let image = _img, let imageURL = _imageURL, imageURL.hashValue == hash2 {
+                                        if let image = _img, let imageURL = _imageURL, imageURL.absoluteString.hashValue == hash2 {
                                             self.tumblrImageView.image = image
                                             UIView.animate(withDuration: 0.2, animations: {
                                                 self.tumblrImageView.alpha = 1

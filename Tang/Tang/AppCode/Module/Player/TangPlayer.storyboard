@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tang Player View Ctrl-->
+        <!--PlayerViewCtrl-->
         <scene sceneID="fe8-re-uAs">
             <objects>
-                <viewController storyboardIdentifier="TangPlayerViewCtrl" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bn9-C1-04J" customClass="TangPlayerViewCtrl" customModule="Tang" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TangPlayerViewCtrl" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bn9-C1-04J" userLabel="PlayerViewCtrl" customClass="TangPlayerViewCtrl" customModule="Tang" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gui-gQ-7z5"/>
                         <viewControllerLayoutGuide type="bottom" id="865-vR-w7D"/>
@@ -21,14 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LB-hj-1pN" customClass="TangPlayerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LB-hj-1pN" customClass="TangPlayerView" customModule="Tang" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4j-9g-sEp" userLabel="Preview" customClass="TangPreviewView" customModule="Tang" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDB-8p-vjS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aDB-8p-vjS" firstAttribute="top" secondItem="a4j-9g-sEp" secondAttribute="top" id="0cn-jL-mAF"/>
+                                    <constraint firstAttribute="bottom" secondItem="aDB-8p-vjS" secondAttribute="bottom" id="4FX-Ni-G35"/>
+                                    <constraint firstAttribute="trailing" secondItem="aDB-8p-vjS" secondAttribute="trailing" id="AUN-Mh-HvF"/>
+                                    <constraint firstItem="aDB-8p-vjS" firstAttribute="leading" secondItem="a4j-9g-sEp" secondAttribute="leading" id="EXo-uy-yQM"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="aDB-8p-vjS" id="9aZ-MO-DSs"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjU-Ta-Hzm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-vr-pCs">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLM-vr-pCs" customClass="TangPlayerControl" customModule="Tang" customModuleProvider="target">
                                         <rect key="frame" x="14" y="621" width="347" height="30"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PXg-29-rBr">
@@ -42,16 +60,23 @@
                                                 <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <action selector="playTimeControl:" destination="bn9-C1-04J" eventType="valueChanged" id="Pxr-v0-fje"/>
+                                                    <action selector="sliderTouchCancel:" destination="BLM-vr-pCs" eventType="touchCancel" id="eqj-kQ-6M0"/>
+                                                    <action selector="sliderTouchDown:" destination="BLM-vr-pCs" eventType="touchDown" id="6Th-Te-ImM"/>
+                                                    <action selector="sliderTouchUpInside:" destination="BLM-vr-pCs" eventType="touchUpInside" id="VHV-Gk-MQ2"/>
+                                                    <action selector="sliderTouchUpOutside:" destination="BLM-vr-pCs" eventType="touchUpOutside" id="3Ef-Kf-BLC"/>
+                                                    <action selector="sliderValueChanged:" destination="BLM-vr-pCs" eventType="valueChanged" id="JZA-Gj-OWT"/>
                                                 </connections>
                                             </slider>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dUC-Gn-ara">
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dUC-Gn-ara">
                                                 <rect key="frame" x="0.0" y="5" width="20" height="20"/>
                                             </activityIndicatorView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-YS-0Hk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-YS-0Hk">
                                                 <rect key="frame" x="0.0" y="0.0" width="28" height="30"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="ic_video_play"/>
+                                                <connections>
+                                                    <action selector="playOrPause:" destination="BLM-vr-pCs" eventType="touchUpInside" id="nA8-9d-dSw"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Un9-rC-V9r">
                                                 <rect key="frame" x="308" y="0.0" width="39" height="30"/>
@@ -79,6 +104,14 @@
                                             <constraint firstItem="dUC-Gn-ara" firstAttribute="leading" secondItem="BLM-vr-pCs" secondAttribute="leading" id="tb3-RV-pXF"/>
                                             <constraint firstAttribute="bottom" secondItem="Un9-rC-V9r" secondAttribute="bottom" id="wzu-B2-4e4"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="cacheBar" destination="PXg-29-rBr" id="jwY-Wl-rrr"/>
+                                            <outlet property="countdownLabel" destination="Un9-rC-V9r" id="tL9-dB-7VI"/>
+                                            <outlet property="delegate" destination="bn9-C1-04J" id="RTJ-uJ-6zs"/>
+                                            <outlet property="loadingIndicator" destination="dUC-Gn-ara" id="OGU-Bn-KZa"/>
+                                            <outlet property="playButton" destination="2Yq-YS-0Hk" id="nDZ-hc-74z"/>
+                                            <outlet property="progressBar" destination="WvQ-74-Tas" id="IVN-Ul-75G"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMz-bv-fAZ">
                                         <rect key="frame" x="0.0" y="20" width="44" height="44"/>
@@ -158,28 +191,30 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="a4j-9g-sEp" firstAttribute="top" secondItem="rXp-iY-XL5" secondAttribute="top" id="36O-Bh-N5z"/>
                             <constraint firstItem="wjU-Ta-Hzm" firstAttribute="leading" secondItem="rXp-iY-XL5" secondAttribute="leading" id="HKx-Qx-1ZB"/>
                             <constraint firstAttribute="trailing" secondItem="7LB-hj-1pN" secondAttribute="trailing" id="Hqu-I4-o1G"/>
                             <constraint firstItem="7LB-hj-1pN" firstAttribute="top" secondItem="rXp-iY-XL5" secondAttribute="top" id="Jjo-Xx-Bwg"/>
                             <constraint firstItem="wjU-Ta-Hzm" firstAttribute="top" secondItem="rXp-iY-XL5" secondAttribute="top" id="L1o-5R-E1N"/>
                             <constraint firstAttribute="trailing" secondItem="wjU-Ta-Hzm" secondAttribute="trailing" id="L3Q-Lb-jIO"/>
+                            <constraint firstAttribute="trailing" secondItem="a4j-9g-sEp" secondAttribute="trailing" id="LcY-z3-JPe"/>
+                            <constraint firstItem="a4j-9g-sEp" firstAttribute="leading" secondItem="rXp-iY-XL5" secondAttribute="leading" id="Z97-2d-lpU"/>
                             <constraint firstAttribute="bottom" secondItem="wjU-Ta-Hzm" secondAttribute="bottom" id="dWp-RA-cfA"/>
                             <constraint firstAttribute="bottom" secondItem="7LB-hj-1pN" secondAttribute="bottom" id="hec-DQ-7xI"/>
                             <constraint firstItem="7LB-hj-1pN" firstAttribute="leading" secondItem="rXp-iY-XL5" secondAttribute="leading" id="kju-TH-8AK"/>
+                            <constraint firstAttribute="bottom" secondItem="a4j-9g-sEp" secondAttribute="bottom" id="loR-fj-fxd"/>
                         </constraints>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="jz_wantsNavigationBarVisible" value="NO"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="interactivePopEnabled_" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="statusBarHidden_" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="cacheProgressBar" destination="PXg-29-rBr" id="Eex-7X-Egs"/>
                         <outlet property="controlView" destination="BLM-vr-pCs" id="ARo-9B-vdM"/>
-                        <outlet property="countdownLabel" destination="Un9-rC-V9r" id="lR4-T9-zX6"/>
                         <outlet property="coverView" destination="wjU-Ta-Hzm" id="tLM-j1-cKN"/>
-                        <outlet property="loadingActivity" destination="dUC-Gn-ara" id="zUR-ea-Ofg"/>
-                        <outlet property="playerView" destination="7LB-hj-1pN" id="1Gj-9p-BNt"/>
-                        <outlet property="sliderBar" destination="WvQ-74-Tas" id="73r-PP-IBA"/>
+                        <outlet property="playerContainer" destination="7LB-hj-1pN" id="QN0-Ts-PdN"/>
+                        <outlet property="previewView" destination="a4j-9g-sEp" id="Z2j-0w-eDn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfA-UB-h3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,9 +15,19 @@
 		2D8BB9E4202EC95700C42B9C /* TMFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E3202EC95700C42B9C /* TMFormat.swift */; };
 		2D8BB9E6202ECAC700C42B9C /* TMPostState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */; };
 		2D8BB9E8202ED14F00C42B9C /* TangPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E7202ED14F00C42B9C /* TangPhoto.swift */; };
+		2D8BB9EA202EDA1900C42B9C /* TMVideoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E9202EDA1900C42B9C /* TMVideoType.swift */; };
+		2D8BB9ED202F193900C42B9C /* TangPlayerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9EC202F193900C42B9C /* TangPlayerTransition.swift */; };
+		2D8BB9EF202F330200C42B9C /* TangVideoStorager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9EE202F330200C42B9C /* TangVideoStorager.swift */; };
+		2D8BB9F22030823200C42B9C /* TangPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9F12030823200C42B9C /* TangPreviewView.swift */; };
+		2D8BB9F42030829800C42B9C /* TangPlayerSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9F32030829800C42B9C /* TangPlayerSharedData.swift */; };
+		2D8BB9F62031534F00C42B9C /* TangPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9F52031534F00C42B9C /* TangPlayer.swift */; };
+		2D8BB9F82031A09800C42B9C /* TangPlayerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9F72031A09800C42B9C /* TangPlayerControl.swift */; };
+		2D8BB9FA2031D98200C42B9C /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9F92031D98200C42B9C /* StringUtils.swift */; };
+		2D8BB9FD2031E20300C42B9C /* THUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9FC2031E20300C42B9C /* THUD.m */; };
+		2D9EF436203562D600941E0C /* TangPlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EF435203562D600941E0C /* TangPlaybackState.swift */; };
+		2D9EF4382035669A00941E0C /* TangPlayerControlSlidingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EF4372035669A00941E0C /* TangPlayerControlSlidingState.swift */; };
 		2DC9B6AB1F6E79990092DACB /* TangPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC9B6AA1F6E79990092DACB /* TangPlayer.storyboard */; };
 		2DCBCCE11F6EDC370060D732 /* TangVolumeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */; };
-		695777C11F7F7192005F46B9 /* TangPlayerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 695777C01F7F7192005F46B9 /* TangPlayerTransition.m */; };
 		696F79B92015D76B003AD983 /* Pods_Tang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699D24A5A16F78E85DC2EBF7 /* Pods_Tang.framework */; };
 		69BFBE551F6A5992004338EF /* YGLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFBDCD1F6A5992004338EF /* YGLabel.m */; };
 		69BFBE561F6A5992004338EF /* YGLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BFBDD01F6A5992004338EF /* YGLineView.m */; };
@@ -113,6 +123,18 @@
 		2D8BB9E3202EC95700C42B9C /* TMFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMFormat.swift; sourceTree = "<group>"; };
 		2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPostState.swift; sourceTree = "<group>"; };
 		2D8BB9E7202ED14F00C42B9C /* TangPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPhoto.swift; sourceTree = "<group>"; };
+		2D8BB9E9202EDA1900C42B9C /* TMVideoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMVideoType.swift; sourceTree = "<group>"; };
+		2D8BB9EC202F193900C42B9C /* TangPlayerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlayerTransition.swift; sourceTree = "<group>"; };
+		2D8BB9EE202F330200C42B9C /* TangVideoStorager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangVideoStorager.swift; sourceTree = "<group>"; };
+		2D8BB9F12030823200C42B9C /* TangPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPreviewView.swift; sourceTree = "<group>"; };
+		2D8BB9F32030829800C42B9C /* TangPlayerSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlayerSharedData.swift; sourceTree = "<group>"; };
+		2D8BB9F52031534F00C42B9C /* TangPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlayer.swift; sourceTree = "<group>"; };
+		2D8BB9F72031A09800C42B9C /* TangPlayerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlayerControl.swift; sourceTree = "<group>"; };
+		2D8BB9F92031D98200C42B9C /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		2D8BB9FB2031E20300C42B9C /* THUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THUD.h; sourceTree = "<group>"; };
+		2D8BB9FC2031E20300C42B9C /* THUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THUD.m; sourceTree = "<group>"; };
+		2D9EF435203562D600941E0C /* TangPlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlaybackState.swift; sourceTree = "<group>"; };
+		2D9EF4372035669A00941E0C /* TangPlayerControlSlidingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPlayerControlSlidingState.swift; sourceTree = "<group>"; };
 		2DA738F2F1456D6FAC1E654A /* Pods-Tang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tang/Pods-Tang.debug.xcconfig"; sourceTree = "<group>"; };
 		2DC9B6AA1F6E79990092DACB /* TangPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangPlayer.storyboard; sourceTree = "<group>"; };
 		2DCBCCD91F6EB79E0060D732 /* TangPostVideoParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangPostVideoParser.h; sourceTree = "<group>"; };
@@ -120,8 +142,6 @@
 		2DCBCCDF1F6EDC370060D732 /* TangVolumeIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangVolumeIndicator.h; sourceTree = "<group>"; };
 		2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangVolumeIndicator.m; sourceTree = "<group>"; };
 		58AB2BCB4DB952CCA764BA49 /* Pods-Tang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tang/Pods-Tang.release.xcconfig"; sourceTree = "<group>"; };
-		695777BF1F7F7192005F46B9 /* TangPlayerTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangPlayerTransition.h; sourceTree = "<group>"; };
-		695777C01F7F7192005F46B9 /* TangPlayerTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TangPlayerTransition.m; sourceTree = "<group>"; };
 		699D24A5A16F78E85DC2EBF7 /* Pods_Tang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BFBD0D1F6A56D0004338EF /* Tang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BFBD1E1F6A56D0004338EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,6 +287,27 @@
 				2D8BB9E1202EC64F00C42B9C /* TMPostType.swift */,
 				2D8BB9E3202EC95700C42B9C /* TMFormat.swift */,
 				2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */,
+				2D8BB9E9202EDA1900C42B9C /* TMVideoType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		2D8BB9EB202F191200C42B9C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2D8BB9EC202F193900C42B9C /* TangPlayerTransition.swift */,
+				2D8BB9EE202F330200C42B9C /* TangVideoStorager.swift */,
+				2D8BB9F32030829800C42B9C /* TangPlayerSharedData.swift */,
+				2D8BB9F52031534F00C42B9C /* TangPlayer.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2D9EF432203562B200941E0C /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				2D9EF435203562D600941E0C /* TangPlaybackState.swift */,
+				2D9EF4372035669A00941E0C /* TangPlayerControlSlidingState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -285,8 +326,6 @@
 			children = (
 				2DCBCCD91F6EB79E0060D732 /* TangPostVideoParser.h */,
 				2DCBCCDA1F6EB79E0060D732 /* TangPostVideoParser.m */,
-				695777BF1F7F7192005F46B9 /* TangPlayerTransition.h */,
-				695777C01F7F7192005F46B9 /* TangPlayerTransition.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -603,6 +642,7 @@
 				69EF048B202BF1E4002B9B09 /* Func.swift */,
 				69EF04CB202C0E82002B9B09 /* Statistic.swift */,
 				69EF0514202C5AD1002B9B09 /* Math.swift */,
+				2D8BB9F92031D98200C42B9C /* StringUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -645,6 +685,8 @@
 				69EF04C2202C0AB6002B9B09 /* SafeCode.m */,
 				69EF04E1202C13F2002B9B09 /* StatisticUtil.h */,
 				69EF04E2202C13F3002B9B09 /* StatisticUtil.m */,
+				2D8BB9FB2031E20300C42B9C /* THUD.h */,
+				2D8BB9FC2031E20300C42B9C /* THUD.m */,
 			);
 			path = "Objective-C";
 			sourceTree = "<group>";
@@ -780,6 +822,8 @@
 			isa = PBXGroup;
 			children = (
 				2DC9B6AA1F6E79990092DACB /* TangPlayer.storyboard */,
+				2D9EF432203562B200941E0C /* Enum */,
+				2D8BB9EB202F191200C42B9C /* Common */,
 				69EF052A202D8746002B9B09 /* Ctrls */,
 				69EF052D202D8B02002B9B09 /* View */,
 			);
@@ -798,6 +842,8 @@
 			isa = PBXGroup;
 			children = (
 				69EF052E202D8B16002B9B09 /* TangPlayerView.swift */,
+				2D8BB9F12030823200C42B9C /* TangPreviewView.swift */,
+				2D8BB9F72031A09800C42B9C /* TangPlayerControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1031,12 +1077,16 @@
 				69BFBE5C1F6A5992004338EF /* YGRefreshComponent.m in Sources */,
 				69EF04CC202C0E82002B9B09 /* Statistic.swift in Sources */,
 				69EF0491202BF1E4002B9B09 /* Network.swift in Sources */,
+				2D8BB9EA202EDA1900C42B9C /* TMVideoType.swift in Sources */,
 				69EF04EE202C15BB002B9B09 /* Avatar.swift in Sources */,
 				69BFBE631F6A5992004338EF /* UIView+SDExtension.m in Sources */,
 				69EF049B202BF1E4002B9B09 /* UIView+Ext.swift in Sources */,
 				69EF04DB202C1340002B9B09 /* TFHppleElement.m in Sources */,
 				69EF0496202BF1E4002B9B09 /* UICollectionViewCell+Ext.swift in Sources */,
+				2D8BB9FA2031D98200C42B9C /* StringUtils.swift in Sources */,
 				69EF0492202BF1E4002B9B09 /* ThirdParty.swift in Sources */,
+				2D8BB9ED202F193900C42B9C /* TangPlayerTransition.swift in Sources */,
+				2D8BB9F42030829800C42B9C /* TangPlayerSharedData.swift in Sources */,
 				69BFBE641F6A5992004338EF /* DDSegmentScrollView.m in Sources */,
 				69EF04E3202C13F3002B9B09 /* StatisticUtil.m in Sources */,
 				69EF050A202C4859002B9B09 /* BaseViewController.swift in Sources */,
@@ -1044,12 +1094,14 @@
 				69EF0500202C3656002B9B09 /* TangPlayerInfo.swift in Sources */,
 				69EF04F0202C174C002B9B09 /* Cache.swift in Sources */,
 				69EF0504202C3C0E002B9B09 /* Codable+Ext.swift in Sources */,
+				2D8BB9EF202F330200C42B9C /* TangVideoStorager.swift in Sources */,
 				69EF050C202C4E47002B9B09 /* TangLoginGuideViewCtrl.swift in Sources */,
 				69EF0494202BF1E4002B9B09 /* UIAlertController+Ext.swift in Sources */,
 				69EF051E202D66EF002B9B09 /* TangPostCell.swift in Sources */,
 				69EF04C4202C0AB6002B9B09 /* SafeCode.m in Sources */,
 				69EF052C202D875C002B9B09 /* TangPlayerViewCtrl.swift in Sources */,
 				69EF04B2202BF837002B9B09 /* UIScrollView+Ext.swift in Sources */,
+				2D8BB9F82031A09800C42B9C /* TangPlayerControl.swift in Sources */,
 				69EF04B0202BF689002B9B09 /* UIToolbar+yg_IBInspectable.m in Sources */,
 				69EF0490202BF1E4002B9B09 /* Constant.swift in Sources */,
 				69EF04F8202C1F1D002B9B09 /* UserSession.swift in Sources */,
@@ -1072,13 +1124,15 @@
 				69EF050E202C4EBF002B9B09 /* TangLoginNaviCtrl.swift in Sources */,
 				69EF0528202D7E7C002B9B09 /* String+Ext.swift in Sources */,
 				69BFBE681F6A5992004338EF /* DDWebViewController.m in Sources */,
+				2D8BB9FD2031E20300C42B9C /* THUD.m in Sources */,
 				69EF049A202BF1E4002B9B09 /* UISearchBar+Ext.swift in Sources */,
-				695777C11F7F7192005F46B9 /* TangPlayerTransition.m in Sources */,
 				69EF04DC202C1340002B9B09 /* XPathQuery.m in Sources */,
 				69EF04FA202C1F76002B9B09 /* TangUser.swift in Sources */,
 				69BFBE611F6A5992004338EF /* SDCollectionViewCell.m in Sources */,
 				69EF0513202C5892002B9B09 /* TangDashboardViewCtrl.swift in Sources */,
 				69EF0493202BF1E4002B9B09 /* NSObject+Ext.swift in Sources */,
+				2D9EF4382035669A00941E0C /* TangPlayerControlSlidingState.swift in Sources */,
+				2D8BB9F22030823200C42B9C /* TangPreviewView.swift in Sources */,
 				69BFBE6D1F6A5992004338EF /* YGBasePopViewCtrl.m in Sources */,
 				69BFBE601F6A5992004338EF /* TAPageControl.m in Sources */,
 				69BFBE6F1F6A5992004338EF /* YGBaseWebViewCtrl.m in Sources */,
@@ -1100,8 +1154,10 @@
 				2D8BB9E4202EC95700C42B9C /* TMFormat.swift in Sources */,
 				69EF0526202D6D70002B9B09 /* TangVideoInfo.swift in Sources */,
 				69EF0497202BF1E4002B9B09 /* UIDevice+Ext.swift in Sources */,
+				2D9EF436203562D600941E0C /* TangPlaybackState.swift in Sources */,
 				69BFBE651F6A5992004338EF /* YGTextField.m in Sources */,
 				69EF04AA202BF4CF002B9B09 /* UITabBar+yg_IBInspectable.m in Sources */,
+				2D8BB9F62031534F00C42B9C /* TangPlayer.swift in Sources */,
 				69EF049E202BF1E4002B9B09 /* Func.swift in Sources */,
 				69EF048E202BF1E4002B9B09 /* Config.swift in Sources */,
 				69EF0498202BF1E4002B9B09 /* UINavigationBar+Ext.swift in Sources */,
@@ -1249,6 +1305,7 @@
 				INFOPLIST_FILE = Tang/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"DEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tang.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tang/Tang-Bridging-Header.h";
