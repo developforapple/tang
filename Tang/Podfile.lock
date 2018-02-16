@@ -58,7 +58,15 @@ PODS:
     - libwebp/core
   - libwebp/webp (0.6.0)
   - MJRefresh (3.1.15.3)
-  - ReactiveObjC (3.1.0)
+  - ReactiveCocoa (7.1.0):
+    - ReactiveSwift (~> 3.1)
+  - ReactiveObjC (3.0.0)
+  - ReactiveObjCBridge (3.0.0):
+    - ReactiveObjC (~> 3.0.0)
+    - ReactiveSwift (~> 3.0)
+  - ReactiveSwift (3.1.0):
+    - Result (~> 3.2)
+  - Result (3.2.4)
   - SDWebImage (4.1.2):
     - SDWebImage/Core (= 4.1.2)
   - SDWebImage/Core (4.1.2)
@@ -69,7 +77,7 @@ PODS:
     - libwebp
     - SDWebImage/Core
   - SVProgressHUD (2.2.2)
-  - TMTumblrSDK (5.0)
+  - TMTumblrSDK (5.0.7)
   - UICKeyChainStore (2.1.1)
   - WebViewJavascriptBridge (6.0.3)
   - YYCache (1.0.4)
@@ -87,12 +95,14 @@ DEPENDENCIES:
   - JZNavigationExtension (= 1.5.0.1)
   - KTVHTTPCache (from `https://github.com/ChangbaDevs/KTVHTTPCache.git`)
   - MJRefresh
-  - ReactiveObjC (~> 3.0)
+  - ReactiveCocoa
+  - ReactiveObjC
+  - ReactiveObjCBridge
   - SDWebImage (~> 4.1.0)
   - SDWebImage/GIF (~> 4.1.0)
   - SDWebImage/WebP (~> 4.1.0)
   - SVProgressHUD
-  - TMTumblrSDK
+  - TMTumblrSDK (~> 5.0.7)
   - WebViewJavascriptBridge (~> 6.0.2)
   - YYCache
   - YYCategories
@@ -121,16 +131,20 @@ SPEC CHECKSUMS:
   KTVHTTPCache: 5b46cde001869e199fcd079014173083fbf0328c
   libwebp: 1d5a07c2eb97f9c31bd5f154bb82efc0ea67c6a2
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  ReactiveCocoa: 105ad96f6b8711f1ee7d165fc96587479298053b
+  ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
+  ReactiveObjCBridge: bc8fce9f30caa22868439a621bf3f8b95e6e47e1
+  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
-  TMTumblrSDK: 75aca84910dd905a1ca63f5f5826fbeaf28a0c1e
+  TMTumblrSDK: 6de381f63edea2c3f4976a9e71cb12b80636e653
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 3bd2c4a60107ce11aaf2121dbc40270877b8b525
+PODFILE CHECKSUM: 4c82a6063c489cda31f04e970c00e02fde7470fc
 
 COCOAPODS: 1.4.0

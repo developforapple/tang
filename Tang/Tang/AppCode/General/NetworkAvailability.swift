@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import AFNetworking
 
 class NetworkAvailability: NSObject {
-
+    
+    
+    
+    
 }

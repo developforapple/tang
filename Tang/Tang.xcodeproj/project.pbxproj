@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2D7443341F6CEC1C00792701 /* TangLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7443331F6CEC1C00792701 /* TangLogin.storyboard */; };
 		2D74434C1F6CFB1300792701 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74434B1F6CFB1300792701 /* libxml2.tbd */; };
+		2D8BB9DD202E9C3700C42B9C /* NetworkAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9DC202E9C3700C42B9C /* NetworkAvailability.swift */; };
+		2D8BB9DF202EC36000C42B9C /* TMBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9DE202EC36000C42B9C /* TMBoolean.swift */; };
+		2D8BB9E2202EC64F00C42B9C /* TMPostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E1202EC64F00C42B9C /* TMPostType.swift */; };
+		2D8BB9E4202EC95700C42B9C /* TMFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E3202EC95700C42B9C /* TMFormat.swift */; };
+		2D8BB9E6202ECAC700C42B9C /* TMPostState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */; };
+		2D8BB9E8202ED14F00C42B9C /* TangPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BB9E7202ED14F00C42B9C /* TangPhoto.swift */; };
 		2DC9B6AB1F6E79990092DACB /* TangPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC9B6AA1F6E79990092DACB /* TangPlayer.storyboard */; };
 		2DCBCCE11F6EDC370060D732 /* TangVolumeIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBCCE01F6EDC370060D732 /* TangVolumeIndicator.m */; };
 		695777C11F7F7192005F46B9 /* TangPlayerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 695777C01F7F7192005F46B9 /* TangPlayerTransition.m */; };
@@ -101,6 +107,12 @@
 /* Begin PBXFileReference section */
 		2D7443331F6CEC1C00792701 /* TangLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangLogin.storyboard; sourceTree = "<group>"; };
 		2D74434B1F6CFB1300792701 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		2D8BB9DC202E9C3700C42B9C /* NetworkAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAvailability.swift; sourceTree = "<group>"; };
+		2D8BB9DE202EC36000C42B9C /* TMBoolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBoolean.swift; sourceTree = "<group>"; };
+		2D8BB9E1202EC64F00C42B9C /* TMPostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPostType.swift; sourceTree = "<group>"; };
+		2D8BB9E3202EC95700C42B9C /* TMFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMFormat.swift; sourceTree = "<group>"; };
+		2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMPostState.swift; sourceTree = "<group>"; };
+		2D8BB9E7202ED14F00C42B9C /* TangPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangPhoto.swift; sourceTree = "<group>"; };
 		2DA738F2F1456D6FAC1E654A /* Pods-Tang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tang/Pods-Tang.debug.xcconfig"; sourceTree = "<group>"; };
 		2DC9B6AA1F6E79990092DACB /* TangPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TangPlayer.storyboard; sourceTree = "<group>"; };
 		2DCBCCD91F6EB79E0060D732 /* TangPostVideoParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TangPostVideoParser.h; sourceTree = "<group>"; };
@@ -248,6 +260,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D8BB9E0202EC62C00C42B9C /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				2D8BB9DE202EC36000C42B9C /* TMBoolean.swift */,
+				2D8BB9E1202EC64F00C42B9C /* TMPostType.swift */,
+				2D8BB9E3202EC95700C42B9C /* TMFormat.swift */,
+				2D8BB9E5202ECAC700C42B9C /* TMPostState.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		2DC9B6A91F6E79850092DACB /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +683,7 @@
 		69EF04E5202C152B002B9B09 /* AppCode */ = {
 			isa = PBXGroup;
 			children = (
+				2D8BB9E0202EC62C00C42B9C /* Enum */,
 				69EF04E6202C155A002B9B09 /* General */,
 				69EF04E7202C1560002B9B09 /* Model */,
 				69EF04E8202C1564002B9B09 /* Module */,
@@ -677,6 +701,7 @@
 				69EF04F7202C1F1D002B9B09 /* UserSession.swift */,
 				69EF0509202C4859002B9B09 /* BaseViewController.swift */,
 				69EF0523202D6D65002B9B09 /* VideoParser.swift */,
+				2D8BB9DC202E9C3700C42B9C /* NetworkAvailability.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -689,6 +714,7 @@
 				69EF04FD202C33BA002B9B09 /* TangPost.swift */,
 				69EF04FF202C3656002B9B09 /* TangPlayerInfo.swift */,
 				69EF0525202D6D70002B9B09 /* TangVideoInfo.swift */,
+				2D8BB9E7202ED14F00C42B9C /* TangPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -700,7 +726,6 @@
 				69EF0529202D8738002B9B09 /* Player */,
 				69EF0507202C480A002B9B09 /* Login */,
 				69EF0505202C47EF002B9B09 /* Dashboard */,
-				69EF0506202C47FC002B9B09 /* Discover */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -713,13 +738,6 @@
 				69EF0511202C587A002B9B09 /* Ctrls */,
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		69EF0506202C47FC002B9B09 /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Discover;
 			sourceTree = "<group>";
 		};
 		69EF0507202C480A002B9B09 /* Login */ = {
@@ -922,7 +940,11 @@
 				"${BUILT_PRODUCTS_DIR}/JZNavigationExtension/JZNavigationExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/KTVHTTPCache/KTVHTTPCache.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjCBridge/ReactiveObjCBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/TMTumblrSDK/TMTumblrSDK.framework",
@@ -946,7 +968,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JZNavigationExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KTVHTTPCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjCBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TMTumblrSDK.framework",
@@ -1032,6 +1058,7 @@
 				69EF0515202C5AD1002B9B09 /* Math.swift in Sources */,
 				69BFBE6E1F6A5992004338EF /* YGBaseViewCtrl.m in Sources */,
 				69EF04F2202C1CDB002B9B09 /* API.swift in Sources */,
+				2D8BB9DF202EC36000C42B9C /* TMBoolean.swift in Sources */,
 				69BFBE621F6A5992004338EF /* SDCycleScrollView.m in Sources */,
 				69EF04DA202C1340002B9B09 /* TFHpple.m in Sources */,
 				69EF0495202BF1E4002B9B09 /* UIButton+Ext.swift in Sources */,
@@ -1039,7 +1066,9 @@
 				69EF048F202BF1E4002B9B09 /* Appearance.swift in Sources */,
 				69BFBE671F6A5992004338EF /* DDWebInspector.m in Sources */,
 				69EF04AD202BF53C002B9B09 /* UITableView+Ext.swift in Sources */,
+				2D8BB9E8202ED14F00C42B9C /* TangPhoto.swift in Sources */,
 				69EF0524202D6D65002B9B09 /* VideoParser.swift in Sources */,
+				2D8BB9E6202ECAC700C42B9C /* TMPostState.swift in Sources */,
 				69EF050E202C4EBF002B9B09 /* TangLoginNaviCtrl.swift in Sources */,
 				69EF0528202D7E7C002B9B09 /* String+Ext.swift in Sources */,
 				69BFBE681F6A5992004338EF /* DDWebViewController.m in Sources */,
@@ -1058,14 +1087,17 @@
 				69BFBE551F6A5992004338EF /* YGLabel.m in Sources */,
 				69EF049C202BF1E4002B9B09 /* UIView+Hidden.swift in Sources */,
 				69BFBE6C1F6A5992004338EF /* YGBaseNaviCtrl.m in Sources */,
+				2D8BB9E2202EC64F00C42B9C /* TMPostType.swift in Sources */,
 				69BFBE5D1F6A5992004338EF /* TAAbstractDotView.m in Sources */,
 				69EF054F202D8DD8002B9B09 /* AppDelegate.swift in Sources */,
 				69EF04B7202BF8F7002B9B09 /* UIViewController+yg_IBInspectable.m in Sources */,
+				2D8BB9DD202E9C3700C42B9C /* NetworkAvailability.swift in Sources */,
 				69BFBE5E1F6A5992004338EF /* TAAnimatedDotView.m in Sources */,
 				69EF0499202BF1E4002B9B09 /* UINavigationController+Ext.swift in Sources */,
 				69BFBE561F6A5992004338EF /* YGLineView.m in Sources */,
 				69EF04A7202BF489002B9B09 /* UINavigationBar+yg_IBInspectable.m in Sources */,
 				69EF04FE202C33BA002B9B09 /* TangPost.swift in Sources */,
+				2D8BB9E4202EC95700C42B9C /* TMFormat.swift in Sources */,
 				69EF0526202D6D70002B9B09 /* TangVideoInfo.swift in Sources */,
 				69EF0497202BF1E4002B9B09 /* UIDevice+Ext.swift in Sources */,
 				69BFBE651F6A5992004338EF /* YGTextField.m in Sources */,
@@ -1134,7 +1166,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1185,7 +1217,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1215,6 +1247,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = Tang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tang.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1248,6 +1281,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = Tang/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tang.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";

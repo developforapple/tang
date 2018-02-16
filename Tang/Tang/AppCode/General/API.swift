@@ -35,6 +35,13 @@ class API : NSObject {
     }
 }
 
+extension API {
+    private func printTask(_ task : TASK) {
+        print("Req : ",task.currentRequest!.url!)
+        print("Header : ",task.currentRequest!.allHTTPHeaderFields!)
+    }
+}
+
 // MARK: - Delegate
 extension API : TMOAuthAuthenticatorDelegate , TMNetworkActivityIndicatorManager{
     
@@ -43,8 +50,7 @@ extension API : TMOAuthAuthenticatorDelegate , TMNetworkActivityIndicatorManager
             self.dismissOAuthBrowser()
             
             self.oauthBrowser = SFSafariViewController.init(url: url)
-            let window = UIApplication.shared.delegate?.window!
-            window?.rootViewController?.present(self.oauthBrowser!, animated: true, completion: nil)
+            UIApplication.shared.keyWindow!.rootViewController?.present(self.oauthBrowser!, animated: true, completion: nil)
         }
     }
     
@@ -58,6 +64,7 @@ extension API : TMOAuthAuthenticatorDelegate , TMNetworkActivityIndicatorManager
 // MARK: - OAuth
 extension API {
     
+    /// 开始授权登录流程
     func OAuth() {
         let session = TMURLSession.init(configuration: URLSessionConfiguration.default,
                                         applicationCredentials: appCredentials,
@@ -65,20 +72,21 @@ extension API {
         oauthAuthenticator = TMOAuthAuthenticator.init(session: session,
                                                        applicationCredentials: appCredentials,
                                                        delegate: self)
-        
-        oauthAuthenticator?.authenticate(API.kTangOAuthScheme, callback: { [unowned self] (uc, error) in
-            
-            guard error != nil else {
-                print("OAuth failed :", error!)
-                return
-            }
-            
-            print("OAuth successed! ",uc!)
-            self.userCredentials = uc!
-            self.updateUserInfo(uc!)
-        })
+        oauthAuthenticator?.authenticate(API.kTangOAuthScheme, callback: OAuthCallback(_:_:))
     }
     
+    private func OAuthCallback(_ uc : TMAPIUserCredentials?, _ error : Error?) {
+        guard error == nil else {
+            print("OAuth failed :", error!)
+            return
+        }
+        
+        print("OAuth successed! ",uc!,self)
+        self.userCredentials = uc!
+        self.updateUserInfo(uc!)
+    }
+    
+    @discardableResult
     func handleURL(_ url : URL) -> Bool {
         if let oa = oauthAuthenticator {
             return oa.handleOpen(url)
@@ -93,38 +101,75 @@ extension API {
         oauthBrowser = nil
     }
     
-    func updateUserInfo(_ uc : TMAPIUserCredentials) {
-        
-        client.userInfoDataTask { [unowned self] (resp, error) in
-            guard error != nil else {
-                print("Request user info failed :",error!)
+    /// 更新用户信息
+    ///
+    /// - Parameter uc: 用户
+    /// - Returns: URLSessionTask
+    @discardableResult
+    func updateUserInfo(_ uc : TMAPIUserCredentials) -> TASK {
+        print("Update User Info")
+        let task = client.userInfoDataTask { [unowned self] (resp, error) in
+            
+            defer {
+                RunOnMain {
+                    self.dismissOAuthBrowser()
+                }
+            }
+            
+            guard let response = resp, error == nil else {
+                print("Update User Info error ",error ?? "")
                 return
             }
             
-            print("Request user info successed :",resp)
+            guard let userInfo = response["user"], JSONSerialization.isValidJSONObject(userInfo) else {
+                print("Update User Info Response is invalid json format")
+                return
+            }
+            
+            guard let data = try? JSONSerialization.data(withJSONObject: userInfo, options: []) else {
+                print("Update User Info Response convert to data failed!")
+                return
+            }
+            
+            guard let user = TangUser.fromJson(data) else {
+                print("Update User Info Response convert to model failed!")
+                return
+            }
+            
+            print("Update User Info SUCCESSED! :",response)
+            
+            user.token = self.userCredentials.token
+            user.tokenSecret = self.userCredentials.tokenSecret
+            
             RunOnMain {
-                self.dismissOAuthBrowser()
-                
-                // TODO:
-//                TangUser *user = [TangUser yy_modelWithJSON:response];
-//                user.token = userCredentials.token;
-//                user.tokenSecret = userCredentials.tokenSecret;
-//                [SESSION logined:user];
+                UserSession.session.logined(user)
             }
         }
-        
+        printTask(task)
+        task.resume()
+        return task
     }
 }
 
 // MARK: - API
 extension API {
-    func dashboard(_ offset : Int, completion : ((Bool,[Any]?) -> Void)? = nil) -> TASK {
+    
+    /// 获取首页博文列表
+    ///
+    /// - Parameters:
+    ///   - offset: 偏移量
+    ///   - completion: 回调
+    /// - Returns: URLSessionTask
+    @discardableResult
+    func dashboard(_ offset : Int = 0, _ type : TMPostType? = .video, _ completion : ((Bool,[Any]?) -> Void)? = nil) -> TASK {
         
         var params : [String:Any] = [:];
-        
         params["limit"] = 20
-        params["type"] = "video"
         params["offset"] = offset
+        
+        if let postType = type {
+            params["type"] = postType.rawValue
+        }
         
         let task = client.dashboardRequest(params) { (resp, error) in
             if error != nil {
@@ -140,11 +185,21 @@ extension API {
                 }
             }
         }
+        printTask(task)
+        task.resume()
         return task
     }
     
+    
+    /// 获取头像URL
+    ///
+    /// - Parameters:
+    ///   - blogName: 用户博客名
+    ///   - completion: 回调
+    /// - Returns: URLSessionTask
+    @discardableResult
     func getAvater(_ blogName : String, completion : ((Bool,String?) -> Void)? = nil) -> TASK {
-        return client.avatar(withBlogName: blogName, size: 16, callback: { (_data, _response, _error) in
+        let task = client.avatar(withBlogName: blogName, size: 16, callback: { (_data, _response, _error) in
             guard let c = completion else {return}
             guard let response = _response else{return}
             
@@ -173,5 +228,8 @@ extension API {
                 }
             }
         })
+        printTask(task)
+        task.resume()
+        return task
     }
 }

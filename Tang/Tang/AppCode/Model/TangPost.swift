@@ -9,71 +9,124 @@
 import UIKit
 
 class TangPost : Codable {
-    var blog_name : String? //The short name used to uniquely identify a blog
-    var can_like : Int?
-    var can_reblog : Int?
-    var can_reply : Int?
-    var can_send_in_message : Int?
-    var date : String?
-    var display_avatar : String?
-    var followed : Int?
-    var format : String?
-    var html5_capable : Int?
-    var id : String?
-    var is_blocks_post_format : Int?
-    var liked : Int?
-    var note_count : Int?
-//    var notes : [Codable]?
-    var permalink_url : String? //原始链接地址
-    var post_url : String?      //The location of the post
-//    var reblog : Codable?
-    var short_url : String?
-    var slug : String?
-    var source_url : String?    //The URL for the source of the content (for quotes, reblogs, etc.)
-    var source_title : String?  //The title of the source site
-    var state : String?         //Indicates the current state of the post
-    var summary : String?
-    var tags : [String]?        //Tags applied to the post
-    var thumbnail_height : CGFloat?
-    var thumbnail_width : CGFloat?
-    var thumbnail_url : String?
-    var timestamp : Double?     //The time of the post, in seconds since the epoch
-    var total_posts : Int?      //The total number of post available for this request, useful for paginating through results
-//    var trail : []?
-    var type : String?          //text, quote, link, answer, video, audio, photo, chat
-    var video_type : String?
     
-    // for text posts
-    var title : String?         //The optional title of the post
-    var body : String?          //The full post body. html format
+    // Document : https://www.tumblr.com/docs/en/api/v2#user-methods
     
-    // for photo posts
-//    var photos : []?
-    var caption : String?       //The user-supplied caption
-    var width : Float?          //The width of the photo or photoset
-    var height : Float?         //The height of the photo or photoset
-    
-    // for Quote Posts
-    var text : String?          //The text of the quote (can be modified by the user when posting)
-    var source : String?        //Full HTML for the source of the quote. Example: <a href="...">Steve Jobs</a>
-    
-    // for link Posts
-//    var title : String?
-    var url : String?           //The link
-    var author : String?        //The author of the article the link points to
-    var excerpt : String?       //An excerpt from the article the link points to
-    var publisher : String?     //The publisher of the article the link points to
-    //@property (strong, nonatomic) NSArray *photos;
-    var description : String?   //A user-supplied description.
-    
-    // for video posts
-    
-//    var caption : String?
-    var player : [TangPlayerInfo]?
+    var blog_name       : String!       // The short name used to uniquely identify a blog
+    var id              : Int!          // The post's unique ID
+    var post_url        : String!       // The location of the post
+    var type            : TMPostType!   // The type of post
+    var timestamp       : Int!          // The time of the post, in seconds since the epoch
+    var date            : String?       // The GMT date and time of the post, as a string
+    var format          : TMFormat!     // The post format: html or markdown
+    var reblog_key      : String?       // The key used to reblog this post
+    var tags            : [String]?     // Tags applied to the post
+    var bookmarklet     : Bool = false  // Indicates whether the post was created via the Tumblr bookmarklet
+    var mobile          : Bool = false  // Indicates whether the post was created via mobile/email publishing
+    var source_url      : String?       // The URL for the source of the content (for quotes, reblogs, etc.)
+    var source_title    : String?       // The title of the source site
+    var liked           : Bool = false  // Indicates if a user has already liked a post or not
+    var state           : TMPostState?  // Indicates the current state of the post
+    var total_posts     : Int!          // The total number of post available for this request, useful for paginating through results
+}
 
-    // for Answer Posts
+class TangTextPost : TangPost {
+    var title           : String?       // The optional title of the post
+    var body            : String?       // The full post body
     
-    // for Chat Posts
+    private enum Key : String, CodingKey {
+        case title,body
+    }
     
-    // for Audio Posts
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        try container.encode(title, forKey: .title)
+        try container.encode(body, forKey: .body)
+        try super.encode(to: encoder)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        title = try? container.decode(String.self, forKey: .title)
+        body = try? container.decode(String.self, forKey: .body)
+        try super.init(from: decoder)
+    }
+}
+
+class TangPhotoPost: TangPost {
+    var photos          : TangPhotos                // Photo objects with properties:
+    var caption         : String?                   // The user-supplied caption
+    var width           : Int = 0                   // The width of the photo or photoset
+    var height          : Int = 0                   // The height of the photo or photoset
+    
+    private enum Key : String, CodingKey {
+        case photos,caption,width,height
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        try container.encode(photos, forKey: .photos)
+        try container.encode(caption, forKey: .caption)
+        try container.encode(width, forKey: .width)
+        try container.encode(height, forKey: .height)
+        try super.encode(to: encoder)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        photos = try container.decode(TangPhotos.self, forKey: .photos)
+        caption = try? container.decode(String.self, forKey: .caption)
+        width = (try? container.decode(Int.self, forKey: .width)) ?? 0
+        height = (try? container.decode(Int.self, forKey: .height)) ?? 0
+        try super.init(from: decoder)
+    }
+}
+
+class TangQuotePost : TangPost {
+    
+}
+
+class TangLinkPost : TangPost {
+    
+}
+
+class TangChatPost : TangPost {
+    
+}
+
+class TangAudioPost : TangPost {
+    
+}
+
+class TangVideoPost : TangPost {
+    
+    class Player : Codable {
+        var width       : Int!              // width of video player, in pixels
+        var embed_code  : String!           // HTML for embedding the video playe
+    }
+    
+    var caption         : String?           // The user-supplied caption
+    var player          : [Player]          // Values vary by video source
+    
+    private enum Key : String, CodingKey {
+        case caption,player
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        try container.encode(caption, forKey: .caption)
+        try container.encode(player, forKey: .player)
+        try super.encode(to: encoder)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        caption = try? container.decode(String.self, forKey: .caption)
+        player = (try? container.decode([Player].self, forKey: .player)) ?? []
+        try super.init(from: decoder)
+    }
+}
+
+class TangAnswerPost : TangPost {
+    
 }

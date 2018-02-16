@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Ctrl-->
+        <!--Tang Tab Bar Ctrl-->
         <scene sceneID="LGG-Rd-ZvY">
             <objects>
-                <tabBarController storyboardIdentifier="YGTabBarCtrl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d4h-s2-EoO" customClass="YGTabBarCtrl" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TangTabBarCtrl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d4h-s2-EoO" customClass="TangTabBarCtrl" customModule="Tang" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="BaD-DX-m5D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
